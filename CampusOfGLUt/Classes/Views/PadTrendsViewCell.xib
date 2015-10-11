@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="trendsCellID" selectionStyle="default" indentationWidth="10" rowHeight="86" id="5J9-iH-gUm" customClass="TrendsViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5J9-iH-gUm" id="25b-LO-X4S">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eA-rD-AoN">
+                        <rect key="frame" x="18" y="49.5" width="37.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gst-yZ-GbC">
+                        <rect key="frame" x="133" y="49.5" width="159" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUi-BG-4V6">
+                        <rect key="frame" x="80.5" y="49.5" width="37.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SL0-vm-n4J">
+                        <rect key="frame" x="8" y="16" width="304" height="31.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MUi-BG-4V6" firstAttribute="top" secondItem="SL0-vm-n4J" secondAttribute="bottom" id="0ZD-Rb-8jt"/>
+                    <constraint firstItem="7eA-rD-AoN" firstAttribute="leading" secondItem="25b-LO-X4S" secondAttribute="leadingMargin" constant="10" id="98v-rO-gys"/>
+                    <constraint firstItem="MUi-BG-4V6" firstAttribute="top" secondItem="SL0-vm-n4J" secondAttribute="bottom" constant="2" id="CJ7-eJ-2Lw"/>
+                    <constraint firstItem="7eA-rD-AoN" firstAttribute="top" secondItem="SL0-vm-n4J" secondAttribute="bottom" constant="2" id="DHO-LH-ygx"/>
+                    <constraint firstItem="Gst-yZ-GbC" firstAttribute="top" secondItem="SL0-vm-n4J" secondAttribute="bottom" constant="2" id="EWX-8C-3zO"/>
+                    <constraint firstItem="Gst-yZ-GbC" firstAttribute="leading" secondItem="MUi-BG-4V6" secondAttribute="trailing" constant="15" id="Eez-9E-bgm"/>
+                    <constraint firstItem="MUi-BG-4V6" firstAttribute="leading" secondItem="7eA-rD-AoN" secondAttribute="trailing" constant="15" id="Gdw-vK-4lH"/>
+                    <constraint firstItem="SL0-vm-n4J" firstAttribute="top" secondItem="25b-LO-X4S" secondAttribute="topMargin" constant="8" id="KSo-If-45n"/>
+                    <constraint firstItem="SL0-vm-n4J" firstAttribute="leading" secondItem="25b-LO-X4S" secondAttribute="leadingMargin" id="Rft-76-R3k"/>
+                    <constraint firstItem="SL0-vm-n4J" firstAttribute="trailing" secondItem="25b-LO-X4S" secondAttribute="trailingMargin" id="YeL-jX-rmH"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="MUi-BG-4V6" secondAttribute="bottom" constant="8" id="i4K-fL-EdP"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Gst-yZ-GbC" secondAttribute="bottom" constant="8" id="i8p-Wk-V4M"/>
+                    <constraint firstItem="Gst-yZ-GbC" firstAttribute="leading" secondItem="MUi-BG-4V6" secondAttribute="trailing" constant="15" id="ipe-vV-wBn"/>
+                    <constraint firstItem="MUi-BG-4V6" firstAttribute="top" secondItem="SL0-vm-n4J" secondAttribute="bottom" constant="8" id="lHI-j0-yY8"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7eA-rD-AoN" secondAttribute="bottom" constant="8" id="pJi-Ed-1Dw"/>
+                    <constraint firstItem="Gst-yZ-GbC" firstAttribute="trailing" secondItem="25b-LO-X4S" secondAttribute="trailingMargin" constant="-20" id="sDw-LE-KvJ"/>
+                    <constraint firstItem="MUi-BG-4V6" firstAttribute="leading" secondItem="7eA-rD-AoN" secondAttribute="trailing" constant="25" id="umS-yP-xDE"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="0ZD-Rb-8jt"/>
+                        <exclude reference="Gdw-vK-4lH"/>
+                        <exclude reference="lHI-j0-yY8"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblAuthor" destination="7eA-rD-AoN" id="hfu-eH-C0Z"/>
+                <outlet property="lblClicks" destination="MUi-BG-4V6" id="AVV-Sg-eTL"/>
+                <outlet property="lblTime" destination="Gst-yZ-GbC" id="pcL-tF-ugc"/>
+                <outlet property="lblTitle" destination="SL0-vm-n4J" id="QtL-rc-orD"/>
+            </connections>
+            <point key="canvasLocation" x="388" y="273"/>
+        </tableViewCell>
+    </objects>
+</document>
