@@ -20,7 +20,7 @@ typedef void (^fetchNews_block)(NSArray *);
 - (void)cancelAllOperations;
 
 
-- (void)getNewsListDataWithClassName:(NSString *)name page:(int)page success:(void (^)(NSArray *fetchNewsArray))success failure:(void (^)(NSError *error))failure;
+- (void)getNewsListDataWithClassName:(NSString *)name page:(int)page success:(void (^)(NSArray *fetchNewsArray ,int nextPage))success failure:(void (^)(NSError *error))failure;
 
 - (void)getFocusImagesSuccess:(void (^)(NSArray *fetchImagesArray))success failure:(void (^)(NSError *error))failure;
 

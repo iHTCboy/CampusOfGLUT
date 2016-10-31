@@ -2,49 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>mqqwpa</string>
-        <string>safepay</string>
-        <string>alipayauth</string>
-        <string>alipay</string>
-        <string>wechat</string>
-        <string>weixin</string>
-        <string>sinaweibohd</string>
-        <string>sinaweibo</string>
-        <string>sinaweibosso</string>
-        <string>weibosdk</string>
-        <string>weibosdk2.5</string>
-        <string>mqqapi</string>
-        <string>mqq</string>
-        <string>mqqOpensdkSSoLogin</string>
-        <string>mqqconnect</string>
-        <string>mqqopensdkdataline</string>
-        <string>mqqopensdkgrouptribeshare</string>
-        <string>mqqopensdkfriend</string>
-        <string>mqqopensdkapi</string>
-        <string>mqqopensdkapiV2</string>
-        <string>mqqopensdkapiV3</string>
-        <string>mqzoneopensdk</string>
-        <string>mqqopensdkapiV3</string>
-        <string>mqqopensdkapiV3</string>
-        <string>wtloginmqq</string>
-        <string>wtloginmqq2</string>
-        <string>mqzone</string>
-        <string>mqzonev2</string>
-        <string>mqzoneshare</string>
-        <string>wtloginqzone</string>
-        <string>mqzonewx</string>
-        <string>mqzoneopensdkapiV2</string>
-        <string>mqzoneopensdkapi19</string>
-        <string>mqzoneopensdkapi</string>
-        <string>mqzoneopensdk</string>
-    </array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
@@ -60,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.7</string>
+	<string>2.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -97,9 +54,70 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>2016.10.31</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>safepay</string>
+		<string>alipay</string>
+		<string>alipayauth</string>
+		<string>alipayshare</string>
+		<string>wechat</string>
+		<string>weixin</string>
+		<string>sinaweibohd</string>
+		<string>sinaweibo</string>
+		<string>sinaweibosso</string>
+		<string>sinaweibohdsso</string>
+		<string>weibosdk</string>
+		<string>weibosdk2.5</string>
+		<string>mqqapi</string>
+		<string>mqq</string>
+		<string>qzapp</string>
+		<string>mqqOpensdkSSoLogin</string>
+		<string>mqqconnect</string>
+		<string>mqzoneopensdkapi</string>
+		<string>mqqopensdkdataline</string>
+		<string>mqqopensdkgrouptribeshare</string>
+		<string>mqqopensdkfriend</string>
+		<string>mqqopensdkapi</string>
+		<string>mqzoneopensdk</string>
+		<string>mqzoneopensdkapi</string>
+		<string>mqzoneopensdkapi19</string>
+		<string>mqzoneopensdkapiV2</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqqopensdkapiV3</string>
+		<string>wtloginmqq</string>
+		<string>wtloginmqq2</string>
+		<string>mqzone</string>
+		<string>mqzonev2</string>
+		<string>mqzoneshare</string>
+		<string>wtloginqzone</string>
+		<string>mqzonewx</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>好，以便访问媒体资料</string>
+	<key>NSCameraUsageDescription</key>
+	<string>好，以便正常使用相机</string>
+	<key>NSContactsUsageDescription</key>
+	<string>好，以便访问通讯录</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>使用您的位置信息，以便能够准确为您提供本地服务内容</string>
+	<key>NSLocationUsageDescription</key>
+	<string>使用您的位置信息，以便能够准确为您提供本地服务内容</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>使用您的位置信息，以便能够准确为您提供本地服务内容</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>好，以便麦克风录音对话</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>好，以便正常访问相册</string>
+	<key>NSSiriUsageDescription</key>
+	<string>好，以便使用Siri进行对话</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -122,6 +122,7 @@ a:active{color:#8f001e;}
 		.content .post_content{padding:0px 15px 0px 20px}
 			.content .post_content p{padding-bottom:30px;font-size:22px;line-height:30px;word-wrap:break-word;}
 			.content .post_content span.pt_title{text-align:center;clear:both;font-size:48px;}
+.content .post_content h1.post_via{text-align:right;color:#379df9;}
 			/* Custom Setting */
 			.content .fs1 p{text-align:center;clear:both;font-size:23px}
 			.content .fs2 p{font-size:16px;line-height:30px;}

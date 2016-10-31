@@ -16,7 +16,10 @@
 #import "WeiboSDKTool.h"
 #import "WeixinSDKTool.h"
 #import "HUDUtil.h"
-
+#import "WeiboSDK.h"
+#import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "BaiduMobStat.h"
 
 static NSString *const customStyle = @"customStyle";
 
@@ -129,6 +132,9 @@ static NSString *const customStyle = @"customStyle";
     //向腾讯注册
     [[TencentOAuth alloc] initWithAppId:QQKey andDelegate:nil]; //注册
 
+    //百度统计
+    [self startBaiduMobStat];
+    
    // TencentOAuth * _tencentOAuth = [[TencentOAuth alloc] initWithAppId:QQKey andDelegate:self]; //注册
     
 //    NSArray *_permissions = [NSArray arrayWithObjects:kOPEN_PERMISSION_ADD_TOPIC, kOPEN_PERMISSION_ADD_SHARE, nil];
@@ -144,6 +150,16 @@ static NSString *const customStyle = @"customStyle";
 
 }
 
+/**
+ *  初始化百度统计SDK
+ */
+- (void)startBaiduMobStat {
+    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+    // 此处(startWithAppId之前)可以设置初始化的可选参数，具体有哪些参数，可详见BaiduMobStat.h文件，例如：
+    statTracker.shortAppVersion  = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+//    statTracker.enableDebugOn = YES;
+    [statTracker startWithAppId:@"057db5e816"]; // 设置您在mtj网站上添加的app的appkey,此处AppId即为应用的appKey
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

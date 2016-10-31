@@ -138,38 +138,6 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-//
-////添加回到顶部btn
-//-(void) initTopBtn{
-//
-//    UIButton * toTopBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 60, self.view.frame.size.height-120, 40, 40)];
-//    self.toTopBtn = toTopBtn;
-//    [self.toTopBtn setBackgroundImage:[UIImage imageNamed:@"scroll_to_top"] forState:UIControlStateNormal];
-//    self.toTopBtn.hidden=YES;
-//    [self.toTopBtn addTarget:self action:@selector(scrollToTop) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:self.toTopBtn];
-//    [self.view bringSubviewToFront:self.toTopBtn];
-//    [self.view insertSubview:self.toTopBtn aboveSubview:self.tableView];
-//}
-//
-//-(void)scrollToTop{
-//    
-//    self.toTopBtn.hidden=YES;
-//    NSIndexPath *bottomIndexPath=[NSIndexPath indexPathForItem:0 inSection:0];
-//    [self.tableView scrollToRowAtIndexPath:bottomIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//}
-//
-//#pragma mark - 点击回到顶部的按扭
-//-(void) switchToTopBtn:(NSIndexPath*) indexPath{
-//    if(indexPath.row > 20){
-//        self.toTopBtn.hidden=NO;
-//        [self.tableView bringSubviewToFront:self.toTopBtn];
-//        [self.view insertSubview:self.toTopBtn aboveSubview:self.tableView];
-//    }else{
-//        self.toTopBtn.hidden=YES;
-//    }
-//}
-
 
 #pragma mark - setTabBarStyle
 - (void)setTabBarStyle
@@ -178,15 +146,6 @@
     CGRect frame = self.tableView.frame;
     frame.size.height = frame.size.height - 20;
     self.tableView.frame = frame;
-    
-//    if (self.rdv_tabBarController.tabBar.translucent) {
-//        UIEdgeInsets insets = UIEdgeInsetsMake(0,
-//                                               0,
-//                                               CGRectGetHeight(self.rdv_tabBarController.tabBar.frame) -100,
-//                                               0);
-//        self.tableView.contentInset = insets;
-//        self.tableView.scrollIndicatorInsets = insets;
-//    }
 }
 
 
@@ -264,11 +223,12 @@
     [CRToastManager dismissAllNotifications:YES];
     
     //最多加载到80页
-    if (self.morePage <= 80)
+    if (self.morePage > 0)
     {
         
-        [self.fetchNewsTool getNewsListDataWithClassName:@"教学科研" page:(int)self.morePage success:^(NSArray *fetchNewsArray)
+        [self.fetchNewsTool getNewsListDataWithClassName:@"教学科研" page:(int)self.morePage success:^(NSArray *fetchNewsArray, int nextPage)
         {
+            self.morePage = nextPage;
             
             [self.newsList addObjectsFromArray:fetchNewsArray];
             
@@ -295,7 +255,7 @@
             
             [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"加载完成" backgroundColor:[UIColor colorWithRed:1.000 green:0.574 blue:0.221 alpha:1.000]]
                                         completionBlock:^{  }];
-            self.morePage +=1 ;
+            //self.morePage +=1;
             
         } failure:^(NSError *error) {
             
@@ -333,9 +293,12 @@
 
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
 {
-     [self.fetchNewsTool getNewsListDataWithClassName:@"教学科研" page:1 success:^(NSArray *fetchNewsArray)
+    [self getFocusImages];
+    
+     [self.fetchNewsTool getNewsListDataWithClassName:@"教学科研" page:0 success:^(NSArray *fetchNewsArray, int nextPage)
       {
         
+          self.morePage = nextPage;
             //提示数据更新信息
             NSString * message;
             UIColor * backgroundColor;
@@ -417,17 +380,14 @@
 
 - (void)getFocusImages
 {
-
     [self.fetchNewsTool getFocusImagesSuccess:^(NSArray *fetchImagesArray)
     {
-    
         
-    // NSLog(@"%@",imageArr);
+    //NSLog(@"%@",fetchImagesArray);
     
     FocusImageView * header = [[FocusImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kAD_HIGHT * kScreenWidth / 320) forcusImages:fetchImagesArray titles:nil tag:1];
     header.delegate = self;
     self.tableView.tableHeaderView = header;
-    
     
     } failure:^(NSError *error) {
     
@@ -477,7 +437,7 @@
     
     cell.lblTitle.text = news.title;
     cell.lblAuthor.text = news.author;
-    cell.lblClicks.text = [NSString stringWithFormat:@"人气:%@",news.clickNum];
+    cell.lblClicks.text = @"";//[NSString stringWithFormat:@"人气:%@",news.clickNum];
     cell.lblTime.text = news.time;
     
     return cell;

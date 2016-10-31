@@ -118,10 +118,11 @@ a:active{color:#8f001e;}
 			.content .current_nav a{float:left;display:block;padding:12px 12px;}
 		.content .post_title{padding:0px 0;text-align:center;clear:both;}
 			.content .post_title h1{font-size:20px;padding:0px 10px 5px 10px;font-weight:800;}
-			.content .post_title span.pt_info{font-size:13px;color:#888;}
+        .content .post_title span.pt_info{font-size:13px;color:#888;padding:0px 5px;}
 		.content .post_content{padding:0px 10px 0px 10px}
 			.content .post_content p{padding-bottom:10px;font-size:18px;line-height:25px;word-wrap:break-word;}
 			.content .post_content span.pt_title{text-align:center;clear:both;font-size:48px;}
+.content .post_content h1.post_via{text-align:right;color:#379df9;}
 			/* Custom Setting */
             .content .fs1 p{text-align:center;clear:both;font-size:18;font-weight:500;}
 			.content .fs2 p{font-size:16px;line-height:30px;}

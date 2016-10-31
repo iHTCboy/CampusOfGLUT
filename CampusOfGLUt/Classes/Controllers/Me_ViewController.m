@@ -66,7 +66,7 @@
     UILabel * rights = [[UILabel alloc]init];
     rights.center = CGPointMake(self.view.frame.size.width * 0.5, self.view.frame.size.height- 124);
     rights.bounds = CGRectMake(0, 0, 250, 30);
-    rights.text = @"© 2014-2015 hetiancong All rights reserved";
+    rights.text = @"© 2014-2016 hetiancong All rights reserved";
     rights.textAlignment = NSTextAlignmentCenter;
     rights.textColor = RGBColor(147, 147, 147);
     rights.font = [UIFont systemFontOfSize:11];

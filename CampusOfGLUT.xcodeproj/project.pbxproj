@@ -67,11 +67,12 @@
 		6D42EE591AF26305009BAF18 /* JGProgressHUDSuccessIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D42EE4C1AF26305009BAF18 /* JGProgressHUDSuccessIndicatorView.m */; };
 		6D42EE5A1AF26305009BAF18 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6D42EE4D1AF26305009BAF18 /* LICENSE.txt */; };
 		6D42EE5B1AF26305009BAF18 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6D42EE4E1AF26305009BAF18 /* README.md */; };
-		6D47492B1BCA762D00534BDC /* scroll_to_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D47492A1BCA762D00534BDC /* scroll_to_top@2x.png */; settings = {ASSET_TAGS = (); }; };
+		6D47492B1BCA762D00534BDC /* scroll_to_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D47492A1BCA762D00534BDC /* scroll_to_top@2x.png */; };
 		6D4CCAA41A98AEDC00D2044A /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC6F9691A97754D00A971AA /* libWeiboSDK.a */; };
 		6D4CCAAC1A98AF4300D2044A /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4CCAA81A98AF4300D2044A /* libWeChatSDK.a */; };
 		6D4CCAAD1A98AF4300D2044A /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6D4CCAA91A98AF4300D2044A /* read_me.txt */; };
 		6D4CCAAF1A98B00300D2044A /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4CCAAE1A98B00300D2044A /* libc++.dylib */; };
+		6D52A00D1DC48613002286B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D52A00C1DC48613002286B4 /* AppDelegate.m */; };
 		6D5B543B1AA209C600EF9CEB /* AMapCloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5B543A1AA209C600EF9CEB /* AMapCloudKit.framework */; };
 		6D5B543D1AA20A2F00EF9CEB /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5B543C1AA20A2F00EF9CEB /* libstdc++.6.0.9.dylib */; };
 		6D5B543F1AA20A4300EF9CEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5B543E1AA20A4300EF9CEB /* CoreLocation.framework */; };
@@ -167,7 +168,6 @@
 		6D90A8DB1A8E1BFF003EC188 /* navigationbar_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D90A8D91A8E1BFF003EC188 /* navigationbar_back@3x.png */; };
 		6D90A8DC1A8E1BFF003EC188 /* navigationbar_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D90A8DA1A8E1BFF003EC188 /* navigationbar_back@2x.png */; };
 		6D971CAC1A8B768B0016469D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D971CAB1A8B768B0016469D /* main.m */; };
-		6D971CAF1A8B768B0016469D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D971CAE1A8B768B0016469D /* AppDelegate.m */; };
 		6D971CB71A8B768B0016469D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D971CB61A8B768B0016469D /* Images.xcassets */; };
 		6D971CBA1A8B768B0016469D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D971CB81A8B768B0016469D /* LaunchScreen.xib */; };
 		6D971CC61A8B768C0016469D /* CampusOfGLUtTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D971CC51A8B768C0016469D /* CampusOfGLUtTests.m */; };
@@ -180,6 +180,10 @@
 		6D971CF01A8B78CC0016469D /* Study_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D971CEF1A8B78CC0016469D /* Study_RootViewController.m */; };
 		6D971CF31A8B78F40016469D /* Life_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D971CF21A8B78F40016469D /* Life_RootViewController.m */; };
 		6D971CFA1A8B79830016469D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D971CF91A8B79830016469D /* RootViewController.m */; };
+		6D980C731DC7979600C0184C /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D980C721DC7979600C0184C /* libBaiduMobStat.a */; };
+		6D980C751DC7988E00C0184C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D980C741DC7988E00C0184C /* JavaScriptCore.framework */; };
+		6D980C771DC798BD00C0184C /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D980C761DC798BD00C0184C /* libz.1.2.5.tbd */; };
+		6D980C791DC798C500C0184C /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D980C781DC798C500C0184C /* libstdc++.tbd */; };
 		6D9F26DD1A935DE800A87EB5 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F26DC1A935DE800A87EB5 /* ODRefreshControl.m */; };
 		6D9F26EA1A93CEBB00A87EB5 /* CRToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F26E01A93CEBB00A87EB5 /* CRToast.m */; };
 		6D9F26EB1A93CEBB00A87EB5 /* CRToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F26E31A93CEBB00A87EB5 /* CRToastManager.m */; };
@@ -289,7 +293,7 @@
 		6DFA59531A9CFF3D0090FB62 /* thumbnail_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFA59511A9CFF3D0090FB62 /* thumbnail_normal@3x.png */; };
 		6DFA59541A9CFF3D0090FB62 /* thumbnail_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFA59521A9CFF3D0090FB62 /* thumbnail_selected@3x.png */; };
 		6DFF67BD1A97CE1300D34D8B /* WeiboSDKTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFF67BC1A97CE1300D34D8B /* WeiboSDKTool.m */; };
-		AE7D234CC6675E95B4A6FDC0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B60C916F047ED8B85159843 /* libPods.a */; };
+		C7795634F77962ED2014F6D3 /* libPods-CampusOfGLUT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 251B2C37DCCDB99A186D0F09 /* libPods-CampusOfGLUT.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -303,7 +307,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1B60C916F047ED8B85159843 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C16DA8B1CD1FFAA7CF69E4A /* Pods-CampusOfGLUT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusOfGLUT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampusOfGLUT/Pods-CampusOfGLUT.debug.xcconfig"; sourceTree = "<group>"; };
+		251B2C37DCCDB99A186D0F09 /* libPods-CampusOfGLUT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CampusOfGLUT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5910A67BADDDB3037A3A3F3C /* Pods-CampusOfGLUT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusOfGLUT.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampusOfGLUT/Pods-CampusOfGLUT.release.xcconfig"; sourceTree = "<group>"; };
 		6D0241461AFCDBC500905963 /* SupportTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportTableViewController.h; sourceTree = "<group>"; };
 		6D0241471AFCDBC500905963 /* SupportTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportTableViewController.m; sourceTree = "<group>"; };
 		6D21B8AF1AC6E2A00001CCAC /* timeline_card_top_background_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_card_top_background_highlighted@2x.png"; sourceTree = "<group>"; };
@@ -398,6 +404,8 @@
 		6D4CCAAA1A98AF4300D2044A /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		6D4CCAAB1A98AF4300D2044A /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		6D4CCAAE1A98B00300D2044A /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		6D52A00B1DC48613002286B4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CampusOfGLUt/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		6D52A00C1DC48613002286B4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CampusOfGLUt/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		6D5B543A1AA209C600EF9CEB /* AMapCloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapCloudKit.framework; sourceTree = "<group>"; };
 		6D5B543C1AA20A2F00EF9CEB /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		6D5B543E1AA20A4300EF9CEB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -512,8 +520,6 @@
 		6D971CA61A8B768B0016469D /* 桂林理工大学.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "桂林理工大学.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D971CAA1A8B768B0016469D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D971CAB1A8B768B0016469D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6D971CAD1A8B768B0016469D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
-		6D971CAE1A8B768B0016469D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
 		6D971CB61A8B768B0016469D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D971CB91A8B768B0016469D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6D971CBF1A8B768C0016469D /* CampusOfGLUT.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CampusOfGLUT.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -537,6 +543,11 @@
 		6D971CF21A8B78F40016469D /* Life_RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Life_RootViewController.m; sourceTree = "<group>"; };
 		6D971CF81A8B79830016469D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		6D971CF91A8B79830016469D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		6D980C711DC7979600C0184C /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		6D980C721DC7979600C0184C /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
+		6D980C741DC7988E00C0184C /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		6D980C761DC798BD00C0184C /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		6D980C781DC798C500C0184C /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		6D9F26DB1A935DE800A87EB5 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
 		6D9F26DC1A935DE800A87EB5 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
 		6D9F26DF1A93CEBB00A87EB5 /* CRToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRToast.h; sourceTree = "<group>"; };
@@ -725,8 +736,6 @@
 		6DFA59521A9CFF3D0090FB62 /* thumbnail_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail_selected@3x.png"; sourceTree = "<group>"; };
 		6DFF67BB1A97CE1300D34D8B /* WeiboSDKTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDKTool.h; sourceTree = "<group>"; };
 		6DFF67BC1A97CE1300D34D8B /* WeiboSDKTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboSDKTool.m; sourceTree = "<group>"; };
-		AF7BA2BE1A227BBE1F60383A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		DF9349EEEE37D01B77B31CA9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -734,28 +743,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D980C791DC798C500C0184C /* libstdc++.tbd in Frameworks */,
+				6D980C771DC798BD00C0184C /* libz.1.2.5.tbd in Frameworks */,
+				6DC6F94B1A97651E00A971AA /* Security.framework in Frameworks */,
 				6D5B543F1AA20A4300EF9CEB /* CoreLocation.framework in Frameworks */,
+				6DC6F94D1A97652700A971AA /* SystemConfiguration.framework in Frameworks */,
+				6DC977E11AA0829600AE66B0 /* CoreTelephony.framework in Frameworks */,
+				6DF9BB181A96823800C6E813 /* CoreGraphics.framework in Frameworks */,
+				6DF9BB141A96822300C6E813 /* UIKit.framework in Frameworks */,
+				6DF9BB161A96822D00C6E813 /* Foundation.framework in Frameworks */,
+				6D980C751DC7988E00C0184C /* JavaScriptCore.framework in Frameworks */,
 				6D5B543D1AA20A2F00EF9CEB /* libstdc++.6.0.9.dylib in Frameworks */,
 				6D5B543B1AA209C600EF9CEB /* AMapCloudKit.framework in Frameworks */,
 				6D3FECCB1AA0ACBD006CA076 /* TencentOpenAPI.framework in Frameworks */,
-				6DC977E11AA0829600AE66B0 /* CoreTelephony.framework in Frameworks */,
 				6DC977DF1AA0826C00AE66B0 /* libiconv.dylib in Frameworks */,
 				6D4CCAAF1A98B00300D2044A /* libc++.dylib in Frameworks */,
 				6D4CCAA41A98AEDC00D2044A /* libWeiboSDK.a in Frameworks */,
 				6D87CB601A98A896009D1777 /* libz.dylib in Frameworks */,
-				6DC6F94D1A97652700A971AA /* SystemConfiguration.framework in Frameworks */,
-				6DC6F94B1A97651E00A971AA /* Security.framework in Frameworks */,
-				6DF9BB181A96823800C6E813 /* CoreGraphics.framework in Frameworks */,
-				6DF9BB161A96822D00C6E813 /* Foundation.framework in Frameworks */,
-				6DF9BB141A96822300C6E813 /* UIKit.framework in Frameworks */,
+				6D980C731DC7979600C0184C /* libBaiduMobStat.a in Frameworks */,
 				6DF9BB121A96821C00C6E813 /* MessageUI.framework in Frameworks */,
 				6DF9BB101A96821600C6E813 /* ImageIO.framework in Frameworks */,
 				6DF9BB0E1A96820A00C6E813 /* QuartzCore.framework in Frameworks */,
 				6DF9BB0C1A96820000C6E813 /* AssetsLibrary.framework in Frameworks */,
 				6DCFDA271A926C2900106333 /* libsqlite3.dylib in Frameworks */,
 				6D85E09A1A9082F400740DF5 /* libxml2.dylib in Frameworks */,
-				AE7D234CC6675E95B4A6FDC0 /* libPods.a in Frameworks */,
 				6D4CCAAC1A98AF4300D2044A /* libWeChatSDK.a in Frameworks */,
+				C7795634F77962ED2014F6D3 /* libPods-CampusOfGLUT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,6 +785,9 @@
 		5016426BE1AD29A3B83C43AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D980C781DC798C500C0184C /* libstdc++.tbd */,
+				6D980C761DC798BD00C0184C /* libz.1.2.5.tbd */,
+				6D980C741DC7988E00C0184C /* JavaScriptCore.framework */,
 				6D5B543E1AA20A4300EF9CEB /* CoreLocation.framework */,
 				6D5B543C1AA20A2F00EF9CEB /* libstdc++.6.0.9.dylib */,
 				6DC977E51AA0867D00AE66B0 /* TencentOpenAPI.framework */,
@@ -790,18 +806,9 @@
 				6DF9BB0B1A96820000C6E813 /* AssetsLibrary.framework */,
 				6DCFDA261A926C2900106333 /* libsqlite3.dylib */,
 				6D85E0981A90824400740DF5 /* libxml2.dylib */,
-				1B60C916F047ED8B85159843 /* libPods.a */,
+				251B2C37DCCDB99A186D0F09 /* libPods-CampusOfGLUT.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5CF3E6CF7E62D0A7B3A8378F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AF7BA2BE1A227BBE1F60383A /* Pods.debug.xcconfig */,
-				DF9349EEEE37D01B77B31CA9 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		6D2306F01A8E689C000BBC0C /* JDStatusBarNotification */ = {
@@ -1137,8 +1144,8 @@
 				6D971CA81A8B768B0016469D /* CampusOfGLUT */,
 				6D971CC21A8B768C0016469D /* CampusOfGLUtTests */,
 				6D971CA71A8B768B0016469D /* Products */,
-				5CF3E6CF7E62D0A7B3A8378F /* Pods */,
 				5016426BE1AD29A3B83C43AB /* Frameworks */,
+				70F5FF60F70F5FED9044CA2F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1207,8 +1214,8 @@
 		6D971CD01A8B76A10016469D /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				6D971CAD1A8B768B0016469D /* AppDelegate.h */,
-				6D971CAE1A8B768B0016469D /* AppDelegate.m */,
+				6D52A00B1DC48613002286B4 /* AppDelegate.h */,
+				6D52A00C1DC48613002286B4 /* AppDelegate.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -1336,6 +1343,7 @@
 		6D971CD91A8B76A10016469D /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				6D980C701DC7979600C0184C /* BaiduMTJ_iOS_App_V4.3.0 */,
 				6D7CD8E61AC457FD00CEF6BB /* KxMenu */,
 				6D5B54391AA209C600EF9CEB /* AMap_iOS_Cloud_API_Lib_V1.1.0 */,
 				6D2E0D041A9CA23600218171 /* XHTwitterPaggingViewer */,
@@ -1402,6 +1410,15 @@
 				6D90A88F1A8DCA6C003EC188 /* BaseWebViewController.m */,
 			);
 			name = RootControllers;
+			sourceTree = "<group>";
+		};
+		6D980C701DC7979600C0184C /* BaiduMTJ_iOS_App_V4.3.0 */ = {
+			isa = PBXGroup;
+			children = (
+				6D980C711DC7979600C0184C /* BaiduMobStat.h */,
+				6D980C721DC7979600C0184C /* libBaiduMobStat.a */,
+			);
+			path = BaiduMTJ_iOS_App_V4.3.0;
 			sourceTree = "<group>";
 		};
 		6D9F26DA1A935DE800A87EB5 /* ODRefreshControl */ = {
@@ -1625,24 +1642,34 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		70F5FF60F70F5FED9044CA2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C16DA8B1CD1FFAA7CF69E4A /* Pods-CampusOfGLUT.debug.xcconfig */,
+				5910A67BADDDB3037A3A3F3C /* Pods-CampusOfGLUT.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6D971CA51A8B768B0016469D /* CampusOfGLUT.temp_caseinsensitive_rename */ = {
+		6D971CA51A8B768B0016469D /* CampusOfGLUT */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D971CC91A8B768C0016469D /* Build configuration list for PBXNativeTarget "CampusOfGLUT.temp_caseinsensitive_rename" */;
+			buildConfigurationList = 6D971CC91A8B768C0016469D /* Build configuration list for PBXNativeTarget "CampusOfGLUT" */;
 			buildPhases = (
-				F8DDCC40E4E0118D7902CD2B /* Check Pods Manifest.lock */,
+				0D05F582B735D75748E229FE /* [CP] Check Pods Manifest.lock */,
 				6D971CA21A8B768B0016469D /* Sources */,
 				6D971CA31A8B768B0016469D /* Frameworks */,
 				6D971CA41A8B768B0016469D /* Resources */,
-				135A6E6F27550F23D0876777 /* Copy Pods Resources */,
+				C8BBC3F94C26BB29B194753E /* [CP] Embed Pods Frameworks */,
+				8B564288D66AA9978F3150EE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = CampusOfGLUT.temp_caseinsensitive_rename;
+			name = CampusOfGLUT;
 			productName = CampusOfGLUt;
 			productReference = 6D971CA61A8B768B0016469D /* 桂林理工大学.app */;
 			productType = "com.apple.product-type.application";
@@ -1676,9 +1703,12 @@
 				TargetAttributes = {
 					6D971CA51A8B768B0016469D = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 28PV6G96R7;
+						ProvisioningStyle = Automatic;
 					};
 					6D971CBE1A8B768C0016469D = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 28PV6G96R7;
 						TestTargetID = 6D971CA51A8B768B0016469D;
 					};
 				};
@@ -1706,7 +1736,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6D971CA51A8B768B0016469D /* CampusOfGLUT.temp_caseinsensitive_rename */,
+				6D971CA51A8B768B0016469D /* CampusOfGLUT */,
 				6D971CBE1A8B768C0016469D /* CampusOfGLUT.temp_caseinsensitive_renameTests */,
 			);
 		};
@@ -1881,34 +1911,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		135A6E6F27550F23D0876777 /* Copy Pods Resources */ = {
+		0D05F582B735D75748E229FE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F8DDCC40E4E0118D7902CD2B /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8B564288D66AA9978F3150EE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CampusOfGLUT/Pods-CampusOfGLUT-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8BBC3F94C26BB29B194753E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CampusOfGLUT/Pods-CampusOfGLUT-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1962,10 +2007,10 @@
 				6DC27E411AA47DBF00D5051F /* Me_ViewController.m in Sources */,
 				6DCFDA211A9267EF00106333 /* FMDatabase.m in Sources */,
 				6DB80C391AC85FAB00DAC0D1 /* SendCommetsViewController.m in Sources */,
+				6D52A00D1DC48613002286B4 /* AppDelegate.m in Sources */,
 				6DB896DE1AC99B9C00420481 /* TaoBaoInGLUTViewController.m in Sources */,
 				6DDDC9F11A94734F004DF040 /* NewsCacheTool.m in Sources */,
 				6D9F26DD1A935DE800A87EB5 /* ODRefreshControl.m in Sources */,
-				6D971CAF1A8B768B0016469D /* AppDelegate.m in Sources */,
 				6D42EE061AF25589009BAF18 /* JwLoginVCViewController.m in Sources */,
 				6D42EE571AF26305009BAF18 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				6DE5E06D1AB5607200F8A052 /* Utility.m in Sources */,
@@ -2043,7 +2088,7 @@
 /* Begin PBXTargetDependency section */
 		6D971CC11A8B768C0016469D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6D971CA51A8B768B0016469D /* CampusOfGLUT.temp_caseinsensitive_rename */;
+			target = 6D971CA51A8B768B0016469D /* CampusOfGLUT */;
 			targetProxy = 6D971CC01A8B768C0016469D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2156,10 +2201,11 @@
 		};
 		6D971CCA1A8B768C0016469D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF7BA2BE1A227BBE1F60383A /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 1C16DA8B1CD1FFAA7CF69E4A /* Pods-CampusOfGLUT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 28PV6G96R7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2174,24 +2220,28 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = CampusOfGLUt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CampusOfGLUt/Classes/Vendors/libWeiboSDK",
 					"$(PROJECT_DIR)/CampusOfGLUt/Classes/Vendors/WeiXinSDK",
+					"$(PROJECT_DIR)/CampusOfGLUt/Classes/Vendors/BaiduMTJ_iOS_App_V4.3.0",
 				);
 				PRODUCT_NAME = "桂林理工大学";
-				PROVISIONING_PROFILE = "7c70215a-b123-4d65-92ec-8a9d2731cb3f";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		6D971CCB1A8B768C0016469D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF9349EEEE37D01B77B31CA9 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 5910A67BADDDB3037A3A3F3C /* Pods-CampusOfGLUT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 28PV6G96R7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2206,14 +2256,16 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = CampusOfGLUt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CampusOfGLUt/Classes/Vendors/libWeiboSDK",
 					"$(PROJECT_DIR)/CampusOfGLUt/Classes/Vendors/WeiXinSDK",
+					"$(PROJECT_DIR)/CampusOfGLUt/Classes/Vendors/BaiduMTJ_iOS_App_V4.3.0",
 				);
 				PRODUCT_NAME = "桂林理工大学";
-				PROVISIONING_PROFILE = "7c70215a-b123-4d65-92ec-8a9d2731cb3f";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -2221,6 +2273,7 @@
 		6D971CCD1A8B768C0016469D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 28PV6G96R7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2240,6 +2293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "";
+				DEVELOPMENT_TEAM = 28PV6G96R7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2263,7 +2317,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D971CC91A8B768C0016469D /* Build configuration list for PBXNativeTarget "CampusOfGLUT.temp_caseinsensitive_rename" */ = {
+		6D971CC91A8B768C0016469D /* Build configuration list for PBXNativeTarget "CampusOfGLUT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D971CCA1A8B768C0016469D /* Debug */,

@@ -25,6 +25,8 @@
 #import "QQSDKTool.h"
 #import "CRToastTool.h"
 
+#import "BaiduMobStat.h"
+
 static NSString *const customWebStyle = @"customWebStyle";
 
 @interface BaseWebViewController ()<UIWebViewDelegate,MWPhotoBrowserDelegate>
@@ -52,12 +54,22 @@ static NSString *const customWebStyle = @"customWebStyle";
 
 @implementation BaseWebViewController
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+// 进入页面，建议在此处添加
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSString* cName = [NSString stringWithFormat:@"%@",  self.title, nil];
+    [[BaiduMobStat defaultStat] pageviewStartWithName:cName];
+}
+
+// 退出页面，建议在此处添加
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
     [self hideProgress];
     self.webView = nil;
+    
+    NSString* cName = [NSString stringWithFormat:@"%@", self.title, nil];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:cName];
 }
 
 - (void)viewDidLoad {
@@ -97,10 +109,7 @@ static NSString *const customWebStyle = @"customWebStyle";
             
             [self.webView loadData:textData MIMEType:@"text/plain" textEncodingName:@"utf-8" baseURL:nil];
         }
-    }
-    
-    if (self.articleURL.length)
-    {
+    }else if (self.articleURL.length){
         //直接网上加载
         [self fetchNews];
         
@@ -126,7 +135,6 @@ static NSString *const customWebStyle = @"customWebStyle";
 //        }
 
     }
-    
     
     UIBarButtonItem * rightBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"navigationbar_more"] style:UIBarButtonItemStylePlain target:self action:@selector(showShareView)];
     
@@ -201,9 +209,7 @@ static NSString *const customWebStyle = @"customWebStyle";
         
         self.title = self.newsModel.title;  
         html = [html stringByReplacingOccurrencesOfString:@"${webview_title}" withString:self.newsModel.title];
-    }
-    else
-    {
+    }else{
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.articleURL]]];
         return ;
     }
@@ -211,67 +217,58 @@ static NSString *const customWebStyle = @"customWebStyle";
     html = [html stringByReplacingOccurrencesOfString:@"${webview_source}" withString:self.newsModel.source];
     html = [html stringByReplacingOccurrencesOfString:@"${webview_time}" withString:self.newsModel.time];
     html = [html stringByReplacingOccurrencesOfString:@"${webview_author}" withString:self.newsModel.author];
-    html = [html stringByReplacingOccurrencesOfString:@"${webview_click}" withString:self.newsModel.clickNum];
-    //公告的录入人为空
-    if (self.newsModel.enter_men == nil)
-    {
-        self.newsModel.enter_men = self.newsModel.author;
-    }
-    html = [html stringByReplacingOccurrencesOfString:@"${webview_emtermen}" withString:self.newsModel.enter_men];
+//    html = [html stringByReplacingOccurrencesOfString:@"${webview_click}" withString:self.newsModel.clickNum];
+//    //公告的录入人为空
+//    if (self.newsModel.enter_men == nil)
+//    {
+//        self.newsModel.enter_men = self.newsModel.author;
+//    }
+//    html = [html stringByReplacingOccurrencesOfString:@"${webview_emtermen}" withString:self.newsModel.enter_men];
     
     NSMutableString * contentstr = [NSMutableString string];
-//    if (self.newsModel.contentHTML)
-//    {
-//        html = [html stringByReplacingOccurrencesOfString:@"${webview_contents}" withString:self.newsModel.contentHTML];
-//    }
-//    else
-//    {
     
-        for (NSString * content in self.newsModel.contents)
+    for (NSString * content in self.newsModel.contents)
+    {
+        NSString * contents = [NSString string];
+        //检查空格，然后增加换行
+        contents = [content stringByReplacingOccurrencesOfString:@"　　" withString:@"$#"];
+        contents = [contents stringByReplacingOccurrencesOfString:@"  " withString:@"$#"];
+        
+        NSRange range2 = [contents rangeOfString:@"$#"];
+        while(range2.length >0)
         {
-            NSString * contents = [NSString string];
-            //检查空格，然后增加换行
-            contents = [content stringByReplacingOccurrencesOfString:@"　" withString:@"$#"];
-            contents = [contents stringByReplacingOccurrencesOfString:@" " withString:@"$#"];
-            
-            NSRange range2 = [contents rangeOfString:@"$#"];
-            while(range2.length >0)
-            {
-                contents = [contents stringByReplacingOccurrencesOfString:@"$#$#" withString:@"$#"];
-                range2 = [contents rangeOfString:@"$#$#"];
-            }
-            
-            [contentstr appendString:[contents stringByReplacingOccurrencesOfString:@"$#" withString:@"</p><p>　　"]];
+            contents = [contents stringByReplacingOccurrencesOfString:@"$#$#" withString:@"$#"];
+            range2 = [contents rangeOfString:@"$#$#"];
         }
         
-        html = [html stringByReplacingOccurrencesOfString:@"${webview_contents}" withString:contentstr];
+
+        [contentstr appendFormat:@"%@</p><p>",[contents stringByReplacingOccurrencesOfString:@"$#" withString:@"</p><p>　　"]];
+
         
-        self.pageContents = contentstr;
-    //}
+    }
+    
+    html = [html stringByReplacingOccurrencesOfString:@"${webview_contents}" withString:contentstr];
+        
+    self.pageContents = contentstr;
     
     
     NSMutableString * imagesHtml = [NSMutableString string];
-//    if (self.newsModel.imagesHTML)
-//    {
-//          html = [html stringByReplacingOccurrencesOfString:@"${webview_images}" withString:self.newsModel.imagesHTML];
-//    }
-//    else
-//    {
-        if (self.newsModel.images.count)
-        {
-            for (int i = 0; i < self.newsModel.images.count; i += 2) {
-                
-                if (i + 1 == self.newsModel.images.count) {
-                    //可能由于格式原理，图片不成对出现
-                    break;
-                }
-                
-                [imagesHtml appendString:[self getImageHTMLWithImage:self.newsModel.images[i] Title:self.newsModel.images[i+1] ImageHight:imageHight]];
+
+    if (self.newsModel.images.count)
+    {
+        for (int i = 0; i < self.newsModel.images.count; i += 2) {
+            
+            if (i + 1 == self.newsModel.images.count) {
+                //可能由于格式原理，图片不成对出现
+                break;
             }
             
+            [imagesHtml appendString:[self getImageHTMLWithImage:self.newsModel.images[i] Title:self.newsModel.images[i+1] ImageHight:imageHight]];
         }
         
-        html = [html stringByReplacingOccurrencesOfString:@"${webview_images}" withString:imagesHtml];
+    }
+    
+    html = [html stringByReplacingOccurrencesOfString:@"${webview_images}" withString:imagesHtml];
     //}
     
 //    if (!self.newsModel.contentHTML)
@@ -346,17 +343,18 @@ static NSString *const customWebStyle = @"customWebStyle";
         //如果是网页新闻，则分享到全部
         if (self.articleURL)
         {
-            bv = [[ButtonView alloc]initWithText:@"短信" image:[UIImage imageNamed:@"ShareIcon_Msg"] handler:^(ButtonView *buttonView)
-                  {
-                      //点击短信
-                      [self.shareInfoTool sendSMSWithBody:[NSString stringWithFormat:@"%@\n%@\n\n原文连接:%@\n【桂林理工大学-校园通】",self.newsModel.title,self.pageContents,self.articleURL] recipients:nil controller:self];
-                  }];
-            [self.shareView addButtonView:bv];
-            
             bv = [[ButtonView alloc]initWithText:@"邮件" image:[UIImage imageNamed:@"ShareIcon_Mail"] handler:^(ButtonView *buttonView)
                   {
                       //邮件
                       [self.shareInfoTool sendEmailWithSubject:self.newsModel.title MessageBody:self.pageHTML isHTML:YES toRecipients:nil ccRecipients:nil bccRecipients:nil Image:nil imageQuality:0 Controller:self];
+                  }];
+            [self.shareView addButtonView:bv];
+            
+            bv = [[ButtonView alloc]initWithText:@"保存到相册" image:[UIImage imageNamed:@"ShareIcon_Msg"] handler:^(ButtonView *buttonView)
+                  {
+                      [self saveImageToPhotos:[ImageUtilityTool imageFromScrollView:self.webView.scrollView]];
+                      //点击短信
+//                      [self.shareInfoTool sendSMSWithBody:[NSString stringWithFormat:@"%@\n%@\n\n原文连接:%@\n【桂林理工大学-校园通】",self.newsModel.title,self.pageContents,self.articleURL] recipients:nil controller:self];
                   }];
             [self.shareView addButtonView:bv];
             
@@ -449,6 +447,42 @@ static NSString *const customWebStyle = @"customWebStyle";
     
 }
 
+
+- (void)saveImageToPhotos:(UIImage*)savedImage
+{
+    
+    UIImageWriteToSavedPhotosAlbum(savedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+    
+}
+
+// 指定回调方法
+- (void)image:(UIImage *)image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+{
+    
+    NSString *msg = nil ;
+    
+    if(error != NULL){
+        
+        msg = @"保存图片失败,请检查是否有相册权限" ;
+        
+    }else{
+        
+        msg = @"保存图片成功" ;
+        
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                        
+                                                    message:msg
+                          
+                                                   delegate:self
+                          
+                                          cancelButtonTitle:@"确定"
+                          
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
 - (ButtonView *)shareToNetwork
 {
     ButtonView *bv = [[ButtonView alloc]initWithText:@"新浪微博" image:[UIImage imageNamed:@"ShareIcon_SinaWeibo"] handler:^(ButtonView *buttonView)
@@ -492,6 +526,7 @@ static NSString *const customWebStyle = @"customWebStyle";
     return bv;
 
 }
+
 
 #pragma mark- webViewDelegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -541,6 +576,9 @@ static NSString *const customWebStyle = @"customWebStyle";
     
     
     self.webView.scalesPageToFit = YES;
+    
+    //// 实现WebView的代理方法，并在此函数中调用SDK的webviewStartLoadWithRequest:传入request参数，进行统计
+    [[BaiduMobStat defaultStat] webviewStartLoadWithRequest:request];
 
     return YES;
 }
@@ -593,6 +631,8 @@ static NSString *const customWebStyle = @"customWebStyle";
     // Show
     [self.navigationController pushViewController:browser animated:YES];
 }
+
+
 
 
 - (void)webViewDidStartLoad:(UIWebView *)webView

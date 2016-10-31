@@ -27,7 +27,7 @@ const static NSString *RestIKey = @"4303eecd49d9469bc440187367c0028f";
 
 @interface FetchLifeCircleTool()
 
-@property (nonatomic, strong) AFHTTPRequestOperationManager * mgr;
+@property (nonatomic, strong) AFHTTPSessionManager * mgr;
 
 @end
 
@@ -44,7 +44,7 @@ static id _instance;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             // 加载资源
-            self.mgr = [AFHTTPRequestOperationManager manager];
+            self.mgr = [AFHTTPSessionManager manager];
             self.mgr.requestSerializer.timeoutInterval = 5;
         });
     }
@@ -102,7 +102,7 @@ static id _instance;
      http://yuntuapi.amap.com/datasearch/id?
      http://yuntuapi.amap.com/datamanage/data/list?
      */
-    [self.mgr GET:@"http://yuntuapi.amap.com/datasearch/id?" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.mgr GET:@"http://yuntuapi.amap.com/datasearch/id?" parameters:parameters success:^(NSURLSessionDataTask *operation, id responseObject) {
         
         if ([[responseObject objectForKey:@"status"] intValue])
         {
@@ -117,7 +117,7 @@ static id _instance;
             failure(error);
         }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         
         failure(error);
     }];
@@ -137,7 +137,7 @@ static id _instance;
                                 RestIKey,@"key",
                                 tableId,@"tableid",
                                 nil];
-    [self.mgr GET:@"http://yuntuapi.amap.com/datamanage/data/list?" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.mgr GET:@"http://yuntuapi.amap.com/datamanage/data/list?" parameters:parameters success:^(NSURLSessionDataTask *operation, id responseObject) {
             if ([[responseObject objectForKey:@"status"] intValue])
             {
                 NSArray * array = [responseObject objectForKey:@"datas"];
@@ -150,7 +150,7 @@ static id _instance;
                 failure(error);
             }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         failure(error);
     }];
 
@@ -172,7 +172,7 @@ static id _instance;
                                 IDs,@"filter",
                                 nil];
  
-    [self.mgr GET:@"http://yuntuapi.amap.com/datamanage/data/list?" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.mgr GET:@"http://yuntuapi.amap.com/datamanage/data/list?" parameters:parameters success:^(NSURLSessionDataTask *operation, id responseObject) {
         
         
         if ([[responseObject objectForKey:@"status"] intValue])
@@ -200,7 +200,7 @@ static id _instance;
             failure(error);
         }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         
         failure(error);
     }];
@@ -249,7 +249,7 @@ static id _instance;
         
         // 3.发送请求
         [self.mgr POST:@"http://yuntuapi.amap.com/datamanage/data/create" parameters:dataAllDic
-               success:^(AFHTTPRequestOperation *operation, id responseObject)
+               success:^(NSURLSessionDataTask *operation, id responseObject)
          {
              
              NSString * status = [responseObject objectForKey:@"status"];
@@ -266,7 +266,7 @@ static id _instance;
              }
              
          }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error)
+         failure:^(NSURLSessionDataTask *operation, NSError *error)
          {
              failure(error);
          }];
@@ -300,10 +300,6 @@ static id _instance;
                              @"2498263",
                              @"http://mingxuanmall.xyd.qushiyun.com/mobile/index.php?app=user&act=edit_user_portrait",
                              @"2498273",
-                             @"http://taixinlongmall.xyd.qushiyun.com/mobile/index.php?app=user&act=edit_user_portrait",
-                             @"2496773",
-                             @"http://taixinlongmall.xyd.qushiyun.com/mobile/index.php?app=user&act=edit_user_portrait",
-                             @"2498283",
                              @"http://m.mflmall.xyd.qushiyun.com/mobile/index.php?app=user&act=edit_user_portrait",
                              @"2498293",
                              @"http://m.mflmall.xyd.qushiyun.com/mobile/index.php?app=user&act=edit_user_portrait",
@@ -311,7 +307,7 @@ static id _instance;
     
     
     NSArray * allID = urlDic.allKeys;
-    int x = arc4random()%6;
+    int x = arc4random()%4;
     
     NSString *userID = allID[x];
     NSString *userUrl = [urlDic objectForKey:userID];
@@ -329,11 +325,11 @@ static id _instance;
         // 2.拼接文件参数 file
         [formData appendPartWithFileData:data name:@"Filedata" fileName:@"image.jpg" mimeType:@"image/jpg"];
       }
-      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+      success:^(NSURLSessionDataTask *operation, id responseObject) {
           NSLog(@"imageSuccess--%@",responseObject);
           success(responseObject);
           
-      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+      } failure:^(NSURLSessionDataTask *operation, NSError *error) {
           NSLog(@"上传失败----%@", error.description);
           failure(error);
       }];
@@ -371,7 +367,7 @@ static id _instance;
                                 jsonString,@"data",
                                 nil];
     
-    [self.mgr POST:@"http://yuntuapi.amap.com/datamanage/data/update" parameters:dataAllDic success:^(AFHTTPRequestOperation *operation, id responseObject)
+    [self.mgr POST:@"http://yuntuapi.amap.com/datamanage/data/update" parameters:dataAllDic success:^(NSURLSessionDataTask *operation, id responseObject)
     {
         NSString * status = [responseObject objectForKey:@"status"];
 //        NSString * info = [responseObject objectForKey:@"info"];
@@ -388,7 +384,7 @@ static id _instance;
         }
 
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
          failure(error);
     }];
     
@@ -422,7 +418,7 @@ static id _instance;
                                 jsonString,@"data",
                                 nil];
     
-    [self.mgr POST:@"http://yuntuapi.amap.com/datamanage/data/update" parameters:dataAllDic success:^(AFHTTPRequestOperation *operation, id responseObject)
+    [self.mgr POST:@"http://yuntuapi.amap.com/datamanage/data/update" parameters:dataAllDic success:^(NSURLSessionDataTask *operation, id responseObject)
      {
          NSString * status = [responseObject objectForKey:@"status"];
          // NSLog(@"-------\n %@  %@",responseObject,status);
@@ -438,7 +434,7 @@ static id _instance;
          }
          
          
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     } failure:^(NSURLSessionDataTask *operation, NSError *error) {
          failure(error);
      }];
     
@@ -568,7 +564,7 @@ static id _instance;
                                     alljson,@"data",
                                     nil];
         
-        [self.mgr POST:@"http://yuntuapi.amap.com/datamanage/data/update" parameters:dataAllDic success:^(AFHTTPRequestOperation *operation, id responseObject)
+        [self.mgr POST:@"http://yuntuapi.amap.com/datamanage/data/update" parameters:dataAllDic success:^(NSURLSessionDataTask *operation, id responseObject)
          {
              NSString * status = [responseObject objectForKey:@"status"];
              // NSLog(@"-------\n %@  %@",responseObject,status);
@@ -584,7 +580,7 @@ static id _instance;
              }
              
              
-         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         } failure:^(NSURLSessionDataTask *operation, NSError *error) {
              failure(error);
          }];
         

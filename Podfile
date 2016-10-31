@@ -1,4 +1,8 @@
-platform:ios,'7.0'
+target "CampusOfGLUT" do
 
-pod 'AFNetworking', '2.5.1'
-pod 'SDWebImage', '~>3.6'
+platform :ios, '7.0'
+
+pod 'AFNetworking', '~>3.0'
+pod 'SDWebImage', '~>3.7'
+
+end

@@ -233,11 +233,11 @@ UIWebView * _webView;
 #pragma mark - 检查版本更新
 - (void)checkUpdateWithAppID:(NSString *)appID success:(void (^)(NSDictionary *resultDic , BOOL isNewVersion , NSString * newVersion))success failure:(void (^)(NSError *error))failure
 {
-    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     manager.responseSerializer=[AFHTTPResponseSerializer serializer];
     NSString *encodingUrl=[[@"http://itunes.apple.com/lookup?id=" stringByAppendingString:appID] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [manager GET:encodingUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:encodingUrl parameters:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         
         NSDictionary *resultDic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         
@@ -258,7 +258,7 @@ UIWebView * _webView;
             
         }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         failure(error);
     }];
 }

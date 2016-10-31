@@ -14,7 +14,7 @@
 @interface FetchNewsTool()<UIWebViewDelegate>
 
 @property (nonatomic, weak) NSTimer * timer;
-@property (nonatomic, strong) AFHTTPRequestOperationManager * mgr;
+@property (nonatomic, strong) AFHTTPSessionManager * mgr;
 @property (nonatomic, strong) UIWebView * webView;//可以考虑加上web
 
 @end
@@ -30,8 +30,11 @@ static id _instance;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             // 加载资源
-            self.mgr = [AFHTTPRequestOperationManager manager];
+            self.mgr = [AFHTTPSessionManager manager];
             self.mgr.requestSerializer.timeoutInterval = 8;
+            self.mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
+            self.mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript", nil];
+            //
         });
     }
     return self;
@@ -72,11 +75,11 @@ static id _instance;
 }
 
 
-- (void)getNewsListDataWithClassName:(NSString *)name page:(int)page success:(void (^)(NSArray *fetchNewsArray))success failure:(void (^)(NSError *error))failure
+- (void)getNewsListDataWithClassName:(NSString *)name page:(int)page success:(void (^)(NSArray *fetchNewsArray ,int nextPage))success failure:(void (^)(NSError *error))failure
 {
     NSMutableArray * contentArray = [NSMutableArray array];
     
-    self.mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //self.mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     /** 教学科研
      *  http://www.glut.edu.cn/Git/more.asp?BigClassName=%BD%CC%D1%A7%BF%C6%D1%D0&SmallClassName=&SpecialName=&page=2
@@ -94,84 +97,115 @@ static id _instance;
     
     if ([name isEqualToString:@"教学科研"])
     {
-        url = [NSString stringWithFormat:@"http://www.glut.edu.cn/Git/More.asp?BigClassName=%@&SmallClassName=&page=%d",name,page];
+        if (page==0) {
+            url = @"http://www.glut.edu.cn/index/kjdt.htm";
+        }else{
+           url = [NSString stringWithFormat:@"http://www.glut.edu.cn/index/kjdt/%d.htm",page];
+        }
+        
+        // url = @"http://www.glut.edu.cn/index/kjdt.htm";
+        // http://www.glut.edu.cn/index/kjdt/1.htm
+        //url = [NSString stringWithFormat:@"http://www.glut.edu.cn/Git/More.asp?BigClassName=%@&SmallClassName=&page=%d",name,page];
     }
     else if([name isEqualToString:@"新闻中心"])
     {
-        url = [NSString stringWithFormat:@"http://www.glut.edu.cn/Git/More.asp?BigClassName=%@&SmallClassName=%@&page=%d",name,@"桂工要闻",page];
+        if (page==0) {
+            url = @"http://www.glut.edu.cn/index/ggyw.htm";
+        }else{
+            url = [NSString stringWithFormat:@"http://www.glut.edu.cn/index/ggyw/%d.htm",page];
+        }
+        //url  = @"http://www.glut.edu.cn/index/ggyw.htm";
+        //url = [NSString stringWithFormat:@"http://www.glut.edu.cn/Git/More.asp?BigClassName=%@&SmallClassName=%@&page=%d",name,@"桂工要闻",page];
     }
     else if([name isEqualToString:@"公告"])
     {
-        url = [NSString stringWithFormat:@"http://www.glut.edu.cn/Git/Anc_more.asp?BigClassName=%@&SmallClassName=&page=%d",name,page];
+        if (page==0) {
+            url = @"http://www.glut.edu.cn/index/tzgg.htm";
+        }else{
+            url = [NSString stringWithFormat:@"http://www.glut.edu.cn/index/tzgg/%d.htm",page];
+        }
+        //url = @"http://www.glut.edu.cn/index/tzgg.htm";
+        //url = [NSString stringWithFormat:@"http://www.glut.edu.cn/Git/Anc_more.asp?BigClassName=%@&SmallClassName=&page=%d",name,page];
     }
+    
+//    NSLog(@" --- %@",url);
     
     NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     
     NSString* encodedString = [url stringByAddingPercentEscapesUsingEncoding:gbkEncoding];
     
-    [self.mgr GET:encodedString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+    [self.mgr GET:encodedString parameters:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         
-//        NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-//        NSString *result = [[NSString alloc] initWithData:responseObject  encoding:gbkEncoding];
-//        NSLog(@"result-----%@",result);
-        
+        /*
+         <div class="list_content">
+         <ul>
+         <li id="line_u8_0">
+         <a href="../info/1109/25667.htm" target="_blank" title="《桂林日报》报道我校老红军柳林同志：百年征程情怀不减　淡泊从容安度晚年">《桂林日报》报道我校老红军柳林同志：百年征程情怀不减　淡泊从容安度晚年</a>
+         <p>2016-10-20</p>
+         </li>
+         
+         */
         
         TFHpple *xpathparser = [[TFHpple alloc]initWithHTMLData:responseObject];
-        NSArray *elements  = [xpathparser searchWithXPathQuery:@"//td[@class='border07']/a"];
+        NSArray *elements  = [xpathparser searchWithXPathQuery:@"//div[@class='list_content']/ul/li"];
         
-        for (int i = 1; i < elements.count; i+=2)
+        for (int i = 0; i < elements.count; i++)
         {
             TFHppleElement * element = [elements objectAtIndex:i];
             
+            //NSArray *aValue = [element childrenWithTagName:@"a"];
+            //NSArray *aValue = [element searchWithXPathQuery:@"//a"];
+            //TFHppleElement * aElement = aValue.firstObject;
+            
+            TFHppleElement * aElement = [element firstChildWithTagName:@"a"];
+            NSString * href = [aElement objectForKey:@"href"];
+            NSString * title = [aElement objectForKey:@"title"];
+            
+            
+            TFHppleElement * pElement = [element firstChildWithTagName:@"p"];
+            NSString * time = pElement.text;
+            
+
             NewsModel * news = [[NewsModel alloc]init];
-            
-            NSString * str = element.raw;
-            
-
-
-#warning 崩溃
-            /**
-             *  
-             po str
-             <a href="View.asp?ArticleIS/文 饶蠡/图&#13;&#10;更新时间：2014-5-29 9:09:04&#13;&#10;点击次数：4766" target="_blank">缪秉魁教授：三次南极科考诠释爱国情怀</a>
-             *
-             */
-            
-            if(![str containsString:@"题"] || ![str containsString:@"者"] )
-            {
-                NSLog(@"element.raw----%@",element.raw);
-                continue ;
-                
-            }
-            
-            
-            NSString * title = (NSString *) [[[[str componentsSeparatedByString:@"题："] objectAtIndex:1] componentsSeparatedByString:@"&#"] objectAtIndex:0];
-            
-            
-            
-            
-            NSString * author = (NSString *) [[[[str componentsSeparatedByString:@"者："] objectAtIndex:1] componentsSeparatedByString:@"&#"] objectAtIndex:0];
-            
-            NSString * time = (NSString *) [[[[str componentsSeparatedByString:@"间："] objectAtIndex:1] componentsSeparatedByString:@"&#"] objectAtIndex:0];
-            
-            NSString * clickNum = (NSString *) [[[[str componentsSeparatedByString:@"数："] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-            NSString * url = (NSString *) [[[[str componentsSeparatedByString:@"f=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-            
             news.title = title;
-            news.author = author;
-            news.clickNum = clickNum;
+//            news.author = @"";
+//            news.clickNum = @"1";
             news.time = time;
-            news.url = [NSString stringWithFormat:@"http://www.glut.edu.cn/Git/%@",url];
+            // href	__NSCFString *	@"../info/1107/25711.htm" h ttp://www.glut.edu.cn/info/1108/25714.htm
+            if (page == 0) {
+                news.url = [href stringByReplacingOccurrencesOfString:@"../" withString:@"http://www.glut.edu.cn/"];
+            }else{
+                // ../../info/1110/25395.htm
+                news.url = [href stringByReplacingOccurrencesOfString:@"../../" withString:@"http://www.glut.edu.cn/"];
+            }
+           
             
             [contentArray addObject:news];
             
         }
+        
+        
+        // 查找剩下页数
+        int nextPage = 0;
+        NSArray *pageElements  = [xpathparser searchWithXPathQuery:@"//a[@class='Next']"];
+        if (pageElements.count) {
+            TFHppleElement * aElement = pageElements.firstObject;
+            // href="kjdt/82.htm"
+            NSString * href = [aElement objectForKey:@"href"];
+            if (page == 0) {
+                NSString * page = (NSString *) [[[[href componentsSeparatedByString:@"/"] objectAtIndex:1] componentsSeparatedByString:@".htm"] objectAtIndex:0];
+                nextPage = [page intValue];
+            }else{// href="80.htm"
+                NSString * page = (NSString *) [[href componentsSeparatedByString:@".htm"] objectAtIndex:0];
+                nextPage = [page intValue];
+            }
+            
+        }
       
-        success(contentArray);
+        success(contentArray, nextPage);
         
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         
         failure(error);
         //NSLog(@"error");
@@ -180,104 +214,98 @@ static id _instance;
 }
 
 
-- (void)stringfetch
-{
-
-    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-    NSString * dataString = [[NSString alloc]initWithData:nil encoding:gbkEncoding];
-    
-    //从数据中分段
-    NSArray *arry=[dataString componentsSeparatedByString:@"普通文章"];
-    
-    
-    for (int i = 1; i < arry.count; i++)
-    {
-        
-        NewsModel * news = [[NewsModel alloc]init];
-        
-        NSString * str = arry[i];
-        
-        NSString * title = (NSString *) [[[[str componentsSeparatedByString:@"题："] objectAtIndex:1] componentsSeparatedByString:@"作    者"] objectAtIndex:0];
-        
-        NSString * author = (NSString *) [[[[str componentsSeparatedByString:@"者："] objectAtIndex:1] componentsSeparatedByString:@"更新"] objectAtIndex:0];
-        
-        NSString * time = (NSString *) [[[[str componentsSeparatedByString:@"时间："] objectAtIndex:1] componentsSeparatedByString:@"点击"] objectAtIndex:0];
-        
-        NSString * clickNum = (NSString *) [[[[str componentsSeparatedByString:@"次数："] objectAtIndex:1] componentsSeparatedByString:@"' target"] objectAtIndex:0];
-        
-        NSString * url = (NSString *) [[[[str componentsSeparatedByString:@"href='"] objectAtIndex:1] componentsSeparatedByString:@"' title"] objectAtIndex:0];
-        
-//        news.title =[self safetyString:title];
-//        news.author = [self safetyString:author];
-//        news.clickNum = [self safetyString:clickNum];
-//        news.time = time;
-//        news.url = [NSString stringWithFormat:@"http://www.glut.edu.cn/Git/%@",[self safetyString:url]];
-//        
-//        [contentArray addObject:news];
-        
-    }
-
-}
-
 - (void)getFocusImagesSuccess:(void (^)(NSArray *fetchImagesArray))success failure:(void (^)(NSError *error))failure
 {
     
-    UIWebView * webView = [[UIWebView alloc]initWithFrame:CGRectZero];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-
-        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"http://www.glut.edu.cn/Git/Index.asp"]]]];
-       });
-
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [self.mgr GET:@"http://www.glut.edu.cn" parameters:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         
-        if (!webView.isLoading) {
-            
-            [self fetchImagesWithWeb:webView success:success];
+        // 1.新闻内容模型
+        NewsModel * contentModel = [[NewsModel alloc]init];
+        // 2.创建HTML解释器
+        TFHpple *xpathparser = [[TFHpple alloc]initWithHTMLData:responseObject];
+        // 3.解释对应HTML标签
+        
+        /* <div id="zzsc" style="position: relative; background-image: url(http://www.glut.edu.cn/__local/B/BA/BE/A736DA98E29C6B08979DE8C6C54_2F62540B_315DD.jpg);">
+        <a href="info/1107/25656.htm" target="_blank" title="【两学一做】学校“两学一做”学习教育知识抢答赛举行" style="z-index: 999; display: none;">*/
+        
+        NSArray *zzsc = [xpathparser searchWithXPathQuery:@"//div[@id='zzsc']/a"];
+        
+        NSMutableArray * imageArr = [NSMutableArray array];
+        NSMutableArray * contentsArr = [NSMutableArray array];
+        for (TFHppleElement * element in zzsc) {
+            [contentsArr addObject:[@"http://www.glut.edu.cn/" stringByAppendingString:[element objectForKey:@"href"]]];
+            NSString * imageurl = (NSString *) [[[[element.raw componentsSeparatedByString:@"rc=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
+            [imageArr addObject:[@"http://www.glut.edu.cn" stringByAppendingString:imageurl]];
         }
-        else
-        {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    
-                    
-                    if (!webView.isLoading) {
-                        
-                         [self fetchImagesWithWeb:webView success:success];
-                        
-                    }
-                    else
-                    {
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            
-                            
-                            if (!webView.isLoading) {
-                                
-                                 [self fetchImagesWithWeb:webView success:success];
-                                
-                            }
-                            else
-                            {
-                            
-                                failure(nil);
-                            
-                            }
-                            
-                            
-                        });
-                        
-                    }
-                    
-                });
         
-        }
-    
-    
-    });
+        NSMutableArray * contentArray = [NSMutableArray arrayWithObjects:imageArr,contentsArr, nil];
         
+        success(contentArray);
+        
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+        
+        failure(error);
+        NSLog(@"error");
+    }];
 
+//    
+//    UIWebView * webView = [[UIWebView alloc]initWithFrame:CGRectZero];
+//    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//
+//        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"http://www.glut.edu.cn/Git/Index.asp"]]]];
+//       });
+//
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//        if (!webView.isLoading) {
+//            
+//            [self fetchImagesWithWeb:webView success:success];
+//        }
+//        else
+//        {
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    
+//                    
+//                    if (!webView.isLoading) {
+//                        
+//                         [self fetchImagesWithWeb:webView success:success];
+//                        
+//                    }
+//                    else
+//                    {
+//                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                            
+//                            
+//                            if (!webView.isLoading) {
+//                                
+//                                 [self fetchImagesWithWeb:webView success:success];
+//                                
+//                            }
+//                            else
+//                            {
+//                            
+//                                failure(nil);
+//                            
+//                            }
+//                            
+//                            
+//                        });
+//                        
+//                    }
+//                    
+//                });
+//        
+//        }
+//    
+//    
+//    });
+//        
+//
 }
 
-- (void)fetchImagesWithWeb:(UIWebView *)webView  success:(void (^)(NSArray *fetchImagesArray))success
+- (void)fetchImagesWithWeb:(UIWebView *)webView success:(void (^)(NSArray *fetchImagesArray))success
 {
 
     
@@ -289,6 +317,8 @@ static id _instance;
     
     //NSData *htmlData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:urlString]];
     
+    return;
+    
     if (!dataString.length)
     {
         NSLog(@"广告数据为空！");
@@ -298,6 +328,10 @@ static id _instance;
     NSData * data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
     TFHpple *xpathparser = [[TFHpple alloc]initWithHTMLData:data];
     NSArray *elements  = [xpathparser searchWithXPathQuery:@"//param[@name='FlashVars']"];
+    
+    /*
+     dataString	__NSCFString *	@" \n\t<table width=\"100%\" height=\"100%\">\n    \t<tbody><tr height=\"10%\">\n    \t\t<td></td>\n    \t</tr>\n    \t<tr>\n    \t\t<td valign=\"top\" align=\"center\">\n    \t\t\t<div class=\"prompt\">\n\t\t            <div class=\"prompt_up\"><strong>404错误提示</strong></div>\n\t\t            <div class=\"prompt_down\">\n\t\t              <div class=\"pd_text\">页面没有找到!</div>\n\t\t            </div>\n\t\t          </div>\n    \t\t</td>\n    \t</tr>\n\t</tbody></table>\n\n\n"	0x0000000102f8e350
+    */
     
     //raw = \"<param name=\\\"FlashVars\\\" value=\\\"pic s= UpdateFiles/2015/2015112232753485.jpg|UpdateFiles/2014/20141226215745614.jpg|UpdateFiles/2014/20141127201815543.jpg|UpdateFiles/2014/20141113104340213.jpg|UpdateFiles/2014/20141029162043925.jpg&amp;link s= View.asp?ArticleID=12052|View.asp?ArticleID=11999|View.asp?ArticleID=11915|View.asp?ArticleID=11875|View.asp?ArticleID=11829&amp;text s= &amp;borderwidth=300&amp;borderheight=200&amp;textheight=0\\\"/>\";\n}",
     
@@ -386,57 +420,50 @@ static id _instance;
 }
 
 
-
-- (void)fetchWebImage
-{
-
-    NSString *Js = @"document.body.innerHTML";
-    NSString *dataString = @"";//[webView stringByEvaluatingJavaScriptFromString:Js];
-    //NSLog(@" ---- \n ---- \n%@  ---- \n---- \n",lHtml3);
-
-    
-    //从数据中分段
-    NSArray *arry1=[dataString componentsSeparatedByString:@"cs="];
-    
-    //教学科研
-    NSArray *arry2=[arry1[1] componentsSeparatedByString:@"&amp;t"];
-    NSArray *arry3=[arry2[0] componentsSeparatedByString:@"&amp;links="];
-    NSArray *imagesURL1 = [arry3[0] componentsSeparatedByString:@"|"];
-    NSArray *contentsURL1 = [arry3[1] componentsSeparatedByString:@"|"];
-    
-    
-    //新闻中心/桂工要闻
-    NSArray *arry4=[arry1[2] componentsSeparatedByString:@"&amp;t"];
-    NSArray *arry5=[arry4[0] componentsSeparatedByString:@"&amp;links="];
-    NSArray *imagesURL2 = [arry5[0] componentsSeparatedByString:@"|"];
-    NSArray *contentsURL2 = [arry5[1] componentsSeparatedByString:@"|"];
-    
-    //NSLog(@"%@ \n %@",imagesURL2,contentsURL2);
-    
-    NSMutableArray * contentArray = [NSMutableArray arrayWithObjects:imagesURL1,contentsURL1,imagesURL2,contentsURL2, nil];
-    
-    //success(contentArray);
-}
-
-
 //获取新闻体
 - (void)getContentsWithURL:(NSString *)url success:(void (^)(NewsModel *newsContentsModel))success failure:(void (^)(NSError *error))failure
 {
 
-    self.mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //self.mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [self.mgr GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.mgr GET:url parameters:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         
         // 1.新闻内容模型
         NewsModel * contentModel = [[NewsModel alloc]init];
         // 2.创建HTML解释器
         TFHpple *xpathparser = [[TFHpple alloc]initWithHTMLData:responseObject];
         // 3.解释对应HTML标签
-        NSArray *elements  = [xpathparser searchWithXPathQuery:@"//td[@class='border01']/p"];
         
+        // <h1 class="article_title">香港中港生态环境顾问公司董事佘书生博士应邀做客桂工讲坛</h1>
+        NSArray *article_title = [xpathparser searchWithXPathQuery:@"//h1[@class='article_title']"];
+        if (article_title.count) {
+            TFHppleElement * element = article_title.firstObject;
+            contentModel.title = element.text;
+        }
+        
+        /*
+         <p class="article_source">来源：环境科学与工程学院   作者：黄亮亮、谢永雄  发布时间：<span>2016-10-26</span>
+         */
+        NSArray *article_source = [xpathparser searchWithXPathQuery:@"//p[@class='article_source']"];
+        if (article_source.count) {
+            TFHppleElement * element = article_source.firstObject;
+            NSString * source = (NSString *) [[[[element.text componentsSeparatedByString:@"源："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
+            NSString * author = (NSString *) [[[[element.text componentsSeparatedByString:@"者："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
+            contentModel.source = source;
+            contentModel.author = author;
+            contentModel.clickNum = @"1";
+            TFHppleElement * time = [element firstChildWithTagName:@"span"];
+            contentModel.time = time.text;
+        }
+        
+        NSArray *elements  = [xpathparser searchWithXPathQuery:@"//td[@class='border01']/p"];
         if (!elements.count){
-            failure(nil);
-            return ;
+            // 可能没有嵌套多层的
+            elements  = [xpathparser searchWithXPathQuery:@"//div[@class='article_paragraph']/p"];
+            if (!elements.count){
+                failure(nil);
+                return ;
+            }
         }
         
         NSMutableArray * imagesArray = [NSMutableArray array];
@@ -446,8 +473,10 @@ static id _instance;
         for (int i = 0; i < elements.count; i++){
             TFHppleElement * element = elements[i];
             if (i == 0) {
-                contentModel.title = element.content;
-            }else if(!element.content.length){
+                // 过滤标题
+                //contentModel.title = element.content;
+            }else if(!element.content.length || ![element.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length){
+                // 长度为空或空格的可能是是照片
                 NSString * imageurl;
                 BOOL isExce = NO;
                 @try {
@@ -459,9 +488,9 @@ static id _instance;
                 }
                 
                 if (!isExce) {
-                    [imagesArray addObject:imageurl];
+                    [imagesArray addObject:[@"http://www.glut.edu.cn" stringByAppendingString:imageurl]];
+                    isImage = YES;
                 }
-                isImage = YES;
             
             }else if (isImage){
                 [imagesArray addObject:element.content];
@@ -475,45 +504,9 @@ static id _instance;
         contentModel.images = imagesArray;
         contentModel.contents = contentsArray;
         
-        
-        
-        NSArray *elementstr  = [xpathparser searchWithXPathQuery:@"//td[@class='border02']"];
-  
-        
-        TFHppleElement * element = elementstr[0];
-        
-        NSString * str = element.content;
-        
-        NSString * source = (NSString *) [[[[str componentsSeparatedByString:@"源："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
-        
-        
-        NSString * author = (NSString *) [[[[str componentsSeparatedByString:@"者："] objectAtIndex:1] componentsSeparatedByString:@"|"] objectAtIndex:0];
-        
-        
-        NSString * click = (NSString *) [[[[str componentsSeparatedByString:@"数："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
-        
-        
-        NSString * time = (NSString *) [[[[str componentsSeparatedByString:@"间："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
-        
-        
-        NSString * enter_man = nil;
-        //公告无录入人
-        if ([str containsString:@"录入人"])
-        {
-            enter_man = (NSString *) [[str componentsSeparatedByString:@"人："] objectAtIndex:1];
-        }
-
-        
-        contentModel.source = source;
-        contentModel.author = author;
-        contentModel.clickNum = click;
-        contentModel.time = time;
-        contentModel.enter_men = enter_man;
-        
-        
         success(contentModel);
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
         
         failure(error);
         NSLog(@"error");

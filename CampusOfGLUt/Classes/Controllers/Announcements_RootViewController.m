@@ -62,7 +62,7 @@
     [self createTableFooterView];
     
     //加载更多的开始页数
-    self.morePage = 1;
+    self.morePage = 0;
     
     //控制请求新闻数据的单例工具对象
     self.fetchNewsTool = [FetchNewsTool sharedFetchNewsTool];
@@ -165,12 +165,12 @@
     [CRToastManager dismissAllNotifications:YES];
     
     //最多加载到80页
-    if (self.morePage <= 80)
+    if (self.morePage >0)
     {
         
-        [self.fetchNewsTool getNewsListDataWithClassName:@"公告" page:(int)self.morePage success:^(NSArray *fetchNewsArray)
+        [self.fetchNewsTool getNewsListDataWithClassName:@"公告" page:(int)self.morePage success:^(NSArray *fetchNewsArray, int nextPage)
          {
-             
+             self.morePage = nextPage;
              [self.newsList addObjectsFromArray:fetchNewsArray];
              
              [self.tableView reloadData];
@@ -196,7 +196,7 @@
              
              [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"加载完成" backgroundColor:[UIColor colorWithRed:1.000 green:0.574 blue:0.221 alpha:1.000]]
                                          completionBlock:^{  }];
-             self.morePage +=1 ;
+             //self.morePage +=1 ;
              
          } failure:^(NSError *error) {
              
@@ -234,9 +234,10 @@
 
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
 {
-    [self.fetchNewsTool getNewsListDataWithClassName:@"公告" page:1 success:^(NSArray *fetchNewsArray)
+    [self.fetchNewsTool getNewsListDataWithClassName:@"公告" page:0 success:^(NSArray *fetchNewsArray, int nextPage)
       {
-        
+          
+          self.morePage = nextPage;
         //提示数据更新信息
         NSString * message;
         UIColor * backgroundColor;
@@ -372,7 +373,7 @@
     
     cell.lblTitle.text = news.title;
     cell.lblAuthor.text = news.author;
-    cell.lblClicks.text = [NSString stringWithFormat:@"人气:%@",news.clickNum];
+    cell.lblClicks.text = @"";//[NSString stringWithFormat:@"人气:%@",news.clickNum];
     cell.lblTime.text = news.time;
     
     return cell;

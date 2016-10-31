@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WeiboSDK.h"
-#import "WXApi.h"
-#import <TencentOpenAPI/TencentOAuth.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
