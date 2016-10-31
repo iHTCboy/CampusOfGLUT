@@ -8,6 +8,7 @@
 
 #import "BaseNavigationController.h"
 
+#import "BaiduMobStat.h"
 
 @interface BaseNavigationController ()
 
@@ -40,14 +41,11 @@
     
     navigationBarAppearance.translucent = NO;
     
-    
     //状态栏为白色
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
     
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
- 
-    
-   
+
     UINavigationBar * navigationBar = [UINavigationBar appearance];
     //返回按钮的箭头颜色
     [navigationBar setTintColor:[UIColor whiteColor]];
@@ -64,6 +62,20 @@
     offset.horizontal = - 500;
     offset.vertical =  - 500;
     [buttonItem setBackButtonTitlePositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
+}
+
+// 进入页面，建议在此处添加
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSString* cName = [NSString stringWithFormat:@"%@",  self.title, nil];
+    [[BaiduMobStat defaultStat] pageviewStartWithName:cName];
+}
+
+// 退出页面，建议在此处添加
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    NSString* cName = [NSString stringWithFormat:@"%@", self.title, nil];
+    [[BaiduMobStat defaultStat] pageviewEndWithName:cName];
 }
 
 @end
