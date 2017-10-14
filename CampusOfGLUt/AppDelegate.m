@@ -20,6 +20,7 @@
 #import "WXApi.h"
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "BaiduMobStat.h"
+#import "DHDeviceUtil.h"
 
 static NSString *const customStyle = @"customStyle";
 
@@ -159,6 +160,9 @@ static NSString *const customStyle = @"customStyle";
     statTracker.shortAppVersion  = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 //    statTracker.enableDebugOn = YES;
     [statTracker startWithAppId:@"057db5e816"]; // 设置您在mtj网站上添加的app的appkey,此处AppId即为应用的appKey
+    // 其它事件
+    [statTracker logEvent:@"usermodelName" eventLabel:[DHDeviceUtil deviceModelName]];
+    [statTracker logEvent:@"systemVersion" eventLabel:[UIDevice currentDevice].systemVersion];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

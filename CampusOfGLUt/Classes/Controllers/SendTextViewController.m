@@ -110,11 +110,13 @@
                     }];
 
                 }else{
+                    self.sendBn.enabled = YES;
                     [hud dismissAllHUD];
                     [hud showTextHUDWithText:@"网络好像出了点问题" delay:2.0 inView:self.view];
                     // [CRToastTool showNotificationWithTitle:@"网络好像出了点问题" backgroundColor:[UIColor colorWithRed:1.000 green:0.435 blue:0.812 alpha:1.000] timeInterval:@(2.5) completionBlock:^{   }];
                 }
             } failure:^(NSError *error) {
+                self.sendBn.enabled = YES;
                 [hud dismissAllHUD];
                 [hud showTextHUDWithText:@"网络好像出了点问题" delay:2.0 inView:self.view];
                 //[CRToastTool showNotificationWithTitle:@"网络好像出了点问题" backgroundColor:[UIColor colorWithRed:1.000 green:0.435 blue:0.812 alpha:1.000] timeInterval:@(2.5) completionBlock:^{   }];

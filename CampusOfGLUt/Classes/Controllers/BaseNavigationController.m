@@ -57,11 +57,21 @@
     
 
     
-    UIBarButtonItem *buttonItem = [UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil];
-    UIOffset offset;
-    offset.horizontal = - 500;
-    offset.vertical =  - 500;
-    [buttonItem setBackButtonTitlePositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
+//    UIBarButtonItem *buttonItem = [UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil];
+//    UIOffset offset;
+//    offset.horizontal = - 500;
+//    offset.vertical =  - 500;
+//    [buttonItem setBackButtonTitlePositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if (self.childViewControllers.count > 0) {
+        viewController.hidesBottomBarWhenPushed = YES;
+    }
+    
+    [super pushViewController:viewController animated:animated];
+    
+    viewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
 }
 
 // 进入页面，建议在此处添加

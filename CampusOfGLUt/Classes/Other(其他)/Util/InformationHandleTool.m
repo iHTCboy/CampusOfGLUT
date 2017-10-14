@@ -8,6 +8,7 @@
 
 #import "InformationHandleTool.h"
 #import "CRToastTool.h"
+@import SafariServices;
 
 UIWebView * _webView;
 
@@ -157,7 +158,16 @@ UIWebView * _webView;
  */
 - (void)inSafariOpenWithURL:(NSString *)url
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    if (@available(iOS 9.0, *)) {
+        SFSafariViewController * sf = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:url]];
+        if (@available(iOS 11.0, *)) {
+            sf.preferredBarTintColor = [UIColor colorWithRed:(66)/255.0 green:(156)/255.0 blue:(249)/255.0 alpha:1];
+            sf.dismissButtonStyle = SFSafariViewControllerDismissButtonStyleClose;
+        }
+        [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:sf animated:YES completion:nil];
+    }else{
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
 }
 
 
@@ -168,7 +178,7 @@ UIWebView * _webView;
 {
     //评分 无法使用
     //NSString *str = [NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",ID];
-    NSString *str = [NSString stringWithFormat: @"https://itunes.apple.com/cn/app/gui-lin-li-gong-da-xue-yun/id%@?mt=8", ID];
+    NSString *str = [NSString stringWithFormat: @"https://itunes.apple.com/cn/app/gui-lin-li-gong-da-xue-yun/id%@?mt=8&action=write-review", ID];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 

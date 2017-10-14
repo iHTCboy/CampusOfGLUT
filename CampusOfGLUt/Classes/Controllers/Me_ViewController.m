@@ -46,8 +46,9 @@
     UILabel * version = [[UILabel alloc]init];
     version.frame = CGRectMake(0, CGRectGetMaxY(name.frame), self.view.frame.size.width, 30);
     NSDictionary *infoDic=[[NSBundle mainBundle] infoDictionary];
-    float currentVersion = [[infoDic valueForKey:@"CFBundleShortVersionString"] floatValue];
-    version.text = [NSString stringWithFormat:@"iPhone版%0.1f",currentVersion];
+    NSString *currentVersion = [infoDic valueForKey:@"CFBundleShortVersionString"];
+
+    version.text = [NSString stringWithFormat:@"%@版%@",[[UIDevice currentDevice] model],currentVersion];
     version.textAlignment = NSTextAlignmentCenter;
     version.font = [UIFont systemFontOfSize:13];
     version.textColor = RGBColor(187, 187, 187);
@@ -66,7 +67,7 @@
     UILabel * rights = [[UILabel alloc]init];
     rights.center = CGPointMake(self.view.frame.size.width * 0.5, self.view.frame.size.height- 124);
     rights.bounds = CGRectMake(0, 0, 250, 30);
-    rights.text = @"© 2014-2016 hetiancong All rights reserved";
+    rights.text = @"© 2014-2018 hetiancong All rights reserved";
     rights.textAlignment = NSTextAlignmentCenter;
     rights.textColor = RGBColor(147, 147, 147);
     rights.font = [UIFont systemFontOfSize:11];

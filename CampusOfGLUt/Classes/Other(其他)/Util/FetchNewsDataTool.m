@@ -449,11 +449,11 @@ static id _instance;
             TFHppleElement * element = article_source.firstObject;
             NSString * source = (NSString *) [[[[element.text componentsSeparatedByString:@"源："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
             NSString * author = (NSString *) [[[[element.text componentsSeparatedByString:@"者："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
+            NSString * time = (NSString *) [[[[element.text componentsSeparatedByString:@"间："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
             contentModel.source = source;
             contentModel.author = author;
             contentModel.clickNum = @"1";
-            TFHppleElement * time = [element firstChildWithTagName:@"span"];
-            contentModel.time = time.text;
+            contentModel.time = time;
         }
         
         NSArray *elements  = [xpathparser searchWithXPathQuery:@"//td[@class='border01']/p"];

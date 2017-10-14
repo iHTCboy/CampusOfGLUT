@@ -11,6 +11,7 @@
 #import "TOWebViewController.h"
 #import "SupportTableViewController.h"
 #import "RDVTabBarController.h"
+#import <StoreKit/StoreKit.h>
 
 @interface SetingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -31,8 +32,8 @@
     
     [self initTableView];
     
-    self.contentArray = @[@"桂林理工大学",@"觉得不错？",@"意见反馈",@"关注作者",@"感谢开源"];
-    self.subTitleArray = @[@"友情链接",@"马上评分",@"与我联系",@"微博动态",@"开源软件"];
+    self.contentArray = @[@"桂林理工大学",@"觉得不错？",@"应用内评分",@"意见反馈",@"关注作者",@"感谢开源"];
+    self.subTitleArray = @[@"友情链接",@"AppStore评分",@"马上评分",@"与我联系",@"微博动态",@"开源软件"];
     
     self.infoTool = [InformationHandleTool sharedInfoTool];
     
@@ -102,15 +103,24 @@
             break;
         case 2:
         {
+            if (@available(iOS 10.3, *)) {
+                [SKStoreReviewController requestReview];
+            }else{
+                [self.infoTool inAppStoreWithID:@"968615456"];
+            }
+            break;
+        }
+        case 3:
+        {
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
             [self.infoTool sendEmailWithSubject:@"使用桂工校园通的建议反馈" MessageBody:[NSString stringWithFormat:@"我现在使用桂工校园通v%@,使用设备：%@,iOSv%@\n我的反馈和建议：\n1、\n2、\n3、",[infoDictionary objectForKey:@"CFBundleShortVersionString"],[[UIDevice currentDevice] model],[[UIDevice currentDevice] systemVersion]] isHTML:NO toRecipients:@[@"ihetiancong@qq.com"] ccRecipients:nil bccRecipients:nil  Image:nil imageQuality:0 Controller:self];
             break;
         }
-        case 3:
+        case 4:
             //[self.infoTool inSafariOpenWithURL:@"http://weibo.com/iHTCapp"];
             [self openToWebViewWithURL:@"http://weibo.com/iHTCapp"];
             break;
-        case 4:{
+        case 5:{
              [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
             SupportTableViewController * vc = [[SupportTableViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
