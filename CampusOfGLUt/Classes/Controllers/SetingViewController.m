@@ -31,8 +31,8 @@
     
     [self initTableView];
     
-    self.contentArray = @[@"桂林理工大学",@"觉得不错？",@"应用内评分",@"意见反馈",@"关注作者",@"感谢开源"];
-    self.subTitleArray = @[@"友情链接",@"AppStore评分",@"马上评分",@"与我联系",@"微博动态",@"开源软件"];
+    self.contentArray = @[@"桂林理工大学",@"觉得不错？",@"应用内评分",@"意见反馈",@"关注作者",@"现已开源",@"感谢开源"];
+    self.subTitleArray = @[@"友情链接",@"AppStore评分",@"马上评分",@"与我联系",@"微博动态",@"GitHub",@"开源组件"];
     
 }
 
@@ -114,10 +114,13 @@
             break;
         }
         case 4:
-            //[self.infoTool inSafariOpenWithURL:@"http://weibo.com/iHTCapp"];
-            [self openToWebViewWithURL:@"http://weibo.com/iHTCapp"];
+            [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:@"http://weibo.com/iHTCapp"];
+            //[self openToWebViewWithURL:@"http://weibo.com/iHTCapp"];
             break;
-        case 5:{
+        case 5:
+            [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:@"https://github.com/iHTCboy/CampusOfGLUT"];
+            break;
+        case 6:{
              [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
             SupportTableViewController * vc = [[SupportTableViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];

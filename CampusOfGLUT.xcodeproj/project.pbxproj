@@ -45,8 +45,9 @@
 		6D2E0D141A9CA23600218171 /* XHPaggingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0D0F1A9CA23600218171 /* XHPaggingNavbar.m */; };
 		6D2E0D171A9CA57800218171 /* NewsCenter_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0D161A9CA57800218171 /* NewsCenter_RootViewController.m */; };
 		6D2E0D1A1A9CA5BE00218171 /* Announcements_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0D191A9CA5BE00218171 /* Announcements_RootViewController.m */; };
-		6D2E28B21F9315A900C975C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E28B11F9315A500C975C4 /* AppDelegate.m */; };
 		6D2E28BA1F93181E00C975C4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E28B51F93181600C975C4 /* libWeChatSDK.a */; };
+		6D2E28BD1F933B1200C975C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E28BB1F933B0F00C975C4 /* AppDelegate.m */; };
+		6D2E28BE1F933CC900C975C4 /* iconGlutCampuslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DC27E421AA47E3A00D5051F /* iconGlutCampuslogo.png */; };
 		6D3FECC91AA0A9AF006CA076 /* QQSDKTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3FECC81AA0A9AF006CA076 /* QQSDKTool.m */; };
 		6D3FECCB1AA0ACBD006CA076 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3FECCA1AA0ACBD006CA076 /* TencentOpenAPI.framework */; };
 		6D42EE011AF254C7009BAF18 /* jwtInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D42EE001AF254C7009BAF18 /* jwtInfoList.plist */; };
@@ -244,7 +245,6 @@
 		6DBA63161A9B6E59005EF8ED /* shareThumbImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DBA63151A9B6E59005EF8ED /* shareThumbImage.png */; };
 		6DBA63191A9B71CA005EF8ED /* InformationHandleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DBA63181A9B71CA005EF8ED /* InformationHandleTool.m */; };
 		6DC27E411AA47DBF00D5051F /* Me_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC27E401AA47DBF00D5051F /* Me_ViewController.m */; };
-		6DC27E431AA47E3A00D5051F /* iconGlutCampuslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DC27E421AA47E3A00D5051F /* iconGlutCampuslogo.png */; };
 		6DC27E461AA4A94B00D5051F /* CRToastTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC27E451AA4A94B00D5051F /* CRToastTool.m */; };
 		6DC6F94B1A97651E00A971AA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC6F94A1A97651E00A971AA /* Security.framework */; };
 		6DC6F94D1A97652700A971AA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC6F94C1A97652700A971AA /* SystemConfiguration.framework */; };
@@ -363,13 +363,13 @@
 		6D2E0D161A9CA57800218171 /* NewsCenter_RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenter_RootViewController.m; sourceTree = "<group>"; };
 		6D2E0D181A9CA5BE00218171 /* Announcements_RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Announcements_RootViewController.h; sourceTree = "<group>"; };
 		6D2E0D191A9CA5BE00218171 /* Announcements_RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Announcements_RootViewController.m; sourceTree = "<group>"; };
-		6D2E28B01F9315A500C975C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6D2E28B11F9315A500C975C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6D2E28B51F93181600C975C4 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		6D2E28B61F93181600C975C4 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		6D2E28B71F93181600C975C4 /* WechatAuthSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		6D2E28B81F93181600C975C4 /* WXApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		6D2E28B91F93181600C975C4 /* WXApiObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		6D2E28BB1F933B0F00C975C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6D2E28BC1F933B1000C975C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6D3FECC71AA0A9AF006CA076 /* QQSDKTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSDKTool.h; sourceTree = "<group>"; };
 		6D3FECC81AA0A9AF006CA076 /* QQSDKTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQSDKTool.m; sourceTree = "<group>"; };
 		6D3FECCA1AA0ACBD006CA076 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
@@ -904,8 +904,8 @@
 		6D2E28AF1F9315A500C975C4 /* Appdelegte */ = {
 			isa = PBXGroup;
 			children = (
-				6D2E28B01F9315A500C975C4 /* AppDelegate.h */,
-				6D2E28B11F9315A500C975C4 /* AppDelegate.m */,
+				6D2E28BC1F933B1000C975C4 /* AppDelegate.h */,
+				6D2E28BB1F933B0F00C975C4 /* AppDelegate.m */,
 			);
 			name = Appdelegte;
 			path = CampusOfGLUT/Appdelegte;
@@ -1772,7 +1772,6 @@
 				6DBA630C1A9B3E1A005EF8ED /* ShareIcon_Weixin@2x.png in Resources */,
 				6D971CBA1A8B768B0016469D /* LaunchScreen.xib in Resources */,
 				6D42EE011AF254C7009BAF18 /* jwtInfoList.plist in Resources */,
-				6DC27E431AA47E3A00D5051F /* iconGlutCampuslogo.png in Resources */,
 				6D27F6291AA396960023AC71 /* iconView_3@2x.png in Resources */,
 				6D2E0D111A9CA23600218171 /* thumbnail_selected@2x.png in Resources */,
 				6D21B8B81AC6F36B0001CCAC /* timeline_card_leftbottom_highlighted@2x.png in Resources */,
@@ -1799,6 +1798,7 @@
 				6D42EE2B1AF25BF7009BAF18 /* btn_close_selected.png in Resources */,
 				6D21B8BA1AC6F39C0001CCAC /* timeline_card_middlebottom_highlighted@2x.png in Resources */,
 				6D909C361AD05EBA0068FB2D /* life_6@2x.png in Resources */,
+				6D2E28BE1F933CC900C975C4 /* iconGlutCampuslogo.png in Resources */,
 				6D90A8A01A8DFD5B003EC188 /* study_selected@3x.png in Resources */,
 				6D7BEF471A8B8446008B3618 /* studyItem.plist in Resources */,
 				6D909C311AD05EBA0068FB2D /* life_3@3x.png in Resources */,
@@ -2019,7 +2019,7 @@
 				6D42EE301AF25C27009BAF18 /* TCProtocolViewController.m in Sources */,
 				6DC27E411AA47DBF00D5051F /* Me_ViewController.m in Sources */,
 				6DCFDA211A9267EF00106333 /* FMDatabase.m in Sources */,
-				6D2E28B21F9315A900C975C4 /* AppDelegate.m in Sources */,
+				6D2E28BD1F933B1200C975C4 /* AppDelegate.m in Sources */,
 				6DB80C391AC85FAB00DAC0D1 /* SendCommetsViewController.m in Sources */,
 				6DB896DE1AC99B9C00420481 /* TaoBaoInGLUTViewController.m in Sources */,
 				6DDDC9F11A94734F004DF040 /* NewsCacheTool.m in Sources */,

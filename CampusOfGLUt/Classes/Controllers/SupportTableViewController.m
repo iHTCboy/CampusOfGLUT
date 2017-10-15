@@ -8,7 +8,7 @@
 //
 
 #import "SupportTableViewController.h"
-#import "TOWebViewController.h"
+#import "InformationHandleTool.h"
 
 @interface SupportTableViewController ()
 
@@ -73,15 +73,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    [self openTOWebViewWithURL:self.supportURLArray[indexPath.row]];
+    [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:self.supportURLArray[indexPath.row]];
 }
 
-- (void)openTOWebViewWithURL:(NSString *)url
-{
-    TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURL:[NSURL URLWithString:url]];
-    [self.navigationController pushViewController:webViewController animated:YES];
-    
-}
 
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
