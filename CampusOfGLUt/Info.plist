@@ -54,7 +54,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2017.10.14</string>
+	<string>2017.10.15</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>safepay</string>

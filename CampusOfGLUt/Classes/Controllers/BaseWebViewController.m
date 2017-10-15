@@ -488,7 +488,7 @@ static NSString *const customWebStyle = @"customWebStyle";
     ButtonView *bv = [[ButtonView alloc]initWithText:@"新浪微博" image:[UIImage imageNamed:@"ShareIcon_SinaWeibo"] handler:^(ButtonView *buttonView)
                       {
                           //新浪微博
-                          [WeiboSDKTool shareToWeiboWithContent:self.newsModel.title image:[ImageUtilityTool imageFromScrollView:self.webView.scrollView] media:nil];
+                          [WeiboSDKTool shareToWeiboWithContent:[NSString stringWithFormat:@"%@ 详见%@",self.newsModel.title,self.articleURL] image:[ImageUtilityTool imageFromScrollView:self.webView.scrollView] media:nil];
                       }];
     [self.shareView addButtonView:bv];
     

@@ -56,12 +56,23 @@
     {
         
         WBImageObject *images = [WBImageObject object];
-        images.imageData = UIImagePNGRepresentation(image);
+        NSData * imgData = UIImagePNGRepresentation(image);
+        float imgSize = (float)imgData.length/1024.0f/1024.0f;
+        float compressionQuality = 1.0;
+        while (imgSize >10.0) {
+            //NSLog(@"imgSize: %f",imgSize);
+            imgData = UIImageJPEGRepresentation(image, compressionQuality);
+            imgSize = (float)imgData.length/1024.0f/1024.0f;
+            compressionQuality = compressionQuality - 0.05;
+        }
+        
+        //NSLog(@"imgSize: %f",imgSize);
+        images.imageData = imgData;
         message.imageObject = images;
     }
     
-    if (dic)
-    {
+//    if (dic)
+//    {
 //        WBWebpageObject *webpage = [WBWebpageObject object];
 //        webpage.objectID = @"identifier1";
 //        webpage.title = NSLocalizedString(@"分享网页标题", nil);
@@ -69,7 +80,7 @@
 //        webpage.thumbnailData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_2" ofType:@"jpg"]];
 //        webpage.webpageUrl = @"http://sina.cn?a=1";
 //        message.mediaObject = webpage;
-    }
+//    }
     
     return message;
 }

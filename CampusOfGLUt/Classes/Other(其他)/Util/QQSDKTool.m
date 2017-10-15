@@ -14,8 +14,27 @@
 + (void)shareToWeiboWithImage:(UIImage *)image title:(NSString *)title description:(NSString *)description
 {
     //开发者分享图片数据
-    NSData *imgData = UIImagePNGRepresentation(image);
-    NSData *previewImage = UIImageJPEGRepresentation(image, 0.2);
+    NSData * imgData = UIImagePNGRepresentation(image);
+    float imgSize = (float)imgData.length/1024.0f/1024.0f;
+    float compressionQuality = 1.0;
+    //必填，最大5M字节
+    while (imgSize >5.0) {
+        //NSLog(@"imgSize: %f",imgSize);
+        imgData = UIImageJPEGRepresentation(image, compressionQuality);
+        imgSize = (float)imgData.length/1024.0f/1024.0f;
+        compressionQuality = compressionQuality - 0.05;
+    }
+    
+    NSData *previewImage = UIImageJPEGRepresentation(image, 0.3);
+    float previewimgSize = (float)previewImage.length/1024.0f/1024.0f;
+    float compressionQuality2 = 0.2;
+    //预览图像，最大1M字节
+    while (previewimgSize >1.0) {
+        //NSLog(@"imgSize: %f",imgSize);
+        previewImage = UIImageJPEGRepresentation(image, compressionQuality);
+        previewimgSize = (float)previewImage.length/1024.0f/1024.0f;
+        compressionQuality2 = compressionQuality2 - 0.05;
+    }
     
     //用于分享图片内容的对象
     QQApiImageObject *imgObj = [QQApiImageObject objectWithData:imgData

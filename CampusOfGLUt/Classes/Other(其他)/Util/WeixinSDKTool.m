@@ -17,8 +17,17 @@
     [message setThumbImage:[UIImage imageNamed:@"shareThumbImage"]];
     
     WXImageObject *ext = [WXImageObject object];
-    ext.imageData = UIImagePNGRepresentation(image);
-    
+    NSData * imgData = UIImagePNGRepresentation(image);
+    float imgSize = (float)imgData.length/1024.0f/1024.0f;
+    float compressionQuality = 1.0;
+    //大小不能超过10M
+    while (imgSize >10.0) {
+        //NSLog(@"imgSize: %f",imgSize);
+        imgData = UIImageJPEGRepresentation(image, compressionQuality);
+        imgSize = (float)imgData.length/1024.0f/1024.0f;
+        compressionQuality = compressionQuality - 0.05;
+    }
+    ext.imageData = imgData;
     message.mediaObject = ext;
     message.mediaTagName = @"CampusOfGLUT_APP";
     message.messageExt = @"桂林理工大学-校园通";
