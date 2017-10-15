@@ -47,7 +47,7 @@
 		6D2E0D1A1A9CA5BE00218171 /* Announcements_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0D191A9CA5BE00218171 /* Announcements_RootViewController.m */; };
 		6D2E28BA1F93181E00C975C4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E28B51F93181600C975C4 /* libWeChatSDK.a */; };
 		6D2E28BE1F933CC900C975C4 /* iconGlutCampuslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DC27E421AA47E3A00D5051F /* iconGlutCampuslogo.png */; };
-		6D2E28C21F933E0200C975C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E28C01F933DFF00C975C4 /* AppDelegate.m */; };
+		6D2E28C51F933F2000C975C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E28C41F933F2000C975C4 /* AppDelegate.m */; };
 		6D3FECC91AA0A9AF006CA076 /* QQSDKTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3FECC81AA0A9AF006CA076 /* QQSDKTool.m */; };
 		6D3FECCB1AA0ACBD006CA076 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3FECCA1AA0ACBD006CA076 /* TencentOpenAPI.framework */; };
 		6D42EE011AF254C7009BAF18 /* jwtInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D42EE001AF254C7009BAF18 /* jwtInfoList.plist */; };
@@ -368,8 +368,8 @@
 		6D2E28B71F93181600C975C4 /* WechatAuthSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		6D2E28B81F93181600C975C4 /* WXApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		6D2E28B91F93181600C975C4 /* WXApiObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		6D2E28C01F933DFF00C975C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CampusOfGLUT/AppDelegate.m; sourceTree = SOURCE_ROOT; };
-		6D2E28C11F933DFF00C975C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CampusOfGLUT/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		6D2E28C31F933F2000C975C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CampusOfGLUT/Classes/Appdelegte/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		6D2E28C41F933F2000C975C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CampusOfGLUT/Classes/Appdelegte/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		6D3FECC71AA0A9AF006CA076 /* QQSDKTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSDKTool.h; sourceTree = "<group>"; };
 		6D3FECC81AA0A9AF006CA076 /* QQSDKTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQSDKTool.m; sourceTree = "<group>"; };
 		6D3FECCA1AA0ACBD006CA076 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
@@ -917,8 +917,8 @@
 		6D2E28BF1F933DF500C975C4 /* Appdelegte */ = {
 			isa = PBXGroup;
 			children = (
-				6D2E28C11F933DFF00C975C4 /* AppDelegate.h */,
-				6D2E28C01F933DFF00C975C4 /* AppDelegate.m */,
+				6D2E28C31F933F2000C975C4 /* AppDelegate.h */,
+				6D2E28C41F933F2000C975C4 /* AppDelegate.m */,
 			);
 			path = Appdelegte;
 			sourceTree = "<group>";
@@ -2018,7 +2018,6 @@
 				6D42EE301AF25C27009BAF18 /* TCProtocolViewController.m in Sources */,
 				6DC27E411AA47DBF00D5051F /* Me_ViewController.m in Sources */,
 				6DCFDA211A9267EF00106333 /* FMDatabase.m in Sources */,
-				6D2E28C21F933E0200C975C4 /* AppDelegate.m in Sources */,
 				6DB80C391AC85FAB00DAC0D1 /* SendCommetsViewController.m in Sources */,
 				6DB896DE1AC99B9C00420481 /* TaoBaoInGLUTViewController.m in Sources */,
 				6DDDC9F11A94734F004DF040 /* NewsCacheTool.m in Sources */,
@@ -2036,6 +2035,7 @@
 				6D971CE81A8B77A80016469D /* RDVTabBar.m in Sources */,
 				6D289CA31AF28472001509AF /* JwWebViewController.m in Sources */,
 				6D2E0D1A1A9CA5BE00218171 /* Announcements_RootViewController.m in Sources */,
+				6D2E28C51F933F2000C975C4 /* AppDelegate.m in Sources */,
 				6D42EE511AF26305009BAF18 /* JGProgressHUDAnimation.m in Sources */,
 				6DF9BB071A96812000C6E813 /* MWPhotoBrowser.m in Sources */,
 				6D42EE541AF26305009BAF18 /* JGProgressHUDFadeZoomAnimation.m in Sources */,
