@@ -20,7 +20,6 @@
 @property (nonatomic, strong) NSArray * contentArray;
 @property (nonatomic, strong) NSArray * subTitleArray;
 
-@property (nonatomic, strong) InformationHandleTool * infoTool;
 
 @end
 
@@ -34,8 +33,6 @@
     
     self.contentArray = @[@"桂林理工大学",@"觉得不错？",@"应用内评分",@"意见反馈",@"关注作者",@"感谢开源"];
     self.subTitleArray = @[@"友情链接",@"AppStore评分",@"马上评分",@"与我联系",@"微博动态",@"开源软件"];
-    
-    self.infoTool = [InformationHandleTool sharedInfoTool];
     
 }
 
@@ -96,24 +93,24 @@
     
     switch (indexPath.row) {
         case 0:
-             [self.infoTool inSafariOpenWithURL:@"http://www.glut.edu.cn"];
+             [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:@"http://www.glut.edu.cn"];
             break;
         case 1:
-            [self.infoTool inAppStoreWithID:@"968615456"];
+            [[InformationHandleTool sharedInfoTool] inAppStoreWithID:@"968615456"];
             break;
         case 2:
         {
             if (@available(iOS 10.3, *)) {
                 [SKStoreReviewController requestReview];
             }else{
-                [self.infoTool inAppStoreWithID:@"968615456"];
+                [[InformationHandleTool sharedInfoTool] inAppStoreWithID:@"968615456"];
             }
             break;
         }
         case 3:
         {
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-            [self.infoTool sendEmailWithSubject:@"使用桂工校园通的建议反馈" MessageBody:[NSString stringWithFormat:@"我现在使用桂工校园通v%@,使用设备：%@,iOSv%@\n我的反馈和建议：\n1、\n2、\n3、",[infoDictionary objectForKey:@"CFBundleShortVersionString"],[[UIDevice currentDevice] model],[[UIDevice currentDevice] systemVersion]] isHTML:NO toRecipients:@[@"ihetiancong@qq.com"] ccRecipients:nil bccRecipients:nil  Image:nil imageQuality:0 Controller:self];
+            [[InformationHandleTool sharedInfoTool] sendEmailWithSubject:@"使用桂工校园通的建议反馈" MessageBody:[NSString stringWithFormat:@"我现在使用桂工校园通v%@,使用设备：%@,iOSv%@\n我的反馈和建议：\n1、\n2、\n3、",[infoDictionary objectForKey:@"CFBundleShortVersionString"],[[UIDevice currentDevice] model],[[UIDevice currentDevice] systemVersion]] isHTML:NO toRecipients:@[@"ihetiancong@qq.com"] ccRecipients:nil bccRecipients:nil  Image:nil imageQuality:0 Controller:self];
             break;
         }
         case 4:

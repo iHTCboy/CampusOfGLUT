@@ -8,6 +8,8 @@
 
 #import "Me_ViewController.h"
 #import "SetingViewController.h"
+#import "InformationHandleTool.h"
+#import <StoreKit/StoreKit.h>
 
 @interface Me_ViewController ()
 
@@ -32,6 +34,9 @@
     logoV.layer.masksToBounds = YES;
     [self.view addSubview:logoV];
     
+    UITapGestureRecognizer * tapImg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedLogoImg)];
+    logoV.userInteractionEnabled = YES;
+    [logoV addGestureRecognizer:tapImg];
     
     UILabel * name = [[UILabel alloc]init];
     name.frame = CGRectMake(0, CGRectGetMaxY(logoV.frame),self.view.frame.size.width, 80    );
@@ -41,6 +46,9 @@
     name.font = [UIFont boldSystemFontOfSize:25];
     name.textColor = RGBColor(23, 23, 23);
     [self.view addSubview:name];
+    UITapGestureRecognizer * tapLbl = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedLogoImg)];
+    name.userInteractionEnabled = YES;
+    [name addGestureRecognizer:tapLbl];
     
     
     UILabel * version = [[UILabel alloc]init];
@@ -76,6 +84,14 @@
     
 }
 
+- (void)clickedLogoImg
+{
+    if (@available(iOS 10.3, *)) {
+        [SKStoreReviewController requestReview];
+    }else{
+        [[InformationHandleTool sharedInfoTool] inAppStoreWithID:@"968615456"];
+    }
+}
 
 - (void)settingView
 {
