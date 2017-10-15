@@ -45,6 +45,7 @@
 		6D2E0D141A9CA23600218171 /* XHPaggingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0D0F1A9CA23600218171 /* XHPaggingNavbar.m */; };
 		6D2E0D171A9CA57800218171 /* NewsCenter_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0D161A9CA57800218171 /* NewsCenter_RootViewController.m */; };
 		6D2E0D1A1A9CA5BE00218171 /* Announcements_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0D191A9CA5BE00218171 /* Announcements_RootViewController.m */; };
+		6D2E28B21F9315A900C975C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E28B11F9315A500C975C4 /* AppDelegate.m */; };
 		6D3FECC91AA0A9AF006CA076 /* QQSDKTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3FECC81AA0A9AF006CA076 /* QQSDKTool.m */; };
 		6D3FECCB1AA0ACBD006CA076 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3FECCA1AA0ACBD006CA076 /* TencentOpenAPI.framework */; };
 		6D42EE011AF254C7009BAF18 /* jwtInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D42EE001AF254C7009BAF18 /* jwtInfoList.plist */; };
@@ -75,7 +76,6 @@
 		6D4CCAAC1A98AF4300D2044A /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4CCAA81A98AF4300D2044A /* libWeChatSDK.a */; };
 		6D4CCAAD1A98AF4300D2044A /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6D4CCAA91A98AF4300D2044A /* read_me.txt */; };
 		6D4CCAAF1A98B00300D2044A /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4CCAAE1A98B00300D2044A /* libc++.dylib */; };
-		6D52A00D1DC48613002286B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D52A00C1DC48613002286B4 /* AppDelegate.m */; };
 		6D5B543B1AA209C600EF9CEB /* AMapCloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5B543A1AA209C600EF9CEB /* AMapCloudKit.framework */; };
 		6D5B543D1AA20A2F00EF9CEB /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5B543C1AA20A2F00EF9CEB /* libstdc++.6.0.9.dylib */; };
 		6D5B543F1AA20A4300EF9CEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5B543E1AA20A4300EF9CEB /* CoreLocation.framework */; };
@@ -364,6 +364,8 @@
 		6D2E0D161A9CA57800218171 /* NewsCenter_RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenter_RootViewController.m; sourceTree = "<group>"; };
 		6D2E0D181A9CA5BE00218171 /* Announcements_RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Announcements_RootViewController.h; sourceTree = "<group>"; };
 		6D2E0D191A9CA5BE00218171 /* Announcements_RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Announcements_RootViewController.m; sourceTree = "<group>"; };
+		6D2E28B01F9315A500C975C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6D2E28B11F9315A500C975C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6D3FECC71AA0A9AF006CA076 /* QQSDKTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSDKTool.h; sourceTree = "<group>"; };
 		6D3FECC81AA0A9AF006CA076 /* QQSDKTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQSDKTool.m; sourceTree = "<group>"; };
 		6D3FECCA1AA0ACBD006CA076 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
@@ -411,8 +413,6 @@
 		6D4CCAAA1A98AF4300D2044A /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		6D4CCAAB1A98AF4300D2044A /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		6D4CCAAE1A98B00300D2044A /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		6D52A00B1DC48613002286B4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CampusOfGLUt/AppDelegate.h; sourceTree = SOURCE_ROOT; };
-		6D52A00C1DC48613002286B4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CampusOfGLUt/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		6D5B543A1AA209C600EF9CEB /* AMapCloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapCloudKit.framework; sourceTree = "<group>"; };
 		6D5B543C1AA20A2F00EF9CEB /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		6D5B543E1AA20A4300EF9CEB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -901,6 +901,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		6D2E28AF1F9315A500C975C4 /* Appdelegte */ = {
+			isa = PBXGroup;
+			children = (
+				6D2E28B01F9315A500C975C4 /* AppDelegate.h */,
+				6D2E28B11F9315A500C975C4 /* AppDelegate.m */,
+			);
+			name = Appdelegte;
+			path = CampusOfGLUT/Appdelegte;
+			sourceTree = SOURCE_ROOT;
+		};
 		6D42EE221AF25BF7009BAF18 /* DXAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1210,7 +1220,7 @@
 		6D971CCF1A8B76A10016469D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6D971CD01A8B76A10016469D /* Appdelegte */,
+				6D2E28AF1F9315A500C975C4 /* Appdelegte */,
 				6D971CD11A8B76A10016469D /* Controllers */,
 				6D971CDA1A8B76A10016469D /* Views */,
 				6D971CD31A8B76A10016469D /* Models */,
@@ -1220,15 +1230,6 @@
 				6D971CD81A8B76A10016469D /* Resources */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		6D971CD01A8B76A10016469D /* Appdelegte */ = {
-			isa = PBXGroup;
-			children = (
-				6D52A00B1DC48613002286B4 /* AppDelegate.h */,
-				6D52A00C1DC48613002286B4 /* AppDelegate.m */,
-			);
-			path = Appdelegte;
 			sourceTree = "<group>";
 		};
 		6D971CD11A8B76A10016469D /* Controllers */ = {
@@ -1679,9 +1680,9 @@
 			productReference = 6D971CA61A8B768B0016469D /* 桂林理工大学.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6D971CBE1A8B768C0016469D /* CampusOfGLUT.temp_caseinsensitive_renameTests */ = {
+		6D971CBE1A8B768C0016469D /* CampusOfGLUTTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D971CCC1A8B768C0016469D /* Build configuration list for PBXNativeTarget "CampusOfGLUT.temp_caseinsensitive_renameTests" */;
+			buildConfigurationList = 6D971CCC1A8B768C0016469D /* Build configuration list for PBXNativeTarget "CampusOfGLUTTests" */;
 			buildPhases = (
 				6D971CBB1A8B768C0016469D /* Sources */,
 				6D971CBC1A8B768C0016469D /* Frameworks */,
@@ -1692,7 +1693,7 @@
 			dependencies = (
 				6D971CC11A8B768C0016469D /* PBXTargetDependency */,
 			);
-			name = CampusOfGLUT.temp_caseinsensitive_renameTests;
+			name = CampusOfGLUTTests;
 			productName = CampusOfGLUtTests;
 			productReference = 6D971CBF1A8B768C0016469D /* CampusOfGLUT.temp_caseinsensitive_renameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1747,7 +1748,7 @@
 			projectRoot = "";
 			targets = (
 				6D971CA51A8B768B0016469D /* CampusOfGLUT */,
-				6D971CBE1A8B768C0016469D /* CampusOfGLUT.temp_caseinsensitive_renameTests */,
+				6D971CBE1A8B768C0016469D /* CampusOfGLUTTests */,
 			);
 		};
 /* End PBXProject section */
@@ -2017,8 +2018,8 @@
 				6D42EE301AF25C27009BAF18 /* TCProtocolViewController.m in Sources */,
 				6DC27E411AA47DBF00D5051F /* Me_ViewController.m in Sources */,
 				6DCFDA211A9267EF00106333 /* FMDatabase.m in Sources */,
+				6D2E28B21F9315A900C975C4 /* AppDelegate.m in Sources */,
 				6DB80C391AC85FAB00DAC0D1 /* SendCommetsViewController.m in Sources */,
-				6D52A00D1DC48613002286B4 /* AppDelegate.m in Sources */,
 				6DB896DE1AC99B9C00420481 /* TaoBaoInGLUTViewController.m in Sources */,
 				6DDDC9F11A94734F004DF040 /* NewsCacheTool.m in Sources */,
 				6D9F26DD1A935DE800A87EB5 /* ODRefreshControl.m in Sources */,
@@ -2337,7 +2338,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D971CCC1A8B768C0016469D /* Build configuration list for PBXNativeTarget "CampusOfGLUT.temp_caseinsensitive_renameTests" */ = {
+		6D971CCC1A8B768C0016469D /* Build configuration list for PBXNativeTarget "CampusOfGLUTTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D971CCD1A8B768C0016469D /* Debug */,
