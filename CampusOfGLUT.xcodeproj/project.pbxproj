@@ -648,15 +648,7 @@
 		6DC27E451AA4A94B00D5051F /* CRToastTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRToastTool.m; sourceTree = "<group>"; };
 		6DC6F94A1A97651E00A971AA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6DC6F94C1A97652700A971AA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		6DC6F9501A97682000A971AA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
-		6DC6F9511A97682000A971AA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = en.lproj/ru.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
 		6DC6F9521A97682000A971AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
-		6DC6F9531A97682000A971AA /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = en.lproj/uk.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
-		6DC6F9541A97682000A971AA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
-		6DC6F9551A97682000A971AA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
-		6DC6F9561A97682000A971AA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
-		6DC6F9571A97682000A971AA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
-		6DC6F9581A97682000A971AA /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
 		6DC6F9591A97682000A971AA /* TOActivityChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOActivityChrome.h; sourceTree = "<group>"; };
 		6DC6F95A1A97682000A971AA /* TOActivityChrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOActivityChrome.m; sourceTree = "<group>"; };
 		6DC6F95B1A97682000A971AA /* TOActivitySafari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOActivitySafari.h; sourceTree = "<group>"; };
@@ -1733,14 +1725,6 @@
 			knownRegions = (
 				en,
 				Base,
-				de,
-				ru,
-				uk,
-				es,
-				fr,
-				ja,
-				ko,
-				pl,
 				"zh-Hans",
 				"zh-Hant",
 			);
@@ -2118,15 +2102,7 @@
 		6DC6F94F1A97682000A971AA /* TOWebViewControllerLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6DC6F9501A97682000A971AA /* de */,
-				6DC6F9511A97682000A971AA /* ru */,
 				6DC6F9521A97682000A971AA /* en */,
-				6DC6F9531A97682000A971AA /* uk */,
-				6DC6F9541A97682000A971AA /* es */,
-				6DC6F9551A97682000A971AA /* fr */,
-				6DC6F9561A97682000A971AA /* ja */,
-				6DC6F9571A97682000A971AA /* ko */,
-				6DC6F9581A97682000A971AA /* pl */,
 				6DC6F9611A97682000A971AA /* zh-Hans */,
 				6DC6F9621A97682000A971AA /* zh-Hant */,
 			);
