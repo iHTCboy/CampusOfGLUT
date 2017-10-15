@@ -160,9 +160,22 @@ static NSString *const customStyle = @"customStyle";
     statTracker.shortAppVersion  = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 //    statTracker.enableDebugOn = YES;
     [statTracker startWithAppId:@"057db5e816"]; // 设置您在mtj网站上添加的app的appkey,此处AppId即为应用的appKey
-    // 其它事件
+#if DEBUG
+    NSLog(@"Debug Model");
+#else
+    NSDateFormatter * df = [[NSDateFormatter alloc] init];
+    df.locale = [NSLocale currentLocale];
+    df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSString *currentDate = [df stringFromDate:[NSDate new]];
+    
+    // 自定义事件
     [statTracker logEvent:@"usermodelName" eventLabel:[DHDeviceUtil deviceModelName]];
-    [statTracker logEvent:@"systemVersion" eventLabel:[UIDevice currentDevice].systemVersion];
+    [statTracker logEvent:@"systemVersion" eventLabel:[[UIDevice currentDevice] systemVersion]];
+    [statTracker logEvent:@"Devices" eventLabel:[[UIDevice currentDevice] name]];
+    [statTracker logEvent:@"DateAndDeviceName" eventLabel:[NSString stringWithFormat:@"%@ %@", currentDate, [[UIDevice currentDevice] name]]];
+    [statTracker logEvent:@"DateSystemVersion" eventLabel:[NSString stringWithFormat:@"%@ %@", currentDate, [[UIDevice currentDevice] systemVersion]]];
+#endif
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
