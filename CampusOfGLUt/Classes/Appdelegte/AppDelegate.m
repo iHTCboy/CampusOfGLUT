@@ -41,9 +41,10 @@ static NSString *const customStyle = @"customStyle";
     [self setNetwrkingTips];
     
     //向微博注册
-    [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kWeiboKey];
-    
+    #if DEBUG
+    [WeiboSDK enableDebugMode:YES];
+    #endif
     
     //向微信注册
     [WXApi registerApp:kWXKey enableMTA:YES];
