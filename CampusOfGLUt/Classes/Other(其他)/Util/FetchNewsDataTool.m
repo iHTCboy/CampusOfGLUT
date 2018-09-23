@@ -447,13 +447,51 @@ static id _instance;
         NSArray *article_source = [xpathparser searchWithXPathQuery:@"//p[@class='article_source']"];
         if (article_source.count) {
             TFHppleElement * element = article_source.firstObject;
-            NSString * source = (NSString *) [[[[element.text componentsSeparatedByString:@"源："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
-            NSString * author = (NSString *) [[[[element.text componentsSeparatedByString:@"者："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
-            NSString * time = (NSString *) [[[[element.text componentsSeparatedByString:@"间："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
-            contentModel.source = source;
-            contentModel.author = author;
-            contentModel.clickNum = @"1";
-            contentModel.time = time;
+            NSString * content = element.content;
+            @try {
+                NSString * source = (NSString *) [[[[content componentsSeparatedByString:@"源："] objectAtIndex:1] componentsSeparatedByString:@"　"] objectAtIndex:0];
+                NSString * author = (NSString *) [[[[content componentsSeparatedByString:@"者："] objectAtIndex:1] componentsSeparatedByString:@"　"] objectAtIndex:0];
+                NSString * time = (NSString *) [[[[content componentsSeparatedByString:@"间："] objectAtIndex:1] componentsSeparatedByString:@"　"] objectAtIndex:0];
+                NSString * enter_man = nil;
+                //公告无录入人
+                if ([content containsString:@"编辑："])
+                {
+                    enter_man = (NSString *) [[[[content componentsSeparatedByString:@"编辑："] objectAtIndex:1] componentsSeparatedByString:@"　"] objectAtIndex:0];
+                }
+                
+                contentModel.source = source;
+                contentModel.author = author;
+                contentModel.clickNum = @"1";
+                contentModel.time = time;
+                contentModel.enter_men = enter_man;
+            } @catch (NSException *exception) {
+                @try {
+                    NSString * source = (NSString *) [[[[element.content componentsSeparatedByString:@"源："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
+                    NSString * author = (NSString *) [[[[element.content componentsSeparatedByString:@"者："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
+                    NSString * time = (NSString *) [[[[element.content componentsSeparatedByString:@"间："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
+                    NSString * enter_man = nil;
+                    //公告无录入人
+                    if ([content containsString:@"编辑："])
+                    {
+                        enter_man = (NSString *) [[[[content componentsSeparatedByString:@"编辑："] objectAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0];
+                    }
+                    contentModel.enter_men = enter_man;
+                    contentModel.source = source;
+                    contentModel.author = author;
+                    contentModel.clickNum = @"1";
+                    contentModel.time = time;
+                } @catch (NSException *exception) {
+                    contentModel.source = @"未知";
+                    contentModel.author = @"未知";
+                    contentModel.clickNum = @"1";
+                    contentModel.time = @"未知";
+                } @finally {
+                    
+                }
+            } @finally {
+                
+            }
+
         }
         
         NSArray *elements  = [xpathparser searchWithXPathQuery:@"//td[@class='border01']/p"];

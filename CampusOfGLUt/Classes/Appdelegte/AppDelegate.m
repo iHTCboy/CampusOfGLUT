@@ -50,7 +50,7 @@ static NSString *const customStyle = @"customStyle";
     [WXApi registerApp:kWXKey enableMTA:YES];
     
     //向腾讯注册
-    [[TencentOAuth alloc] initWithAppId:QQKey andDelegate:nil]; //注册
+    __unused id qq = [[TencentOAuth alloc] initWithAppId:QQKey andDelegate:nil]; //注册
     
     //百度统计
     [self startBaiduMobStat];

@@ -30,7 +30,7 @@
     
     [self setTabBarStyle];
     
-    self.title = @"校园话题";
+    //self.title = @"校园话题";
     
     self.lifeNames = @[@"公告栏",@"说在桂工",@"学在桂工",@"吃在桂工",@"住在桂工",@"景在桂工",@"玩在桂工",@"找在桂工",@"淘在桂工",@"交在桂工",@"问在桂工"];
     
@@ -63,10 +63,15 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
     [super viewDidAppear:animated];
-    
+    self.title = @"校园话题";
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.title = @"生活";
 }
 
 #pragma mark - Table view data source

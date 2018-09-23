@@ -134,7 +134,7 @@
             LifeFrameModel * firstF = [self.talkFrameArray objectAtIndex:0];
             LifeModel * firstModel = firstF.lifeModel;
             
-            for (int i = 0; i <(_talkFrameArray.count > fetchArray.count ?fetchArray.count:_talkFrameArray.count); i++) {
+            for (int i = 0; i <(self.talkFrameArray.count > fetchArray.count ?fetchArray.count:self.talkFrameArray.count); i++) {
                 
                 LifeModel * newModel = [LifeModel lifeModelWithDict:[fetchArray objectAtIndex:i]];
                 //举报数小于3O次才显示
@@ -149,7 +149,7 @@
                     }
                     
                     //遍历全部model，如果相同时间的也更新
-                    for (int j = 0; j <(_talkFrameArray.count >15 ?8:_talkFrameArray.count); j++)
+                    for (int j = 0; j <(self.talkFrameArray.count >15 ?8:self.talkFrameArray.count); j++)
                     {
                         LifeFrameModel * oldModel  = [self.talkFrameArray objectAtIndex:j];
                         

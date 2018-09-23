@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <TencentOpenAPI/QQApi.h>
+//#import <TencentOpenAPI/QQApi.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 
 @interface QQSDKTool : NSObject<QQApiInterfaceDelegate>

@@ -151,7 +151,7 @@ static NSInteger _currentExecuteCounts;
              }
              [rs close];
              
-             for(counts; counts >= ids; counts--)
+             for(; counts >= ids; counts--)
              {
 
                  //查询循环里ids对应的id

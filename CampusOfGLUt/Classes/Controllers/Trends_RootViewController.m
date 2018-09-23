@@ -308,7 +308,7 @@
             
             NSInteger counts = [NewsCacheTool updateNewItems:fetchNewsArray];
      
-            if (!counts == 0)
+            if (!(counts == 0))
             {
                 message = [NSString stringWithFormat:@"%ld 条更新",(long)counts];
                 backgroundColor = [UIColor colorWithRed:0.975 green:0.528 blue:0.069 alpha:1.000];

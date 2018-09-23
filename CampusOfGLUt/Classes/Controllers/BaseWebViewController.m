@@ -107,7 +107,7 @@ static NSString *const customWebStyle = @"customWebStyle";
             
             NSData * textData = [self.contentStr dataUsingEncoding:NSUTF8StringEncoding];
             
-            [self.webView loadData:textData MIMEType:@"text/plain" textEncodingName:@"utf-8" baseURL:nil];
+            [self.webView loadData:textData MIMEType:@"text/plain" textEncodingName:@"utf-8" baseURL:[NSURL URLWithString:@""]];
         }
     }else if (self.articleURL.length){
         //直接网上加载
@@ -152,7 +152,7 @@ static NSString *const customWebStyle = @"customWebStyle";
     label.textAlignment = NSTextAlignmentCenter;
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:label];
-    UILabel * label2 = [[UILabel alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 134, self.view.frame.size.width, 70)];
+    UILabel * label2 = [[UILabel alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 150, self.view.frame.size.width, 70)];
     label2.numberOfLines = 2;
     label2.text = @"网页由 桂林理工大学-校园通 转码\n以便在移动设备上浏览";
     label2.font = [UIFont systemFontOfSize:13];
@@ -218,12 +218,12 @@ static NSString *const customWebStyle = @"customWebStyle";
     html = [html stringByReplacingOccurrencesOfString:@"${webview_time}" withString:self.newsModel.time];
     html = [html stringByReplacingOccurrencesOfString:@"${webview_author}" withString:self.newsModel.author];
 //    html = [html stringByReplacingOccurrencesOfString:@"${webview_click}" withString:self.newsModel.clickNum];
-//    //公告的录入人为空
-//    if (self.newsModel.enter_men == nil)
-//    {
-//        self.newsModel.enter_men = self.newsModel.author;
-//    }
-//    html = [html stringByReplacingOccurrencesOfString:@"${webview_emtermen}" withString:self.newsModel.enter_men];
+    //公告的录入人为空
+    if (self.newsModel.enter_men != nil)
+    {
+        //self.newsModel.enter_men = self.newsModel.author;
+        html = [html stringByReplacingOccurrencesOfString:@"${webview_emtermen}" withString:self.newsModel.enter_men];
+    }
     
     NSMutableString * contentstr = [NSMutableString string];
     
