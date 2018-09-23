@@ -96,14 +96,14 @@
 				if (gap==2)
 				{
 					break;
-					total_width = self.numberOfPages*diameter + (self.numberOfPages-1)*gap;
+					//total_width = self.numberOfPages*diameter + (self.numberOfPages-1)*gap;
 				}
 			}
 			
 			if (diameter==2)
 			{
 				break;
-				total_width = self.numberOfPages*diameter + (self.numberOfPages-1)*gap;
+				//total_width = self.numberOfPages*diameter + (self.numberOfPages-1)*gap;
 			}
 		}
 		

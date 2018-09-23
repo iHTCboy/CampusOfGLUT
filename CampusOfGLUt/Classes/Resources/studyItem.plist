@@ -432,67 +432,79 @@ C19	球类协会
 				<key>title</key>
 				<string>党委办公室 校长办公室</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/yuanban/bgsh/index.php</string>
+				<string>http://bgsh.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>纪检监察</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/jiancweb/index.asp</string>
+				<string>http://jiwei.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>组织部</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/zzb/index.asp</string>
+				<string>http://zzb.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>宣传部</string>
 				<key>content</key>
-				<string>http://www.glut.edu.cn/Git/Department/Index.asp</string>
+				<string>http://xcb.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>统战部</string>
 				<key>content</key>
-				<string>http://www.glut.edu.cn/Git/TZB/Index.asp</string>
+				<string>http://tzb.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>学工部（处）</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/xgc/</string>
+				<string>http://xg.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>武装部 保卫处</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/wzbw/index.asp</string>
+				<string>http://wzbw.glut.edu.cn</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>党委党校</string>
+				<key>content</key>
+				<string>http://dwdx.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>机关党委</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/jgdw/index.asp</string>
+				<string>http://jgdw.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>工会</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/gh/new_edition/index.asp</string>
+				<string>http://gonghui.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>团委</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/ggtw/index.asp</string>
+				<string>http://ggtw.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>教务处</string>
 				<key>content</key>
-				<string>http://202.193.80.58/info/index.do</string>
+				<string>http://departs.glut.edu.cn/teachers/welcom.html</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>教师教学发展中心</string>
+				<key>content</key>
+				<string>http://cffd.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
@@ -504,31 +516,31 @@ C19	球类协会
 				<key>title</key>
 				<string>人事处</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/rsc/</string>
+				<string>http://rsc.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>招生就业处</string>
 				<key>content</key>
-				<string>http://zj.glut.edu.cn</string>
+				<string>http://zjc.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
-				<string>研究生院</string>
+				<string>研究生院（研究生工作部）</string>
 				<key>content</key>
-				<string>http://pgso.glut.edu.cn</string>
+				<string>http://yjsy.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>图书馆</string>
 				<key>content</key>
-				<string>http://202.193.80.184</string>
+				<string>http://lib.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>现代教育技术中心</string>
 				<key>content</key>
-				<string>http://202.193.80.7</string>
+				<string>http://xjzx.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
@@ -540,43 +552,49 @@ C19	球类协会
 				<key>title</key>
 				<string>审计处</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/sjc/</string>
+				<string>http://shenji.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>资产管理处</string>
 				<key>content</key>
-				<string>http://202.193.80.53/zcgl/Index.asp</string>
+				<string>http://zcglc.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
-				<string>发展规划处</string>
+				<string>发展规划与教学质量监控中心</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/fzhgh/</string>
+				<string>http://fgyzj.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
-				<string>基建处</string>
+				<string>基建后勤处</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/jijian/</string>
+				<string>http://jjc.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>离退处</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/lituichu/</string>
+				<string>http://ltc.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>后勤集团</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/hqjt/index.asp</string>
+				<string>http://hqjt.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>社区管理办公室（居委会）</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/shequ/index.asp</string>
+				<string>http://shequ.glut.edu.cn</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>校医院</string>
+				<key>content</key>
+				<string>http://yy.glut.edu.cn</string>
 			</dict>
 		</array>
 	</array>
@@ -587,13 +605,13 @@ C19	球类协会
 				<key>title</key>
 				<string>学工部（处）</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/xgc/</string>
+				<string>http://xg.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>校团委</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/ggtw/</string>
+				<string>http://ggtw.glut.edu.cn</string>
 			</dict>
 		</array>
 	</array>
@@ -604,25 +622,31 @@ C19	球类协会
 				<key>title</key>
 				<string>研究生招生</string>
 				<key>content</key>
-				<string>http://pgso.glut.edu.cn</string>
+				<string>http://yjsy.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>本科生招生</string>
 				<key>content</key>
-				<string>http://zj.glut.edu.cn/zsw/</string>
+				<string>http://zj.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>高职高专招生</string>
 				<key>content</key>
-				<string>http://zj.glut.edu.cn/gzzsw/</string>
+				<string>http://zsw.glutnn.cn</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>继续成人教育招生</string>
+				<key>content</key>
+				<string>http://cjy.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
 				<string>毕业生就业网</string>
 				<key>content</key>
-				<string>http://jy.glut.edu.cn</string>
+				<string>http://glut.doerjob.com</string>
 			</dict>
 		</array>
 	</array>
@@ -633,7 +657,7 @@ C19	球类协会
 				<key>title</key>
 				<string>人才引进</string>
 				<key>content</key>
-				<string>http://departs.glut.edu.cn/rsc/list.aspx?ClassID=12</string>
+				<string>http://rsc.glut.edu.cn/wdh_list.jsp?urltype=tree.TreeTempUrl&amp;wbtreeid=1078</string>
 			</dict>
 		</array>
 	</array>
@@ -644,7 +668,7 @@ C19	球类协会
 				<key>title</key>
 				<string>桂林理工大学图书馆</string>
 				<key>content</key>
-				<string>http://202.193.80.184</string>
+				<string>http://lib.glut.edu.cn</string>
 			</dict>
 			<dict>
 				<key>title</key>
@@ -656,7 +680,7 @@ C19	球类协会
 				<key>title</key>
 				<string>馆藏书目OPAC检索系统</string>
 				<key>content</key>
-				<string>http://202.193.80.181:8080/opac/websearch/bookSearch?cmdACT=simpleSearch&amp;columnID=1</string>
+				<string>http://202.193.80.181:8080/opac/index</string>
 			</dict>
 		</array>
 	</array>

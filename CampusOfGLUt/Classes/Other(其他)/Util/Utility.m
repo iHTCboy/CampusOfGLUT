@@ -816,38 +816,6 @@ static NSDateFormatter *s_fullFormat = nil;
     return _retArray;
 }
 
-#pragma mark - chat image save path
-//+(NSString *)chatLogImgPathWithUid:(NSString *)uid{
-//    NSString *realImgPath = [[self documentPath]stringByAppendingFormat:@"/%@%@",uid,MDJ_CHARTLOGS_IMG_PATH];
-//    return realImgPath;
-//}
-//
-//+(NSString *)chatlogImgNameWithUid:(NSString *)uid{
-//    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc]init];
-//    [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
-//    NSString *curDate = [dateFormatter stringFromDate:[NSDate date]];
-//    
-//    NSString *imgName = [self md5HexDigest:[NSString stringWithFormat:@"%@%@",uid,curDate]];
-//    NSString *realImgName = [imgName stringByAppendingString:@".png"];
-//    return realImgName;
-//}
-
-
-
-#pragma mark - 获取用户头像
-/*
- +(UIImage *)getUserAvatarWithUserAuthInfo:(WWUserAuth *)userAuthInfo{
- UIImage * avatarImage = nil;
- NSFileManager * fm  = [[NSFileManager alloc]init];
- if (userAuthInfo.auth_avatar && [fm fileExistsAtPath:userAuthInfo.auth_avatar]) {
- avatarImage = [UIImage imageWithContentsOfFile:userAuthInfo.auth_avatar];
- }else{
- NSString * imageName = (userAuthInfo.auth_sex == 0?@"avatar_default_female":@"avatar_default_male");
- avatarImage = [UIImage imageNamed:imageName];
- }
- 
- return avatarImage;
- }*/
 
 #pragma mark - save image to document path
 +(BOOL)writeImage:(UIImage*)image toFileAtPath:(NSString*)aPath
@@ -1024,22 +992,6 @@ static NSDateFormatter *s_fullFormat = nil;
     return retPath;
 }
 
-//+(NSString *)imageAbsoluteUrlFormString:(NSString *)relativeUrlStr{
-//    if (relativeUrlStr==nil) {
-//        return nil;
-//    }
-//    NSString * absoluteUrlStr = [NSString stringWithFormat:@"%@%@",LZ_IMAGE_PATH,relativeUrlStr];
-//    absoluteUrlStr = [absoluteUrlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];//utf-8转码，处理中文问题
-//    return absoluteUrlStr;
-//}
-
-+(NSString *)thumbImageAbsoluteUrlFormString:(NSString *)relativeUrlStr{
-    NSString * retString = [self imageAbsoluteUrlFormString:relativeUrlStr];
-    if (retString.length >0) {
-        return [retString stringByAppendingString:@"@0e_120w_120h_0c_1i_0o_90Q_1x.jpg"];
-    }
-    return nil;
-}
 
 
 #pragma mark - 占位图片

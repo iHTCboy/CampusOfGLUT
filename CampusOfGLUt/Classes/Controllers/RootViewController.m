@@ -80,31 +80,43 @@
     
     [self setViewControllers:@[nav_trends, nav_study,
                                            nav_life,nav_me]];
+    self.tabBar.tintColor = kAppMainColor;
     
-    [self customizeTabBarForController];
-    
-    self.delegate = self;
-}
-
-- (void)customizeTabBarForController
-{
-    UIImage *backgroundImage = [UIImage imageNamed:@"tabbar_background"];
+    //UIImage *backgroundImage = [UIImage imageNamed:@"tabbar_background"];
     NSArray *tabBarItemImages = @[@"trends", @"study", @"life", @"me"];
     NSArray *tabBarItemTitles = @[@"动态", @"学习", @"生活", @"我"];
     
     NSInteger index = 0;
-    for (RDVTabBarItem *item in [[self tabBar] items])
+    for (UIViewController *vc in self.viewControllers)
     {
-        [item setBackgroundSelectedImage:backgroundImage withUnselectedImage:backgroundImage];
         UIImage *selectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",[tabBarItemImages objectAtIndex:index]]];
-        UIImage *unselectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_normal",[tabBarItemImages objectAtIndex:index]]];
-        [item setFinishedSelectedImage:selectedimage withFinishedUnselectedImage:unselectedimage];
-        [item setTitle:[tabBarItemTitles objectAtIndex:index]];
-        [item setUnselectedTitleAttributes:[NSDictionary dictionaryWithObject:RGBColor(148, 148, 148) forKey:NSForegroundColorAttributeName]];
-        [item setSelectedTitleAttributes:[NSDictionary dictionaryWithObject:kAppMainColor forKey:NSForegroundColorAttributeName]];
+        //UIImage *unselectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_normal",[tabBarItemImages objectAtIndex:index]]];
+        vc.tabBarItem = [[UITabBarItem alloc] initWithTitle:[tabBarItemTitles objectAtIndex:index] image:selectedimage tag:index];
         index++;
-
+    
     }
+    
+}
+
+
+
+- (void)customizeTabBarForController
+{
+
+    
+    
+    
+//    let words = WordsViewController()
+//    words.tabBarItem = UITabBarItem.init(title: "iEnglish", image: #imageLiteral(resourceName: "tabbar_iEnglish"), tag: 0)
+//
+//    let category = CategoryViewController()
+//    category.tabBarItem = UITabBarItem.init(title: "Category", image: #imageLiteral(resourceName: "tabbar_categate"), tag: 1)
+//
+//    let setting = SettingController()
+//    setting.tabBarItem = UITabBarItem.init(title: "Setting", image: #imageLiteral(resourceName: "tabbar_setting"), tag: 2)
+//
+//    viewControllers = [TCNavigationController(rootViewController: words), TCNavigationController(rootViewController: category), TCNavigationController(rootViewController: setting)]
+//    tabBar.tintColor = kColorAppMain
 
 }
 

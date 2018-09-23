@@ -151,7 +151,7 @@ static NSInteger _currentExecuteCounts;
              }
              [rs close];
              
-             for(counts; counts >= ids; counts--)
+             for(; counts >= ids; counts--)
              {
 
                  //查询循环里ids对应的id
@@ -214,7 +214,7 @@ static NSInteger _currentExecuteCounts;
                  min = ids -  (int)number;
              }
              
-             for (ids; ids > min; ids--)
+             for (; ids > min; ids--)
              {
                  //查询
                  rs = [db executeQuery:@"select * from t_news where ids = ?",[NSNumber numberWithInt:ids]];

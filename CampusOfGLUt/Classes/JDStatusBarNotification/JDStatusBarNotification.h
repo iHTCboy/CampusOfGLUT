@@ -27,7 +27,7 @@ typedef JDStatusBarStyle*(^JDPrepareStyleBlock)(JDStatusBarStyle *style);
  *  on top of the status bar. To present a notification, use one of the
  *  given class methods.
  */
-@interface JDStatusBarNotification : NSObject
+@interface JDStatusBarNotification : NSObject<CAAnimationDelegate>
 
 #pragma mark Presentation
 

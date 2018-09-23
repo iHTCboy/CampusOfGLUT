@@ -41,15 +41,16 @@ static NSString *const customStyle = @"customStyle";
     [self setNetwrkingTips];
     
     //向微博注册
-    [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kWeiboKey];
-    
+    #if DEBUG
+    [WeiboSDK enableDebugMode:YES];
+    #endif
     
     //向微信注册
     [WXApi registerApp:kWXKey enableMTA:YES];
     
     //向腾讯注册
-    [[TencentOAuth alloc] initWithAppId:QQKey andDelegate:nil]; //注册
+    __unused id qq = [[TencentOAuth alloc] initWithAppId:QQKey andDelegate:nil]; //注册
     
     //百度统计
     [self startBaiduMobStat];

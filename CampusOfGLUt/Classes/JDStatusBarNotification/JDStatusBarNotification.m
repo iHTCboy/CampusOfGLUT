@@ -16,7 +16,7 @@
 + (JDStatusBarStyle*)defaultStyleWithName:(NSString*)styleName;
 @end
 
-@interface JDStatusBarNotificationViewController : UIViewController
+@interface JDStatusBarNotificationViewController : UIViewController <CAAnimationDelegate>
 @end
 
 @interface JDStatusBarNotification ()
@@ -276,12 +276,8 @@
             self.topBar.transform = CGAffineTransformMakeTranslation(0, -self.topBar.frame.size.height);
         }
     } completion:^(BOOL finished) {
-        [self.overlayWindow removeFromSuperview];
         [self.overlayWindow setHidden:YES];
-        _overlayWindow.rootViewController = nil;        
-        _overlayWindow = nil;
-        _progressView = nil;
-        _topBar = nil;
+        [self.overlayWindow removeFromSuperview];
     }];
 }
 
@@ -526,7 +522,7 @@
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
-    return [[self keyWindowRootViewController] supportedInterfaceOrientations];
+    return (NSUInteger)[[self keyWindowRootViewController] supportedInterfaceOrientations];
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
