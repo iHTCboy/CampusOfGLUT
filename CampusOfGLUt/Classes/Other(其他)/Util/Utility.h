@@ -236,7 +236,6 @@
 + (NSString *)stringFromMstimeInterval:(NSString *)msInterVal;
 + (NSString *)intervalSinceTime:(NSDate *)theBeforeDate andTime:(NSDate *)theLaterDate;
 +(NSString *)getWeekFromDate:(NSDate *)tDate;
-+(NSString *)sexStringForm:(NSInteger)sexType;
 +(NSDate *)getCurrentLocalDate;
 +(NSString *)getCurrentDate;
 + (NSString*)getCurrentTimeString;
@@ -247,20 +246,12 @@
 +(NSString*) getTimeStrStyle1:(long long)time;
 +(NSString*) getTimeStrStyle2:(long long)time;
 
-+ (NSString *)safeNumberStr:(NSString *)str;
-//返回格式化的距离字符串
-+ (NSString *)formatDistanceFromString:(NSString *)distance;
-
 
 #pragma mark - 网络相关
 //导入SystemConfiguration.framework,并#import<SystemConfiguration/SCNetworkReachability.h
 +(BOOL) connectedToNetwork;
 +(BOOL) hostAvailable: (NSString *) theHost;
 
-+(NSString *)createPostURL:(NSMutableDictionary *)params;
-+(NSString *)generatePostStringByModdel:(NSString *)m andAction:(NSString *)a andDataDic:(NSDictionary *)dic;
-+(NSDictionary *)parseReceiveString:(NSString *)str;
-+(NSArray *)parseReceiveStringToArray:(NSString *)str;
 
 #pragma mark - 信息验证
 +(BOOL)isValidateEmail:(NSString *)email;
@@ -277,16 +268,6 @@
 
 +(BOOL)deleteFileAtPath:(NSString *)filePath;
 
-+(NSString *)chatLogImgPathWithUid:(NSString *)uid;
-+(NSString *)chatlogImgNameWithUid:(NSString *)uid;
-
-+(NSString *)avatarImagesPath;
-//图片绝对url路径
-+(NSString *)imageAbsoluteUrlFormString:(NSString *)relativeUrlStr;
-//小图片绝对url路径
-+(NSString *)thumbImageAbsoluteUrlFormString:(NSString *)relativeUrlStr;
-+ (NSString *)messageLocalResourcePathWithToUid:(NSInteger)toUid;
-+ (NSString *)messageLocalPath;
 
 //占位图片
 + (UIImage *)placeHolderImage80x80;

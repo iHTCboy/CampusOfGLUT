@@ -185,7 +185,7 @@
     } else {
         
         // Failed - no source
-        @throw [NSException exceptionWithName:nil reason:nil userInfo:nil];
+        @throw [NSException exceptionWithName:@"com.MWPhoto.performLoadUnderlyingImageAndNotify" reason:@"Failed - no source" userInfo:nil];
         
     }
 }

@@ -214,7 +214,7 @@ static NSInteger _currentExecuteCounts;
                  min = ids -  (int)number;
              }
              
-             for (ids; ids > min; ids--)
+             for (; ids > min; ids--)
              {
                  //查询
                  rs = [db executeQuery:@"select * from t_news where ids = ?",[NSNumber numberWithInt:ids]];

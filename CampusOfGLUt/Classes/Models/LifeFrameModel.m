@@ -76,7 +76,7 @@
         float ScreenW = [UIScreen mainScreen].bounds.size.width;
         
         CGFloat pictureW = ScreenW-2*pictureX;
-        CGFloat pictureH = pictureW*4/3;
+        //CGFloat pictureH = pictureW*4/3;
         _pictureF = CGRectMake(pictureX, pictureY, pictureW, pictureW);
         
         //6.来源机型

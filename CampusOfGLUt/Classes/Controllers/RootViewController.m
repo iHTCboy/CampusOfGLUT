@@ -82,7 +82,7 @@
                                            nav_life,nav_me]];
     self.tabBar.tintColor = kAppMainColor;
     
-    UIImage *backgroundImage = [UIImage imageNamed:@"tabbar_background"];
+    //UIImage *backgroundImage = [UIImage imageNamed:@"tabbar_background"];
     NSArray *tabBarItemImages = @[@"trends", @"study", @"life", @"me"];
     NSArray *tabBarItemTitles = @[@"动态", @"学习", @"生活", @"我"];
     
@@ -90,15 +90,8 @@
     for (UIViewController *vc in self.viewControllers)
     {
         UIImage *selectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",[tabBarItemImages objectAtIndex:index]]];
-        UIImage *unselectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_normal",[tabBarItemImages objectAtIndex:index]]];
+        //UIImage *unselectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_normal",[tabBarItemImages objectAtIndex:index]]];
         vc.tabBarItem = [[UITabBarItem alloc] initWithTitle:[tabBarItemTitles objectAtIndex:index] image:selectedimage tag:index];
-    
-    
-        
-//        [item setFinishedSelectedImage:selectedimage withFinishedUnselectedImage:unselectedimage];
-//        [item setTitle:[tabBarItemTitles objectAtIndex:index]];
-//        [item setUnselectedTitleAttributes:[NSDictionary dictionaryWithObject:RGBColor(148, 148, 148) forKey:NSForegroundColorAttributeName]];
-//        [item setSelectedTitleAttributes:[NSDictionary dictionaryWithObject:kAppMainColor forKey:NSForegroundColorAttributeName]];
         index++;
     
     }

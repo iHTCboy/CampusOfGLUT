@@ -564,7 +564,7 @@
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAll;
+    return (NSUInteger)UIInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {

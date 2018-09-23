@@ -225,7 +225,7 @@ UIWebView * _webView;
         
     }];
     
-    UIImage * image = info[UIImagePickerControllerOriginalImage];
+    //UIImage * image = info[UIImagePickerControllerOriginalImage];
     
     //存储头像图片
 //    //Document
