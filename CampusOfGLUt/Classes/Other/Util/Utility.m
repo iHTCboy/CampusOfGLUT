@@ -121,10 +121,10 @@
     
     if ([deviceModel isEqualToString:@"iPad6,11"])      return @"iPad (5th Gen)";
     if ([deviceModel isEqualToString:@"iPad6,12"])      return @"iPad (5th Gen)";
-    if ([deviceModel isEqualToString:@"iPad7,1"])      return @"iPad Pro 12.9 (2nd Gen)";
-    if ([deviceModel isEqualToString:@"iPad7,2"])      return @"iPad Pro 12.9 (2nd Gen)";
-    if ([deviceModel isEqualToString:@"iPad7,3"])      return @"iPad Pro 10.5";
-    if ([deviceModel isEqualToString:@"iPad7,4"])      return @"iPad Pro 10.5";
+    if ([deviceModel isEqualToString:@"iPad7,1"])       return @"iPad Pro 12.9 (2nd Gen)";
+    if ([deviceModel isEqualToString:@"iPad7,2"])       return @"iPad Pro 12.9 (2nd Gen)";
+    if ([deviceModel isEqualToString:@"iPad7,3"])       return @"iPad Pro 10.5";
+    if ([deviceModel isEqualToString:@"iPad7,4"])       return @"iPad Pro 10.5";
     
     //Apple TV
     if ([deviceModel isEqualToString:@"AppleTV2,1"])   return @"Apple TV 2G";
