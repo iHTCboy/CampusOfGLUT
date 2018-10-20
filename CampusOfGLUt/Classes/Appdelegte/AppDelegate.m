@@ -20,7 +20,7 @@
 #import "WXApi.h"
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "BaiduMobStat.h"
-#import "DHDeviceUtil.h"
+#import "Utility.h"
 
 static NSString *const customStyle = @"customStyle";
 
@@ -82,7 +82,7 @@ static NSString *const customStyle = @"customStyle";
     NSString *currentDate = [df stringFromDate:[NSDate new]];
     
     // 自定义事件
-    [statTracker logEvent:@"usermodelName" eventLabel:[DHDeviceUtil deviceModelName]];
+    [statTracker logEvent:@"usermodelName" eventLabel:[Utility getCurrentDeviceModel]];
     [statTracker logEvent:@"systemVersion" eventLabel:[[UIDevice currentDevice] systemVersion]];
     [statTracker logEvent:@"Devices" eventLabel:[[UIDevice currentDevice] name]];
     [statTracker logEvent:@"DateAndDeviceName" eventLabel:[NSString stringWithFormat:@"%@ %@", currentDate, [[UIDevice currentDevice] name]]];

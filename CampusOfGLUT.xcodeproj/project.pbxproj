@@ -42,7 +42,6 @@
 		6D289CA31AF28472001509AF /* JwWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D289CA21AF28472001509AF /* JwWebViewController.m */; };
 		6D2943C71F92594800D0705E /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2943C61F92594800D0705E /* SafariServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6D2943C91F925AB000D0705E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2943C81F925AB000D0705E /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		6D2943CC1F925CF800D0705E /* DHDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2943CA1F925CF800D0705E /* DHDeviceUtil.m */; };
 		6D2C0F7B2157D36400C37783 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2C0F792157D36400C37783 /* libBaiduMobStat.a */; };
 		6D2C0F8D2157F0DF00C37783 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6D2C0F8B2157F0DF00C37783 /* README.md */; };
 		6D2C0F8E2157F0DF00C37783 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6D2C0F8C2157F0DF00C37783 /* LICENSE */; };
@@ -357,8 +356,6 @@
 		6D289CA21AF28472001509AF /* JwWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwWebViewController.m; sourceTree = "<group>"; };
 		6D2943C61F92594800D0705E /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		6D2943C81F925AB000D0705E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		6D2943CA1F925CF800D0705E /* DHDeviceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHDeviceUtil.m; sourceTree = "<group>"; };
-		6D2943CB1F925CF800D0705E /* DHDeviceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHDeviceUtil.h; sourceTree = "<group>"; };
 		6D2C0F792157D36400C37783 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		6D2C0F7A2157D36400C37783 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
 		6D2C0F8B2157F0DF00C37783 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -1562,8 +1559,6 @@
 		6DDDC9EA1A94734F004DF040 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				6D2943CB1F925CF800D0705E /* DHDeviceUtil.h */,
-				6D2943CA1F925CF800D0705E /* DHDeviceUtil.m */,
 				6DE5E06B1AB5607200F8A052 /* Utility.h */,
 				6DE5E06C1AB5607200F8A052 /* Utility.m */,
 				6D42EE311AF262E9009BAF18 /* HUDUtil.h */,
@@ -1955,7 +1950,6 @@
 			files = (
 				6D2E28C91F93410D00C975C4 /* AppDelegate.m in Sources */,
 				6D85E0961A90821900740DF5 /* TFHppleElement.m in Sources */,
-				6D2943CC1F925CF800D0705E /* DHDeviceUtil.m in Sources */,
 				6D9F26ED1A93CEBB00A87EB5 /* CRToastViewController.m in Sources */,
 				6D971CED1A8B787D0016469D /* Trends_RootViewController.m in Sources */,
 				6DF9BB0A1A96812000C6E813 /* MWZoomingScrollView.m in Sources */,
