@@ -535,7 +535,7 @@
 		6D971CA61A8B768B0016469D /* 桂林理工大学.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "桂林理工大学.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D971CAA1A8B768B0016469D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D971CAB1A8B768B0016469D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6D971CB61A8B768B0016469D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../CampusOfGLUT/Images.xcassets; sourceTree = "<group>"; };
+		6D971CB61A8B768B0016469D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D971CB91A8B768B0016469D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6D971CBF1A8B768C0016469D /* CampusOfGLUT.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CampusOfGLUT.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D971CC41A8B768C0016469D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1182,8 +1182,6 @@
 			isa = PBXGroup;
 			children = (
 				6D971CCF1A8B76A10016469D /* Classes */,
-				6D971CB61A8B768B0016469D /* Images.xcassets */,
-				6D971CB81A8B768B0016469D /* LaunchScreen.xib */,
 				6D971CA91A8B768B0016469D /* Supporting Files */,
 			);
 			name = CampusOfGLUT;
@@ -1193,6 +1191,8 @@
 		6D971CA91A8B768B0016469D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6D971CB61A8B768B0016469D /* Images.xcassets */,
+				6D971CB81A8B768B0016469D /* LaunchScreen.xib */,
 				6D2C0F8C2157F0DF00C37783 /* LICENSE */,
 				6D2C0F8B2157F0DF00C37783 /* README.md */,
 				6D971CAA1A8B768B0016469D /* Info.plist */,
