@@ -70,21 +70,22 @@
     BaseNavigationController *nav_study = [[BaseNavigationController alloc]
                                                     initWithRootViewController:study];
     
-    Life_RootViewController *life = [[Life_RootViewController alloc] init];
-    BaseNavigationController *nav_life = [[BaseNavigationController alloc]
-                                                   initWithRootViewController:life];
+//    Life_RootViewController *life = [[Life_RootViewController alloc] init];
+//    BaseNavigationController *nav_life = [[BaseNavigationController alloc]
+//                                                   initWithRootViewController:life];
     
     Me_ViewController *me = [[Me_ViewController alloc] init];
     BaseNavigationController *nav_me = [[BaseNavigationController alloc]
                                                    initWithRootViewController:me];
     
-    [self setViewControllers:@[nav_trends, nav_study,
-                                           nav_life,nav_me]];
+    [self setViewControllers:@[nav_trends, nav_study, nav_me]];
     self.tabBar.tintColor = kAppMainColor;
     
     //UIImage *backgroundImage = [UIImage imageNamed:@"tabbar_background"];
-    NSArray *tabBarItemImages = @[@"trends", @"study", @"life", @"me"];
-    NSArray *tabBarItemTitles = @[@"动态", @"学习", @"生活", @"我"];
+//    NSArray *tabBarItemImages = @[@"trends", @"study", @"life", @"me"];
+//    NSArray *tabBarItemTitles = @[@"动态", @"学习", @"生活", @"我"];
+    NSArray *tabBarItemImages = @[@"trends", @"study", @"me"];
+    NSArray *tabBarItemTitles = @[@"动态", @"学习", @"我"];
     
     NSInteger index = 0;
     for (UIViewController *vc in self.viewControllers)

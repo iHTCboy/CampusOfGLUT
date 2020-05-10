@@ -151,8 +151,10 @@
         
         // 设置循环图片第一张为最后一张
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, imageY, imageW, imageH)];
-        NSURL * url = [NSURL URLWithString:images[self.imageCounts -1]];
-        [imageV sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
+        if (self.imageCounts) {
+            NSURL * url = [NSURL URLWithString:images[self.imageCounts -1]];
+            [imageV sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
+        }
         [self.scrollView addSubview:imageV];
         
         // 1.添加图片到scrollView中
