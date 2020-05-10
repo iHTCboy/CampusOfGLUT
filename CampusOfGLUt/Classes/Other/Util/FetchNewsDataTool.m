@@ -32,9 +32,18 @@ static id _instance;
             // 加载资源
             self.mgr = [AFHTTPSessionManager manager];
             self.mgr.requestSerializer.timeoutInterval = 8;
+            [self.mgr.requestSerializer setValue:@"zh-cn" forHTTPHeaderField:@"Accept-Language"];
+            [self.mgr.requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+            [self.mgr.requestSerializer setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15" forHTTPHeaderField:@"User-Agent"];
             self.mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
-            self.mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript", nil];
-            //
+            self.mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",@"application/xhtml+xml,",@"application/xml", nil];
+            // Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+//            Upgrade-Insecure-Requests: 1
+//            Host: www.glut.edu.cn
+//            User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15
+//            Accept-Language: zh-cn
+//            Accept-Encoding: gzip, deflate
+//            Connection: keep-alive
         });
     }
     return self;
@@ -130,11 +139,11 @@ static id _instance;
     
 //    NSLog(@" --- %@",url);
     
-    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+//    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+//
+//    NSString* encodedString = [url stringByAddingPercentEscapesUsingEncoding:gbkEncoding];
     
-    NSString* encodedString = [url stringByAddingPercentEscapesUsingEncoding:gbkEncoding];
-    
-    [self.mgr GET:encodedString parameters:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
+    [self.mgr GET:url parameters:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         
         /*
          <div class="list_content">
@@ -146,7 +155,8 @@ static id _instance;
          
          */
         
-        TFHpple *xpathparser = [[TFHpple alloc]initWithHTMLData:responseObject];
+        TFHpple *xpathparser = [[TFHpple alloc] initWithHTMLData:responseObject];
+        // /html/body/div/div/div[2]/div[2]/ul
         NSArray *elements  = [xpathparser searchWithXPathQuery:@"//div[@class='list_content']/ul/li"];
         
         for (int i = 0; i < elements.count; i++)

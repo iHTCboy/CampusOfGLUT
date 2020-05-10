@@ -21,7 +21,12 @@
     [super viewDidLoad];
     
     self.title = @"我";
-    self.view.backgroundColor = [UIColor whiteColor];
+    
+    if (@available(iOS 13.0, *)) {
+        self.view.backgroundColor = UIColor.secondarySystemGroupedBackgroundColor;
+    } else {
+        self.view.backgroundColor = [UIColor whiteColor];
+    }
     
     UIBarButtonItem * rightBar = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"navigationbar_setting"] style:UIBarButtonItemStylePlain target:self action:@selector(settingView)];
     self.navigationItem.rightBarButtonItem = rightBar;
@@ -49,6 +54,9 @@
     UITapGestureRecognizer * tapLbl = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedLogoImg)];
     name.userInteractionEnabled = YES;
     [name addGestureRecognizer:tapLbl];
+    if (@available(iOS 13.0, *)) {
+        name.textColor = [UIColor labelColor];
+    }
     
     
     UILabel * version = [[UILabel alloc]init];

@@ -486,7 +486,7 @@
     [self.shareView removeFromSuperview];
     
 
-    self.shareView = [[ShareActivityView alloc]initWithTitle:@"分享到" referView:self.view];
+    self.shareView = [[ShareActivityView alloc] initWithTitle:@"分享到" referView:self.view];
         
     //横屏会变成一行6个, 竖屏无法一行同时显示6个, 会自动使用默认一行4个的设置.
     self.shareView.numberOfButtonPerLine = 7;
