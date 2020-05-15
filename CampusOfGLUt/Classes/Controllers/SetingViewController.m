@@ -110,7 +110,7 @@
         case 3:
         {
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-            [[InformationHandleTool sharedInfoTool] sendEmailWithSubject:@"使用桂工校园通的建议反馈" MessageBody:[NSString stringWithFormat:@"我现在使用桂工校园通v%@,使用设备：%@,iOSv%@\n我的反馈和建议：\n1、\n2、\n3、",[infoDictionary objectForKey:@"CFBundleShortVersionString"],[[UIDevice currentDevice] model],[[UIDevice currentDevice] systemVersion]] isHTML:NO toRecipients:@[@"ihetiancong@qq.com"] ccRecipients:nil bccRecipients:nil  Image:nil imageQuality:0 Controller:self];
+            [[InformationHandleTool sharedInfoTool] sendEmailWithSubject:@"使用桂工校园通的建议反馈" MessageBody:[NSString stringWithFormat:@"我现在使用桂工校园通v%@,使用设备：%@,iOSv%@\n我的反馈和建议：\n1、\n2、\n3、",[infoDictionary objectForKey:@"CFBundleShortVersionString"],[[UIDevice currentDevice] model],[[UIDevice currentDevice] systemVersion]] isHTML:NO toRecipients:@[@"iHTCteam@gmail.com"] ccRecipients:nil bccRecipients:nil  Image:nil imageQuality:0 Controller:self];
             break;
         }
         case 4:
