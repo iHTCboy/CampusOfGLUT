@@ -1,12 +1,12 @@
 //
-//  Announcements_RootViewController.m
+//  RMJZViewController.m
 //  CampusOfGLUT
 //
-//  Created by HTC on 15/2/24.
-//  Copyright (c) 2015年 HTC. All rights reserved.
+//  Created by HTC on 2023/2/12.
+//  Copyright © 2023 HTC. All rights reserved.
 //
 
-#import "Announcements_RootViewController.h"
+#import "RMJZViewController.h"
 #import "FocusImageView.h"
 #import "TrendsViewCell.h"
 #import "RDVTabBarController.h"
@@ -16,8 +16,9 @@
 #import "NewsCacheTool.h"
 #import "ODRefreshControl.h"
 #import "CRToast.h"
+#import "AppUtils.h"
 
-@interface Announcements_RootViewController ()
+@interface RMJZViewController ()<FocusImageViewDelegate, UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray * newsList;
 
 //当前请求了的页数
@@ -25,9 +26,13 @@
 
 //单例
 @property (nonatomic,strong) FetchNewsTool *fetchNewsTool;
+
+@property (nonatomic, weak) UIButton * moreBtn;
+
+@property (nonatomic, weak) UITableView * tableView;
 @end
 
-@implementation Announcements_RootViewController
+@implementation RMJZViewController
 
 -(NSMutableArray *)newsList
 {
@@ -51,8 +56,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.title = @"公告";
-    self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.000];
+    //self.title = @"融媒矩阵";
+    if (@available(iOS 13.0, *)) {
+        self.view.backgroundColor = [UIColor systemBackgroundColor];
+    } else {
+        self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.000];
+    }
     
     [self setTabBarStyle];
     
@@ -79,17 +88,28 @@
     [self setDropViewRefreshing];
     
     //头部照片
-   // [self getFocusImages];
+    //[self getFocusImages];
     
 }
 
 
 - (void)setTabBarStyle
 {
+    UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height) style:UITableViewStylePlain];
+    tableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0);
+    tableView.delegate = self;
+    tableView.dataSource = self;
     
-    CGRect frame = self.tableView.frame;
-    frame.size.height = frame.size.height - 20;
-    self.tableView.frame = frame;
+    self.tableView = tableView;
+    [self.view addSubview:tableView];
+    
+    tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *views = @{@"tableView": tableView};
+    NSArray *widthConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tableView]-0-|" options:0 metrics:nil views:views];
+    NSArray *heightConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:views];
+    [NSLayoutConstraint activateConstraints:widthConstraints];
+    [NSLayoutConstraint activateConstraints:heightConstraints];
+    
 }
 
 - (void)createTableHeaderView
@@ -105,8 +125,13 @@
 - (void)createTableFooterView
 {
     UIButton * moreBtn = [[UIButton alloc]init];
+    self.moreBtn = moreBtn;
     moreBtn.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    moreBtn.backgroundColor = [UIColor whiteColor];
+    if (@available(iOS 13.0, *)) {
+        moreBtn.backgroundColor = [UIColor systemBackgroundColor];
+    } else {
+        moreBtn.backgroundColor = [UIColor whiteColor];
+    }
     [moreBtn setTitleColor:[UIColor colorWithRed:0.046 green:0.674 blue:1.000 alpha:1.000] forState:UIControlStateNormal];
     [moreBtn setTitle:@"加载更多" forState:UIControlStateNormal];
     [moreBtn addTarget:self action:@selector(loadinagMoreNews:) forControlEvents:UIControlEventTouchDown];
@@ -159,18 +184,25 @@
 
 - (void)loadinagMoreNews:(UIButton *)moreBtn
 {
+    if (self.newsList.count == 0) {
+        //请求数据
+        [self setDropViewRefreshing];
+        return;
+    }
+    
     //[moreBtn setTitle:@"加载中..." forState:UIControlStateNormal];
     moreBtn.hidden = YES;
     
     [CRToastManager dismissAllNotifications:YES];
     
     //最多加载到80页
-    if (self.morePage >0)
+    if (self.morePage > 0)
     {
         
-        [self.fetchNewsTool getNewsListDataWithClassName:@"公告" page:(int)self.morePage success:^(NSArray *fetchNewsArray, int nextPage)
+        [self.fetchNewsTool getNewsListDataWithClassName:@"融媒矩阵" page:(int)self.morePage success:^(NSArray *fetchNewsArray, int nextPage)
          {
              self.morePage = nextPage;
+             
              [self.newsList addObjectsFromArray:fetchNewsArray];
              
              [self.tableView reloadData];
@@ -211,7 +243,7 @@
              }
              else
              {
-                 [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"休息一下在试试" backgroundColor:[UIColor colorWithRed:1.000 green:0.435 blue:0.812 alpha:1.000]]
+                 [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"网络好像出错啦~" backgroundColor:[UIColor colorWithRed:1.000 green:0.435 blue:0.812 alpha:1.000]]
                                              completionBlock:^{ }];
                  
              }
@@ -223,8 +255,8 @@
     }
     else
     {
-        [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"亲,没有更多啦！" backgroundColor:[UIColor colorWithRed:1.000 green:0.285 blue:0.291 alpha:1.000]] completionBlock:^{ }];
-        [moreBtn setTitle:@"亲,你好利害，可惜没有更多啦！" forState:UIControlStateNormal];
+        [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"加载到底啦！" backgroundColor:[UIColor colorWithRed:1.000 green:0.285 blue:0.291 alpha:1.000]] completionBlock:^{ }];
+        [moreBtn setTitle:@"已经到底，没有更多啦~" forState:UIControlStateNormal];
         moreBtn.hidden = NO;
     }
     
@@ -234,83 +266,79 @@
 
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
 {
-    [self.fetchNewsTool getNewsListDataWithClassName:@"公告" page:0 success:^(NSArray *fetchNewsArray, int nextPage)
-      {
-          
-          self.morePage = nextPage;
-        //提示数据更新信息
-        NSString * message;
-        UIColor * backgroundColor;
-        
-        //如果当前数据库无操作，才执行  查询并插入新项，返回插入条数
-        if (![NewsCacheTool currentExecuteCounts]) {
-            
-//            NSInteger counts = [NewsCacheTool updateNewItems:fetchNewsArray];
-//            
-//            if (!counts == 0)
-//            {
-//                message = [NSString stringWithFormat:@"%ld 条更新",(long)counts];
-//                backgroundColor = [UIColor colorWithRed:0.975 green:0.528 blue:0.069 alpha:1.000];
-//            }
-//            else
-//            {
-                message = @"暂无更新";
-                backgroundColor = [UIColor colorWithRed:0.251 green:0.796 blue:0.518 alpha:1.000];
-//            }
-//            
-//            //取最新数据，从而显示人气数变化
-//            NSArray * newscache = [NewsCacheTool queryWithNumber:20];
-//            
-//            //NSLog(@"-----%lu",(unsigned long)fetchNewsArray.count);
-//            //            [self.newsList removeAllObjects];
-//            //            [self.newsList addObjectsFromArray:newscache];
-            
-            NSRange range;
-            range.length = 20;
-            range.location = 0;
-            //替换前20条数据
-            [self.newsList removeAllObjects];
-            [self.newsList addObjectsFromArray:fetchNewsArray];
-            
-            [self.tableView reloadData];
-            
-            
-        }
-        else
-        {
-            message = @"暂无更新";
-            backgroundColor = [UIColor colorWithRed:0.251 green:0.796 blue:0.518 alpha:1.000];
-            
-        }
-          
-          if (self.morePage != 1)
-          {
-              [CRToastManager showNotificationWithOptions:[self optionsWithMessage:message backgroundColor:backgroundColor] completionBlock:^{  }];
-          }
-          else
-          {
-              self.morePage = 2;
-          }
-        
-        [refreshControl endRefreshing];
-        
-    } failure:^(NSError *error) {
-        
-        
-        //非手动取消网络操作
-        if (!(error.code == -999))
-        {
-            [CRToastManager dismissAllNotifications:YES];
-            [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"休息一下在试试" backgroundColor:[UIColor colorWithRed:1.000 green:0.435 blue:0.812 alpha:1.000]]
-                                        completionBlock:^{
-                                            
-                                        }];
-            
-        }
-        
-        [refreshControl endRefreshing];
-        
-    }];
+    [self.fetchNewsTool getNewsListDataWithClassName:@"融媒矩阵" page:0 success:^(NSArray *fetchNewsArray, int nextPage)
+     {
+         
+         self.morePage = nextPage;
+         //提示数据更新信息
+         NSString * message;
+         UIColor * backgroundColor;
+         
+         //如果当前数据库无操作，才执行  查询并插入新项，返回插入条数
+         if (![NewsCacheTool currentExecuteCounts]) {
+             
+             //            NSInteger counts = [NewsCacheTool updateNewItems:fetchNewsArray];
+             //
+             //            if (!counts == 0)
+             //            {
+             //                message = [NSString stringWithFormat:@"%ld 条更新",(long)counts];
+             //                backgroundColor = [UIColor colorWithRed:0.975 green:0.528 blue:0.069 alpha:1.000];
+             //            }
+             //            else
+             //            {
+             message = @"暂无更新";
+             backgroundColor = [UIColor colorWithRed:0.251 green:0.796 blue:0.518 alpha:1.000];
+             //            }
+             //
+             //            //取最新数据，从而显示人气数变化
+             //            NSArray * newscache = [NewsCacheTool queryWithNumber:20];
+             //
+             //            //NSLog(@"-----%lu",(unsigned long)fetchNewsArray.count);
+             //            //            [self.newsList removeAllObjects];
+             //            //            [self.newsList addObjectsFromArray:newscache];
+             
+             NSRange range;
+             range.length = 20;
+             range.location = 0;
+             //替换前20条数据
+             [self.newsList removeAllObjects];
+             [self.newsList addObjectsFromArray:fetchNewsArray];
+             
+             [self.tableView reloadData];
+             
+             
+         }
+         else
+         {
+             message = @"暂无更新";
+             backgroundColor = [UIColor colorWithRed:0.251 green:0.796 blue:0.518 alpha:1.000];
+             
+         }
+         
+         if (self.morePage !=1)
+         {
+             [CRToastManager showNotificationWithOptions:[self optionsWithMessage:message backgroundColor:backgroundColor] completionBlock:^{  }];
+         }
+         
+         [refreshControl endRefreshing];
+         
+     } failure:^(NSError *error) {
+         
+         
+         //非手动取消网络操作
+         if (!(error.code == -999))
+         {
+             [CRToastManager dismissAllNotifications:YES];
+             [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"网络好像出错啦~" backgroundColor:[UIColor colorWithRed:1.000 green:0.435 blue:0.812 alpha:1.000]]
+                                         completionBlock:^{
+                                             
+                                         }];
+             
+         }
+         
+         [refreshControl endRefreshing];
+         
+     }];
     
     
 }
@@ -322,25 +350,26 @@
     [self.fetchNewsTool getFocusImagesSuccess:^(NSArray *fetchImagesArray)
      {
          
-         NSMutableArray * imageArr = [NSMutableArray array];
-         
-         for (NSString * url in fetchImagesArray[0]) {
-             
-             NSString * image = [NSString stringWithFormat:@"http://www.glut.edu.cn/Git/%@",url];
-             
-             [imageArr addObject:image];
-         }
-         
          // NSLog(@"%@",imageArr);
          
-         FocusImageView * header = [[FocusImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kAD_HIGHT * kScreenWidth / 320) forcusImages:imageArr titles:nil tag:3];
-         
+         FocusImageView * header = [[FocusImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kAD_HIGHT * kScreenWidth / 320) forcusImages:fetchImagesArray titles:nil tag:3];
+         header.delegate = self;
          self.tableView.tableHeaderView = header;
          
          
      } failure:^(NSError *error) {
          
      }];
+    
+}
+
+#pragma mark - FocusImagesDelegate
+-(void)focusImageWithtouchImagePage:(NSInteger)page imageurl:(NSString *)url scrollView:(UIScrollView *)scrollview
+{
+    if (scrollview.tag == 3)
+    {
+        [self gotoWebViewWithURL:url];
+    }
     
 }
 
@@ -373,8 +402,13 @@
     
     cell.lblTitle.text = news.title;
     cell.lblAuthor.text = news.author;
-    cell.lblClicks.text = @"";//[NSString stringWithFormat:@"人气:%@",news.clickNum];
+    cell.lblClicks.text = @"";[NSString stringWithFormat:@"人气:%@",news.clickNum];
     cell.lblTime.text = news.time;
+    
+    // 最后一条
+    if ((indexPath.row + 1) == self.newsList.count) {
+        [self loadinagMoreNews:self.moreBtn];
+    }
     
     return cell;
 }
@@ -398,6 +432,13 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    NewsModel * news = self.newsList[indexPath.row];
+    
+    [self gotoWebViewWithURL:news.url];
+}
+
+- (void)gotoWebViewWithURL:(NSString*)url
+{
     [CRToastManager dismissAllNotifications:YES];
     
     //取消网络加载
@@ -406,10 +447,10 @@
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
     
     BaseWebViewController * webVc = [[BaseWebViewController alloc]init];
-    NewsModel * news = self.newsList[indexPath.row];
-    webVc.articleURL = news.url;
-    
+    webVc.articleURL = url;
+    webVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:webVc animated:YES];
+    
 }
 
 
@@ -426,7 +467,7 @@
                                       kCRToastUnderStatusBarKey : @(YES),
                                       kCRToastTextKey : message,
                                       kCRToastTextAlignmentKey : @(1),
-                                      kCRToastTimeIntervalKey : @(2.0),
+                                      kCRToastTimeIntervalKey : @(0.25),
                                       kCRToastAnimationInTypeKey : @(CRToastAnimationTypeSpring),
                                       kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeLinear),
                                       kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionBottom),
@@ -435,6 +476,4 @@
     
     return [NSDictionary dictionaryWithDictionary:options];
 }
-
-
 @end

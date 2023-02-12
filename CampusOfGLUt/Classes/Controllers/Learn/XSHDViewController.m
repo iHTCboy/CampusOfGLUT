@@ -1,12 +1,12 @@
 //
-//  NewsCenter_RootViewController.m
+//  XSHDViewController.m
 //  CampusOfGLUT
 //
-//  Created by HTC on 15/2/24.
-//  Copyright (c) 2015年 HTC. All rights reserved.
+//  Created by HTC on 2023/2/12.
+//  Copyright © 2023 HTC. All rights reserved.
 //
 
-#import "NewsCenter_RootViewController.h"
+#import "XSHDViewController.h"
 #import "FocusImageView.h"
 #import "TrendsViewCell.h"
 #import "RDVTabBarController.h"
@@ -16,8 +16,9 @@
 #import "NewsCacheTool.h"
 #import "ODRefreshControl.h"
 #import "CRToast.h"
+#import "AppUtils.h"
 
-@interface NewsCenter_RootViewController ()<FocusImageViewDelegate>
+@interface XSHDViewController ()<FocusImageViewDelegate, UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray * newsList;
 
 //当前请求了的页数
@@ -25,9 +26,13 @@
 
 //单例
 @property (nonatomic,strong) FetchNewsTool *fetchNewsTool;
+
+@property (nonatomic, weak) UIButton * moreBtn;
+
+@property (nonatomic, weak) UITableView * tableView;
 @end
 
-@implementation NewsCenter_RootViewController
+@implementation XSHDViewController
 
 -(NSMutableArray *)newsList
 {
@@ -51,8 +56,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.title = @"新闻中心";
-    self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.000];
+    //self.title = @"学术活动";
+    if (@available(iOS 13.0, *)) {
+        self.view.backgroundColor = [UIColor systemBackgroundColor];
+    } else {
+        self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.000];
+    }
     
     [self setTabBarStyle];
     
@@ -86,10 +95,21 @@
 
 - (void)setTabBarStyle
 {
+    UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height) style:UITableViewStylePlain];
+    tableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0);
+    tableView.delegate = self;
+    tableView.dataSource = self;
     
-    CGRect frame = self.tableView.frame;
-    frame.size.height = frame.size.height - 20;
-    self.tableView.frame = frame;
+    self.tableView = tableView;
+    [self.view addSubview:tableView];
+    
+    tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *views = @{@"tableView": tableView};
+    NSArray *widthConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tableView]-0-|" options:0 metrics:nil views:views];
+    NSArray *heightConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:views];
+    [NSLayoutConstraint activateConstraints:widthConstraints];
+    [NSLayoutConstraint activateConstraints:heightConstraints];
+    
 }
 
 - (void)createTableHeaderView
@@ -105,8 +125,13 @@
 - (void)createTableFooterView
 {
     UIButton * moreBtn = [[UIButton alloc]init];
+    self.moreBtn = moreBtn;
     moreBtn.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    moreBtn.backgroundColor = [UIColor whiteColor];
+    if (@available(iOS 13.0, *)) {
+        moreBtn.backgroundColor = [UIColor systemBackgroundColor];
+    } else {
+        moreBtn.backgroundColor = [UIColor whiteColor];
+    }
     [moreBtn setTitleColor:[UIColor colorWithRed:0.046 green:0.674 blue:1.000 alpha:1.000] forState:UIControlStateNormal];
     [moreBtn setTitle:@"加载更多" forState:UIControlStateNormal];
     [moreBtn addTarget:self action:@selector(loadinagMoreNews:) forControlEvents:UIControlEventTouchDown];
@@ -159,6 +184,12 @@
 
 - (void)loadinagMoreNews:(UIButton *)moreBtn
 {
+    if (self.newsList.count == 0) {
+        //请求数据
+        [self setDropViewRefreshing];
+        return;
+    }
+    
     //[moreBtn setTitle:@"加载中..." forState:UIControlStateNormal];
     moreBtn.hidden = YES;
     
@@ -168,7 +199,7 @@
     if (self.morePage > 0)
     {
         
-        [self.fetchNewsTool getNewsListDataWithClassName:@"新闻中心" page:(int)self.morePage success:^(NSArray *fetchNewsArray, int nextPage)
+        [self.fetchNewsTool getNewsListDataWithClassName:@"学术活动" page:(int)self.morePage success:^(NSArray *fetchNewsArray, int nextPage)
          {
              self.morePage = nextPage;
              
@@ -212,7 +243,7 @@
              }
              else
              {
-                 [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"休息一下在试试" backgroundColor:[UIColor colorWithRed:1.000 green:0.435 blue:0.812 alpha:1.000]]
+                 [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"网络好像出错啦~" backgroundColor:[UIColor colorWithRed:1.000 green:0.435 blue:0.812 alpha:1.000]]
                                              completionBlock:^{ }];
                  
              }
@@ -224,8 +255,8 @@
     }
     else
     {
-        [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"亲,没有更多啦！" backgroundColor:[UIColor colorWithRed:1.000 green:0.285 blue:0.291 alpha:1.000]] completionBlock:^{ }];
-        [moreBtn setTitle:@"亲,你好利害，可惜没有更多啦！" forState:UIControlStateNormal];
+        [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"加载到底啦！" backgroundColor:[UIColor colorWithRed:1.000 green:0.285 blue:0.291 alpha:1.000]] completionBlock:^{ }];
+        [moreBtn setTitle:@"已经到底，没有更多啦~" forState:UIControlStateNormal];
         moreBtn.hidden = NO;
     }
     
@@ -235,7 +266,7 @@
 
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
 {
-    [self.fetchNewsTool getNewsListDataWithClassName:@"新闻中心" page:0 success:^(NSArray *fetchNewsArray, int nextPage)
+    [self.fetchNewsTool getNewsListDataWithClassName:@"学术活动" page:0 success:^(NSArray *fetchNewsArray, int nextPage)
      {
          
          self.morePage = nextPage;
@@ -288,10 +319,6 @@
          {
              [CRToastManager showNotificationWithOptions:[self optionsWithMessage:message backgroundColor:backgroundColor] completionBlock:^{  }];
          }
-         else
-         {
-            self.morePage = 2;
-         }
          
          [refreshControl endRefreshing];
          
@@ -302,7 +329,7 @@
          if (!(error.code == -999))
          {
              [CRToastManager dismissAllNotifications:YES];
-             [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"休息一下在试试" backgroundColor:[UIColor colorWithRed:1.000 green:0.435 blue:0.812 alpha:1.000]]
+             [CRToastManager showNotificationWithOptions:[self optionsWithMessage:@"网络好像出错啦~" backgroundColor:[UIColor colorWithRed:1.000 green:0.435 blue:0.812 alpha:1.000]]
                                          completionBlock:^{
                                              
                                          }];
@@ -378,6 +405,11 @@
     cell.lblClicks.text = @"";[NSString stringWithFormat:@"人气:%@",news.clickNum];
     cell.lblTime.text = news.time;
     
+    // 最后一条
+    if ((indexPath.row + 1) == self.newsList.count) {
+        [self loadinagMoreNews:self.moreBtn];
+    }
+    
     return cell;
 }
 
@@ -416,7 +448,7 @@
     
     BaseWebViewController * webVc = [[BaseWebViewController alloc]init];
     webVc.articleURL = url;
-    
+    webVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:webVc animated:YES];
     
 }
@@ -435,7 +467,7 @@
                                       kCRToastUnderStatusBarKey : @(YES),
                                       kCRToastTextKey : message,
                                       kCRToastTextAlignmentKey : @(1),
-                                      kCRToastTimeIntervalKey : @(2.0),
+                                      kCRToastTimeIntervalKey : @(0.25),
                                       kCRToastAnimationInTypeKey : @(CRToastAnimationTypeSpring),
                                       kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeLinear),
                                       kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionBottom),
@@ -445,3 +477,4 @@
     return [NSDictionary dictionaryWithDictionary:options];
 }
 @end
+

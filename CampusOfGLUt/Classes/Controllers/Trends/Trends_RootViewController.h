@@ -11,6 +11,6 @@
 #import "BaseTableViewController.h"
 
 
-@interface Trends_RootViewController :BaseTableViewController
+@interface Trends_RootViewController :UIViewController
 
 @end

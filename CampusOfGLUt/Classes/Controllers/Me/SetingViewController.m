@@ -12,6 +12,9 @@
 #import "SupportTableViewController.h"
 #import "RDVTabBarController.h"
 #import <StoreKit/StoreKit.h>
+#import "CampusOfGLUT-Swift.h"
+
+@class ITAdvancelDetailViewController;
 
 @interface SetingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -29,10 +32,16 @@
     [super viewDidLoad];
     self.title = @"关于应用";
     
+    if (@available(iOS 13.0, *)) {
+        self.view.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+    } else {
+        self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.000];
+    }
+    
     [self initTableView];
     
-    self.contentArray = @[@"桂林理工大学",@"觉得不错？",@"应用内评分",@"意见反馈",@"关注作者",@"现已开源",@"感谢开源",@"作者博客",@"用户条款"];
-    self.subTitleArray = @[@"友情链接",@"AppStore评分",@"马上评分",@"与我联系",@"微博动态",@"GitHub",@"开源组件",@"技术心得",@"隐私协议"];
+    self.contentArray = @[@"桂林理工大学",@"觉得不错？",@"应用内评分",@"意见反馈",@"作者微博",@"作者博客",@"推荐应用",@"项目源码",@"感谢开源",@"用户条款"];
+    self.subTitleArray = @[@"友情链接",@"AppStore评分",@"马上评分",@"建议问题",@"关注动态",@"技术心得",@"Apps",@"GitHub",@"开源组件",@"隐私协议"];
     
 }
 
@@ -50,6 +59,9 @@
     mainTable.dataSource = self;
     [self.view addSubview:mainTable];
     
+    if (@available(iOS 13.0, *)) {
+        mainTable.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+    }
 }
 
 
@@ -93,7 +105,7 @@
     
     switch (indexPath.row) {
         case 0:
-             [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:@"http://www.glut.edu.cn"];
+             [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:@"https://www.glut.edu.cn"];
             break;
         case 1:
             [[InformationHandleTool sharedInfoTool] inAppStoreWithID:@"968615456"];
@@ -109,28 +121,39 @@
         }
         case 3:
         {
+            if (![MFMailComposeViewController canSendMail]) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前设备不支持发送邮件~" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:action];
+                [self presentViewController:alert animated:YES completion:nil];
+                return;
+            }
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-            [[InformationHandleTool sharedInfoTool] sendEmailWithSubject:@"使用桂工校园通的建议反馈" MessageBody:[NSString stringWithFormat:@"我现在使用桂工校园通v%@,使用设备：%@,iOSv%@\n我的反馈和建议：\n1、\n2、\n3、",[infoDictionary objectForKey:@"CFBundleShortVersionString"],[[UIDevice currentDevice] model],[[UIDevice currentDevice] systemVersion]] isHTML:NO toRecipients:@[@"ihetiancong@qq.com"] ccRecipients:nil bccRecipients:nil  Image:nil imageQuality:0 Controller:self];
+            [[InformationHandleTool sharedInfoTool] sendEmailWithSubject:@"使用桂工校园通的建议反馈" MessageBody:[NSString stringWithFormat:@"我现在使用桂工校园通v%@,使用设备：%@,iOSv%@\n我的反馈和建议：\n1、\n2、\n3、",[infoDictionary objectForKey:@"CFBundleShortVersionString"],[[UIDevice currentDevice] model],[[UIDevice currentDevice] systemVersion]] isHTML:NO toRecipients:@[@"iHTCdevelop@gmail.com"] ccRecipients:nil bccRecipients:nil  Image:nil imageQuality:0 Controller:self];
             break;
         }
         case 4:
             [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:@"http://weibo.com/iHTCapp"];
-            //[self openToWebViewWithURL:@"http://weibo.com/iHTCapp"];
             break;
         case 5:
+            [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:@"https://www.iHTCboy.com"];
+            break;
+        case 6: {
+            ITAdvancelDetailViewController * apps = [[ITAdvancelDetailViewController alloc]init];
+            [self.navigationController pushViewController:apps animated:YES];
+            break;
+        }
+        case 7:{
             [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:@"https://github.com/iHTCboy/CampusOfGLUT"];
             break;
-        case 6:{
-             [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+        }
+        case 8:{
+            [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
             SupportTableViewController * vc = [[SupportTableViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-        case 7:{
-            [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:@"https://www.iHTCboy.com"];
-            break;
-        }
-        case 8:{
+        case 9:{
             [[InformationHandleTool sharedInfoTool] inSafariOpenWithURL:@"https://raw.githubusercontent.com/iHTCboy/CampusOfGLUT/master/LICENSE"];
             break;
         }

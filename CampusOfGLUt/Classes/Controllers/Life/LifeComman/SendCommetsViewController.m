@@ -186,7 +186,7 @@
     fromLabel.font = [UIFont systemFontOfSize:13];
     fromLabel.textColor = kMianColor;
     //fromLabel.backgroundColor = bgColor;
-    fromLabel.text =[@"来自：" stringByAppendingString:[Utility getCurrentDeviceModel]];
+    fromLabel.text =[@"来自：" stringByAppendingString:[Utility deviceModelName]];
     [scrollView addSubview:fromLabel];
     self.fromLabelView = fromLabel;
     

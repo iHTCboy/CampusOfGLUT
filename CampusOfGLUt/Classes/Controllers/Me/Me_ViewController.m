@@ -44,7 +44,7 @@
     [logoV addGestureRecognizer:tapImg];
     
     UILabel * name = [[UILabel alloc]init];
-    name.frame = CGRectMake(0, CGRectGetMaxY(logoV.frame),self.view.frame.size.width, 80    );
+    name.frame = CGRectMake(0, CGRectGetMaxY(logoV.frame),self.view.frame.size.width, 80);
     name.text = @"桂林理工大学\n校园通";
     name.numberOfLines = 2;
     name.textAlignment = NSTextAlignmentCenter;
@@ -71,9 +71,9 @@
     [self.view addSubview:version];
     
     UILabel * htc = [[UILabel alloc]init];
-    htc.center = CGPointMake(self.view.frame.size.width * 0.5, self.view.frame.size.height - 150);
+    htc.center = CGPointMake(self.view.frame.size.width * 0.5, self.view.frame.size.height - 130);
     htc.bounds = CGRectMake(0, 0, 250, 30);
-    htc.text = @"by 何天从";
+    htc.text = @"@iHTCboy";
     htc.textAlignment = NSTextAlignmentCenter;
     htc.textColor = RGBColor(147, 147, 147);
     htc.font = [UIFont systemFontOfSize:12];
@@ -81,12 +81,12 @@
     
     
     UILabel * rights = [[UILabel alloc]init];
-    rights.center = CGPointMake(self.view.frame.size.width * 0.5, self.view.frame.size.height- 124);
-    rights.bounds = CGRectMake(0, 0, 250, 30);
+    rights.center = CGPointMake(self.view.frame.size.width * 0.5, self.view.frame.size.height -115);
+    rights.bounds = CGRectMake(0, 0, self.view.frame.size.width, 30);
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy"];
     NSString *yearString = [formatter stringFromDate:[NSDate date]];
-    rights.text = [NSString stringWithFormat:@"©2014-%@ @iHTCboy hetiancong All rights reserved", yearString];
+    rights.text = [NSString stringWithFormat:@"©2014-%@ All rights reserved", yearString];
     rights.textAlignment = NSTextAlignmentCenter;
     rights.textColor = RGBColor(147, 147, 147);
     rights.font = [UIFont systemFontOfSize:11];
@@ -107,6 +107,7 @@
 - (void)settingView
 {
     SetingViewController * setting = [[SetingViewController alloc]init];
+    setting.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:setting animated:YES];
 }
 

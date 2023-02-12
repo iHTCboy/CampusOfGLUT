@@ -1,5 +1,5 @@
 //
-//  Announcements_RootViewController.h
+//  NewsCenter_RootViewController.h
 //  CampusOfGLUT
 //
 //  Created by HTC on 15/2/24.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "AppUtils.h"
 
-@interface Announcements_RootViewController : UITableViewController
+@interface NewsCenter_RootViewController : UIViewController
 
 @end

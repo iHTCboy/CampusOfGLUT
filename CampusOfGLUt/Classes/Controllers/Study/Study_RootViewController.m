@@ -38,7 +38,14 @@
     NSString * plistPath = [[NSBundle mainBundle] pathForResource:@"studyItem.plist" ofType:nil];
     self.studyArray = [[NSArray alloc]initWithContentsOfFile:plistPath];
     
-     self.infoTool = [InformationHandleTool sharedInfoTool];
+    self.infoTool = [InformationHandleTool sharedInfoTool];
+    
+    if (@available(iOS 13.0, *)) {
+        self.view.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+        self.tableView.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+    } else {
+        self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.000];
+    }
 }
 
 
