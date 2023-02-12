@@ -55,13 +55,57 @@ static NSString *const customStyle = @"customStyle";
     //百度统计
     [self startBaiduMobStat];
     
+    [self setupUI];
 
     RootViewController *rootVC = [[RootViewController alloc] init];
     rootVC.tabBar.translucent = YES;
-    
+    if (@available(iOS 15.0, *)) {
+        UITabBarAppearance * appearance = [UITabBarAppearance new];
+        rootVC.tabBar.scrollEdgeAppearance = appearance;
+    }
     [self.window setRootViewController:rootVC];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)setupUI {
+    
+    UINavigationBar *appearance = [UINavigationBar appearance];
+    appearance.tintColor = UIColor.whiteColor;
+    appearance.titleTextAttributes = @{NSForegroundColorAttributeName: UIColor.whiteColor};
+    appearance.barTintColor = kAppMainColor;
+    
+    if (@available(iOS 13.0, *)) {
+        UINavigationBarAppearance * navBarAppearance = [UINavigationBarAppearance new];
+        [navBarAppearance configureWithTransparentBackground];
+        navBarAppearance.titleTextAttributes = @{NSForegroundColorAttributeName: UIColor.whiteColor};
+        navBarAppearance.largeTitleTextAttributes = @{NSForegroundColorAttributeName: UIColor.whiteColor};
+        navBarAppearance.backgroundColor = [kAppMainColor colorWithAlphaComponent:0.95];
+        appearance.compactAppearance = navBarAppearance;
+        appearance.standardAppearance = navBarAppearance;
+        appearance.scrollEdgeAppearance = navBarAppearance;
+    }
+    
+    //设置Nav的背景色和title色
+    UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
+
+    [navigationBarAppearance setBarTintColor:kAppMainColor];
+   // [navigationBarAppearance setTintColor:[UIColor whiteColor]];//返回按钮的箭头颜色
+    NSDictionary *textAttributes = nil;
+    textAttributes = @{
+                       NSFontAttributeName: [UIFont boldSystemFontOfSize:20],
+                       NSForegroundColorAttributeName: [UIColor whiteColor],
+                       };
+    [navigationBarAppearance setTitleTextAttributes:textAttributes];
+   
+//    navigationBarAppearance.translucent = NO;
+    
+    //状态栏为白色
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
+    //        [[UITextField appearance] setTintColor:[UIColor redColor]];//设置UITextField的光标颜色
+    //        [[UITextView appearance] setTintColor:[UIColor redColor]];//设置UITextView的光标颜色
 }
 
 /**
@@ -82,7 +126,7 @@ static NSString *const customStyle = @"customStyle";
     NSString *currentDate = [df stringFromDate:[NSDate new]];
     
     // 自定义事件
-    [statTracker logEvent:@"usermodelName" eventLabel:[Utility getCurrentDeviceModel]];
+    [statTracker logEvent:@"usermodelName" eventLabel:[Utility deviceModelName]];
     [statTracker logEvent:@"systemVersion" eventLabel:[[UIDevice currentDevice] systemVersion]];
     [statTracker logEvent:@"Devices" eventLabel:[[UIDevice currentDevice] name]];
     [statTracker logEvent:@"DateAndDeviceName" eventLabel:[NSString stringWithFormat:@"%@ %@", currentDate, [[UIDevice currentDevice] name]]];
@@ -139,29 +183,29 @@ static NSString *const customStyle = @"customStyle";
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        
-        HUDUtil *hud = [HUDUtil sharedHUDUtil];
-        
-        switch (status) {
-            case AFNetworkReachabilityStatusReachableViaWiFi:
-                [hud showTextHUDWithText:@"正在使用WiFi网络" position:JGProgressHUDPositionBottomCenter marginInsets:UIEdgeInsetsMake(0, 0, 55, 0) delay:2.0 zoom:NO inView:[UIApplication sharedApplication].keyWindow];
-                break;
-            case AFNetworkReachabilityStatusReachableViaWWAN:
-            {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    NSString * stae = [self getNetWorkStates];
-                    [hud showTextHUDWithText:[NSString stringWithFormat:@"正在使用%@网络",stae] position:JGProgressHUDPositionBottomCenter marginInsets:UIEdgeInsetsMake(0, 0, 55, 0) delay:2.0 zoom:NO inView:[UIApplication sharedApplication].keyWindow];
-                });
-            }
-                break;
-            case AFNetworkReachabilityStatusNotReachable:
-                //[hud showAlertViewWithTitle:@"提示" mesg:@"当前没有网络连接" cancelTitle:nil confirmTitle:@"确认" tag:0];
-                //@"当前没有网络连接"
-                break;
-            default:
-                //TPLog(@"未知网络");
-                break;
-        }
+//        
+//        HUDUtil *hud = [HUDUtil sharedHUDUtil];
+//        
+//        switch (status) {
+//            case AFNetworkReachabilityStatusReachableViaWiFi:
+//                [hud showTextHUDWithText:@"正在使用WiFi网络" position:JGProgressHUDPositionBottomCenter marginInsets:UIEdgeInsetsMake(0, 0, 55, 0) delay:2.0 zoom:NO inView:[UIApplication sharedApplication].keyWindow];
+//                break;
+//            case AFNetworkReachabilityStatusReachableViaWWAN:
+//            {
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    NSString * stae = [self getNetWorkStates];
+//                    [hud showTextHUDWithText:[NSString stringWithFormat:@"正在使用%@网络",stae] position:JGProgressHUDPositionBottomCenter marginInsets:UIEdgeInsetsMake(0, 0, 55, 0) delay:2.0 zoom:NO inView:[UIApplication sharedApplication].keyWindow];
+//                });
+//            }
+//                break;
+//            case AFNetworkReachabilityStatusNotReachable:
+//                //[hud showAlertViewWithTitle:@"提示" mesg:@"当前没有网络连接" cancelTitle:nil confirmTitle:@"确认" tag:0];
+//                //@"当前没有网络连接"
+//                break;
+//            default:
+//                //TPLog(@"未知网络");
+//                break;
+//        }
         
     }];
 }

@@ -1,9 +1,9 @@
-﻿/* ########################
+/* ########################
 	 IT之家 Wap版 v2.0 
 ######################## */
 
 /* 全局样式重置 */
-html{color:#000;background:#fff}
+html{color:#000;background:#f4f4f4}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
 table{border-collapse:collapse;border-spacing:0}
 fieldset,img{border:0;vertical-align:bottom;}
@@ -21,7 +21,7 @@ textarea{white-space:pre-wrap;}
 legend{color:#000}
 
 /* 全局样式 */
-body{color:#272a30;font-size:13px;font-family:'Helvetica Neue';background:#fff;}
+body{color:#272a30;font-size:13px;font-family:'Helvetica Neue';background:#f4f4f4;}
 body.wide{font-size:14px;}
 .clear{clear:both;}
 .hide{display:none;}
@@ -302,4 +302,17 @@ body.app #hd{top:40px;}
 	top:2%;
 	margin-top:5px;
 	right:2%;
+}
+
+@media (prefers-color-scheme: dark) {
+    html:not(.light), html:not(.light) body {
+        background: #1c1c1e;
+        color: #efefef;
+    }
+    
+    html:not(.light) #hd, #con, #ft{
+        width: 100%;
+        min-width: 320px;
+        background-color: #1c1c1e;
+    }
 }

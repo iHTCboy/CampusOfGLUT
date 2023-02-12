@@ -81,13 +81,16 @@ static NSString *const customWebStyle = @"customWebStyle";
     
     self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:self.webView];
-    self.webView.dataDetectorTypes = UIDataDetectorTypeAll;
+    self.webView.dataDetectorTypes = UIDataDetectorTypeLink;
     self.webView.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.webView.delegate = self;
     
     self.webView.opaque = YES;
     self.webView.backgroundColor = [UIColor clearColor];
     self.webView.scrollView.backgroundColor = [UIColor clearColor];
+//    if (@available(iOS 11.0, *)) {
+//        self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    }
     
     self.shareInfoTool = [InformationHandleTool sharedInfoTool];
 
@@ -144,7 +147,7 @@ static NSString *const customWebStyle = @"customWebStyle";
 
 - (void)settingBackground
 {
-    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];
+    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 70)];
     label.numberOfLines = 2;
     label.text = @"网页由 桂林理工大学-校园通 转码\n以便在移动设备上浏览";
     label.font = [UIFont systemFontOfSize:13];
@@ -177,11 +180,10 @@ static NSString *const customWebStyle = @"customWebStyle";
             
             
         } failure:^(NSError *error) {
-            
+            [self.navigationController popViewControllerAnimated:NO];
             [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.articleURL]]];
-
-            NSLog(@"%@",error.description);
             
+//            NSLog(@"%@",error.description);
         }];
 }
 
@@ -210,20 +212,32 @@ static NSString *const customWebStyle = @"customWebStyle";
         self.title = self.newsModel.title;  
         html = [html stringByReplacingOccurrencesOfString:@"${webview_title}" withString:self.newsModel.title];
     }else{
+////        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
+////        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+////            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.articleURL]]];
+////        });
+        [self.navigationController popViewControllerAnimated:NO];
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.articleURL]]];
         return ;
     }
-
-    html = [html stringByReplacingOccurrencesOfString:@"${webview_source}" withString:self.newsModel.source];
-    html = [html stringByReplacingOccurrencesOfString:@"${webview_time}" withString:self.newsModel.time];
-    html = [html stringByReplacingOccurrencesOfString:@"${webview_author}" withString:self.newsModel.author];
-//    html = [html stringByReplacingOccurrencesOfString:@"${webview_click}" withString:self.newsModel.clickNum];
-    //公告的录入人为空
-    if (self.newsModel.enter_men != nil)
-    {
-        //self.newsModel.enter_men = self.newsModel.author;
-        html = [html stringByReplacingOccurrencesOfString:@"${webview_emtermen}" withString:self.newsModel.enter_men];
+    
+    NSString *subtitle = @"";
+    if (self.newsModel.source) {
+        subtitle = [NSString stringWithFormat:@"来源：%@ ", self.newsModel.source];
     }
+    
+    if (self.newsModel.author) {
+        subtitle = [subtitle stringByAppendingFormat:
+                    @"%@", [NSString stringWithFormat:@"%@作者：%@ ", subtitle.length>0 ? @"| " : @"", self.newsModel.author]];
+    }
+    
+    if (self.newsModel.time) {
+        subtitle = [subtitle stringByAppendingFormat:
+                    @"%@", [NSString stringWithFormat:@"%@发布时间：%@ ", subtitle.length>0 ? @"| " : @"", self.newsModel.time]];
+    }
+    
+    //来源：${webview_source} | 作者：${webview_author} | 发布时间：${webview_time}
+    html = [html stringByReplacingOccurrencesOfString:@"${webview_subtitle}" withString: subtitle];
     
     NSMutableString * contentstr = [NSMutableString string];
     
@@ -254,12 +268,18 @@ static NSString *const customWebStyle = @"customWebStyle";
     
     NSMutableString * imagesHtml = [NSMutableString string];
 
-    if (self.newsModel.images.count)
+    NSInteger imageCounts = self.newsModel.images.count;
+    if (imageCounts > 0)
     {
         for (int i = 0; i < self.newsModel.images.count; i += 2) {
+            // 可能全文只有一张回复我
+            if (imageCounts == 1) {
+                [imagesHtml appendString:[self getImageHTMLWithImage:self.newsModel.images[i] Title:@"" ImageHight:imageHight]];
+            }
             
-            if (i + 1 == self.newsModel.images.count) {
-                //可能由于格式原理，图片不成对出现
+            if (i + 1 == imageCounts) {
+                //可能由于格式原因，图片不成对出现
+                [imagesHtml appendString:[self getImageHTMLWithImage:self.newsModel.images[i] Title:@"" ImageHight:imageHight]];
                 break;
             }
             
@@ -318,7 +338,7 @@ static NSString *const customWebStyle = @"customWebStyle";
     //return [NSString stringWithFormat:@"<img src=\"%@\" width=\"99%%\" height=\"35%%\" style=\" display:block; margin:0 auto;text-align:center\" ><p>%@</p>",imagestr,title];
     
     
-    return [NSString stringWithFormat:@"<img src=\"%@\" width=\"99%%\" height=\"%ldpx\" onclick=\"openIamge('%@title%@');\" \"><p>%@</p>",imagestr,(long)hight,imagestr,title,title];
+    return [NSString stringWithFormat:@"<img src=\"%@\" width=\"99%%\" height=auto onclick=\"openIamge('%@title%@');\" \"><p>%@</p>",imagestr,imagestr,title,title];
     
     //    padding: 0;max-width: 610px;min-width: 290px;min-height: 100px;position: relative;margin: auto
     

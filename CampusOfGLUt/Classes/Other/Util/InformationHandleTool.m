@@ -178,8 +178,8 @@ UIWebView * _webView;
 - (void)inAppStoreWithID:(NSString *)ID
 {
     //评分 无法使用
-    //NSString *str = [NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",ID];
-    NSString *str = [NSString stringWithFormat: @"https://itunes.apple.com/cn/app/gui-lin-li-gong-da-xue-yun/id%@?mt=8&action=write-review", ID];
+    //NSString *str = [NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&action=write-review",ID];
+    NSString *str = [NSString stringWithFormat: @"https://itunes.apple.com/cn/app/gui-lin-li-gong-da-xue-yun/id%@?mt=8", ID];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 

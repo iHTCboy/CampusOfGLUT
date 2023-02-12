@@ -321,8 +321,16 @@
     self.iconViewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.iconView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:self.lines * BUTTON_VIEW_SIDE + (self.lines + 1) * ICON_VIEW_HEIGHT_SPACE];
     [self.iconView addConstraint:self.iconViewHeightConstraint];
     
+    int bottom = 5;
+    // 刘海屏
+    if (@available(iOS 11.0, *)) {
+        UIEdgeInsets inset = [[UIApplication sharedApplication].keyWindow safeAreaInsets];
+        bottom += inset.bottom;
+    }
+    
     //垂直方向titleLabel挨着iconView挨着cancelButton
-    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[titleLabel(==15)]-[iconView]-[lineView(==0.5)]-[cancelButton(==30)]-5-|" options:0 metrics:nil views:views];
+    NSString *format = [NSString stringWithFormat:@"V:|-8-[titleLabel(==15)]-[iconView]-[lineView(==0.5)]-[cancelButton(==30)]-%d-|", bottom];
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:views];
     [self.contentView addConstraints:constraints];
 
 }

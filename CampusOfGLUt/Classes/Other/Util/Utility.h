@@ -223,8 +223,7 @@
 +(BOOL)isIphone5;
 
 #pragma mark - 判断手机型号
-+ (NSString *)getCurrentDeviceModel;
-+ (NSString *)getCurrentDeviceModelDetail;
++ (NSString *)deviceModelName;
 
 #pragma mark - 时间相关
 + (NSDateFormatter *)getDateFormatter;

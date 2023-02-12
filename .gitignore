@@ -32,7 +32,7 @@ EfunKrModule.xcodeproj/xcuserdata/
 EfunKrModule.xcworkspace/
 EfunKrModule.xcodeproj/project.xcworkspace/xcuserdata/
 *.swp
-.DS_Store
+*.DS_Store
 
 
 # CocoaPods

@@ -22,10 +22,15 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - SDWebImage (~> 3.7)
 
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - SDWebImage
+
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AFNetworking: 19827bce8c8d25b16bea185837cb66976c23f8fe
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
 PODFILE CHECKSUM: 43c8829e2b2ab3a0eb93fbf09561fe64259ddde7
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.11.3

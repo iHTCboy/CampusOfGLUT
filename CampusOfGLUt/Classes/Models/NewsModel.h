@@ -10,16 +10,16 @@
 
 @interface NewsModel : NSObject
 
-@property (nonatomic,copy) NSString * title;
-@property (nonatomic,copy) NSString * author;
-@property (nonatomic,copy) NSString * clickNum;
-@property (nonatomic,copy) NSString * time;
-@property (nonatomic,copy) NSString * url;
-@property (nonatomic,copy) NSString * source;
-@property (nonatomic,copy) NSString * enter_men;
-@property (nonatomic,strong) NSArray * images;
-@property (nonatomic,copy) NSArray * contents;
-@property (nonatomic,copy) NSString * contentHTML;
-@property (nonatomic,copy) NSString * imagesHTML;
+@property (nonatomic,copy) NSString * title;//标题
+@property (nonatomic,copy) NSString * author;//作者
+@property (nonatomic,copy) NSString * clickNum;//点击数
+@property (nonatomic,copy) NSString * time;//时间
+@property (nonatomic,copy) NSString * url;//链接
+@property (nonatomic,copy) NSString * source;//来源
+@property (nonatomic,copy) NSString * enter_men;//录入人
+@property (nonatomic,strong) NSArray * images;//图片集
+@property (nonatomic,copy) NSArray * contents;//内容集
+@property (nonatomic,copy) NSString * contentHTML;//html格式内容
+@property (nonatomic,copy) NSString * imagesHTML;//html图片
 
 @end
