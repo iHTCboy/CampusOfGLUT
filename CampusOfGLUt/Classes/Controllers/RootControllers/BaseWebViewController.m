@@ -24,8 +24,9 @@
 #import "InformationHandleTool.h"
 #import "QQSDKTool.h"
 #import "CRToastTool.h"
-
 #import "BaiduMobStat.h"
+#import <SafariServices/SafariServices.h>
+#import "BaseSafariViewController.h"
 
 static NSString *const customWebStyle = @"customWebStyle";
 
@@ -180,11 +181,23 @@ static NSString *const customWebStyle = @"customWebStyle";
             
             
         } failure:^(NSError *error) {
-            [self.navigationController popViewControllerAnimated:NO];
-            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.articleURL]]];
-            
+            [self openWithSafari];
 //            NSLog(@"%@",error.description);
         }];
+}
+
+- (void)openWithSafari
+{
+    [self.navigationController popViewControllerAnimated:NO];
+    [self.shareInfoTool inSafariOpenWithURL:self.articleURL];
+    
+//    NSURL *url = [NSURL URLWithString:self.articleURL];
+//    BaseSafariViewController *svc = [[BaseSafariViewController alloc] initWithURL:url];
+//    if (@available(iOS 11.0, *)) {
+//        svc.dismissButtonStyle = SFSafariViewControllerDismissButtonStyleClose;
+//    }
+//    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:svc animated:YES completion:nil];
+    //[self.webView loadRequest:[NSURLRequest requestWithURL:]];
 }
 
 - (void)setHTML
@@ -216,8 +229,8 @@ static NSString *const customWebStyle = @"customWebStyle";
 ////        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 ////            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.articleURL]]];
 ////        });
-        [self.navigationController popViewControllerAnimated:NO];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.articleURL]]];
+        
+        [self openWithSafari];
         return ;
     }
     
@@ -337,8 +350,8 @@ static NSString *const customWebStyle = @"customWebStyle";
 
     //return [NSString stringWithFormat:@"<img src=\"%@\" width=\"99%%\" height=\"35%%\" style=\" display:block; margin:0 auto;text-align:center\" ><p>%@</p>",imagestr,title];
     
-    
-    return [NSString stringWithFormat:@"<img src=\"%@\" width=\"99%%\" height=auto onclick=\"openIamge('%@title%@');\" \"><p>%@</p>",imagestr,imagestr,title,title];
+    NSNumber *width = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? @80 : @99;
+    return [NSString stringWithFormat:@"<img src=\"%@\" width=\"%@%%\" height=auto onclick=\"openIamge('%@title%@');\" \"><p>%@</p>", imagestr, width, imagestr, title, title];
     
     //    padding: 0;max-width: 610px;min-width: 290px;min-height: 100px;position: relative;margin: auto
     

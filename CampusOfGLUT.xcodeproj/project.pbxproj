@@ -32,9 +32,9 @@
 		6D2E0D171A9CA57800218171 /* NewsCenter_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0D161A9CA57800218171 /* NewsCenter_RootViewController.m */; };
 		6D2E0D1A1A9CA5BE00218171 /* Announcements_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E0D191A9CA5BE00218171 /* Announcements_RootViewController.m */; };
 		6D2E28BA1F93181E00C975C4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E28B51F93181600C975C4 /* libWeChatSDK.a */; };
-		6D2E28BE1F933CC900C975C4 /* iconGlutCampuslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DC27E421AA47E3A00D5051F /* iconGlutCampuslogo.png */; };
 		6D2E28C91F93410D00C975C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E28C81F9340FC00C975C4 /* AppDelegate.m */; };
 		6D3FECC91AA0A9AF006CA076 /* QQSDKTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3FECC81AA0A9AF006CA076 /* QQSDKTool.m */; };
+		6D4107A529A0D06E0058C27C /* iconGlutCampuslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DC27E421AA47E3A00D5051F /* iconGlutCampuslogo.png */; };
 		6D42EE011AF254C7009BAF18 /* jwtInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D42EE001AF254C7009BAF18 /* jwtInfoList.plist */; };
 		6D42EE031AF25533009BAF18 /* jwsInfoList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D42EE021AF25533009BAF18 /* jwsInfoList.plist */; };
 		6D42EE061AF25589009BAF18 /* JwLoginVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D42EE051AF25589009BAF18 /* JwLoginVCViewController.m */; };
@@ -125,6 +125,8 @@
 		6D980C751DC7988E00C0184C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D980C741DC7988E00C0184C /* JavaScriptCore.framework */; };
 		6D980C771DC798BD00C0184C /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D980C761DC798BD00C0184C /* libz.1.2.5.tbd */; };
 		6D980C791DC798C500C0184C /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D980C781DC798C500C0184C /* libstdc++.tbd */; };
+		6D986D0829A11C9D00ABC7AB /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2943C61F92594800D0705E /* SafariServices.framework */; };
+		6D986D0B29A11FB900ABC7AB /* BaseSafariViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D986D0A29A11FB900ABC7AB /* BaseSafariViewController.m */; };
 		6D9F26DD1A935DE800A87EB5 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F26DC1A935DE800A87EB5 /* ODRefreshControl.m */; };
 		6D9F26EA1A93CEBB00A87EB5 /* CRToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F26E01A93CEBB00A87EB5 /* CRToast.m */; };
 		6D9F26EB1A93CEBB00A87EB5 /* CRToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F26E31A93CEBB00A87EB5 /* CRToastManager.m */; };
@@ -210,7 +212,6 @@
 		6DDDC9F01A94734F004DF040 /* FetchNewsDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDC9ED1A94734F004DF040 /* FetchNewsDataTool.m */; };
 		6DDDC9F11A94734F004DF040 /* NewsCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDC9EF1A94734F004DF040 /* NewsCacheTool.m */; };
 		6DDDC9F51A94740B004DF040 /* logoAlpha500.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDDC9F41A94740B004DF040 /* logoAlpha500.png */; };
-		6DDDC9F71A947416004DF040 /* iconGlutCampus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDDC9F61A947416004DF040 /* iconGlutCampus.png */; };
 		6DDEA8C72999162A0022D6B5 /* XSHDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDEA8C62999162A0022D6B5 /* XSHDViewController.m */; };
 		6DDEA8CA299916390022D6B5 /* MTGGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDEA8C9299916390022D6B5 /* MTGGViewController.m */; };
 		6DDEA8CD299916460022D6B5 /* XYKXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDEA8CC299916460022D6B5 /* XYKXViewController.m */; };
@@ -503,6 +504,8 @@
 		6D980C741DC7988E00C0184C /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		6D980C761DC798BD00C0184C /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		6D980C781DC798C500C0184C /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		6D986D0929A11FB900ABC7AB /* BaseSafariViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BaseSafariViewController.h; path = CampusOfGLUT/Classes/Controllers/RootControllers/BaseSafariViewController.h; sourceTree = SOURCE_ROOT; };
+		6D986D0A29A11FB900ABC7AB /* BaseSafariViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BaseSafariViewController.m; path = CampusOfGLUT/Classes/Controllers/RootControllers/BaseSafariViewController.m; sourceTree = SOURCE_ROOT; };
 		6D9F26DB1A935DE800A87EB5 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
 		6D9F26DC1A935DE800A87EB5 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
 		6D9F26DF1A93CEBB00A87EB5 /* CRToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRToast.h; sourceTree = "<group>"; };
@@ -637,7 +640,6 @@
 		6DDDC9EE1A94734F004DF040 /* NewsCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCacheTool.h; sourceTree = "<group>"; };
 		6DDDC9EF1A94734F004DF040 /* NewsCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCacheTool.m; sourceTree = "<group>"; };
 		6DDDC9F41A94740B004DF040 /* logoAlpha500.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoAlpha500.png; sourceTree = "<group>"; };
-		6DDDC9F61A947416004DF040 /* iconGlutCampus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconGlutCampus.png; sourceTree = "<group>"; };
 		6DDEA8C52999162A0022D6B5 /* XSHDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XSHDViewController.h; path = CampusOfGLUT/Classes/Controllers/Learn/XSHDViewController.h; sourceTree = SOURCE_ROOT; };
 		6DDEA8C62999162A0022D6B5 /* XSHDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XSHDViewController.m; path = CampusOfGLUT/Classes/Controllers/Learn/XSHDViewController.m; sourceTree = SOURCE_ROOT; };
 		6DDEA8C8299916390022D6B5 /* MTGGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MTGGViewController.h; path = CampusOfGLUT/Classes/Controllers/Learn/MTGGViewController.h; sourceTree = SOURCE_ROOT; };
@@ -694,6 +696,7 @@
 				6D2943C91F925AB000D0705E /* StoreKit.framework in Frameworks */,
 				6D2943C71F92594800D0705E /* SafariServices.framework in Frameworks */,
 				6D980C791DC798C500C0184C /* libstdc++.tbd in Frameworks */,
+				6D986D0829A11C9D00ABC7AB /* SafariServices.framework in Frameworks */,
 				6D980C771DC798BD00C0184C /* libz.1.2.5.tbd in Frameworks */,
 				6D0EE93C1F97980100488E7D /* TencentOpenAPI.framework in Frameworks */,
 				6D2C0F7B2157D36400C37783 /* libBaiduMobStat.a in Frameworks */,
@@ -786,21 +789,6 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		6D289C8D1AF26A8E001509AF /* JW */ = {
-			isa = PBXGroup;
-			children = (
-				6D289C9C1AF26AD2001509AF /* login.png */,
-				6D289C8E1AF26ABB001509AF /* loginB.png */,
-				6D289C901AF26AC8001509AF /* ybtn.png */,
-				6D289C911AF26AC8001509AF /* ybtn@2x.png */,
-				6D289C921AF26AC8001509AF /* ybtn@3x.png */,
-				6D289C931AF26AC8001509AF /* ybtnNO.png */,
-				6D289C941AF26AC8001509AF /* ybtnNO@2x.png */,
-				6D289C951AF26AC8001509AF /* ybtnNO@3x.png */,
-			);
-			name = JW;
-			sourceTree = "<group>";
-		};
 		6D2C0F782157D36400C37783 /* BaiduMTJ_iOS_App_V4.5.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,6 +862,78 @@
 			name = Appdelegte;
 			path = CampusOfGLUT/Classes/Appdelegte;
 			sourceTree = SOURCE_ROOT;
+		};
+		6D4107A229A0CF530058C27C /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				6D21B8BB1AC6F3C30001CCAC /* timeline_card_rightbottom_highlighted@2x.png */,
+				6D21B8B91AC6F39C0001CCAC /* timeline_card_middlebottom_highlighted@2x.png */,
+				6D21B8B71AC6F36B0001CCAC /* timeline_card_leftbottom_highlighted@2x.png */,
+				6D21B8B51AC6E4D00001CCAC /* message_separator_background@3x.png */,
+				6D21B8B31AC6E2BE0001CCAC /* timeline_cell_separator@2x.png */,
+				6D21B8AF1AC6E2A00001CCAC /* timeline_card_top_background_highlighted@2x.png */,
+				6D21B8B01AC6E2A00001CCAC /* timeline_card_top_background@2x.png */,
+				6D8AEBF11AC5C159001C95A6 /* timeline_card_bottom_line_highlighted@2x.png */,
+				6D8AEBF21AC5C159001C95A6 /* timeline_card_bottom_line@2x.png */,
+				6D8AEBEB1AC5C067001C95A6 /* timeline_card_bottom_background_highlighted@2x.png */,
+				6D8AEBEC1AC5C067001C95A6 /* timeline_card_bottom_background_maskdisable@2x.png */,
+				6D8AEBED1AC5C067001C95A6 /* timeline_card_bottom_background@2x.png */,
+				6D8AEBE71AC5C035001C95A6 /* timeline_icon_unlike@2x.png */,
+				6D8AEBE81AC5C035001C95A6 /* timeline_icon_unlike@3x.png */,
+				6D8AEBD71AC5C011001C95A6 /* timeline_icon_comment_disable@2x.png */,
+				6D8AEBD81AC5C011001C95A6 /* timeline_icon_comment_disable@3x.png */,
+				6D8AEBD91AC5C011001C95A6 /* timeline_icon_comment@2x.png */,
+				6D8AEBDA1AC5C011001C95A6 /* timeline_icon_comment@3x.png */,
+				6D8AEBDB1AC5C011001C95A6 /* timeline_icon_like_disable@2x.png */,
+				6D8AEBDC1AC5C011001C95A6 /* timeline_icon_like_disable@3x.png */,
+				6D8AEBDD1AC5C011001C95A6 /* timeline_icon_like@2x.png */,
+				6D8AEBDE1AC5C011001C95A6 /* timeline_icon_like@3x.png */,
+				6D8AEBCF1AC5BFB0001C95A6 /* timeline_icon_retweet_disable@2x.png */,
+				6D8AEBD01AC5BFB0001C95A6 /* timeline_icon_retweet_disable@3x.png */,
+				6D8AEBD11AC5BFB0001C95A6 /* timeline_icon_retweet@2x.png */,
+				6D8AEBD21AC5BFB0001C95A6 /* timeline_icon_retweet@3x.png */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		6D4107A329A0CF770058C27C /* JWapp */ = {
+			isa = PBXGroup;
+			children = (
+				6D289C9C1AF26AD2001509AF /* login.png */,
+				6D289C8E1AF26ABB001509AF /* loginB.png */,
+				6D289C901AF26AC8001509AF /* ybtn.png */,
+				6D289C911AF26AC8001509AF /* ybtn@2x.png */,
+				6D289C921AF26AC8001509AF /* ybtn@3x.png */,
+				6D289C931AF26AC8001509AF /* ybtnNO.png */,
+				6D289C941AF26AC8001509AF /* ybtnNO@2x.png */,
+				6D289C951AF26AC8001509AF /* ybtnNO@3x.png */,
+			);
+			path = JWapp;
+			sourceTree = "<group>";
+		};
+		6D4107A429A0D0100058C27C /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				6D90A8B31A8E0A3A003EC188 /* tabbar_background@2x.png */,
+				6D90A8C91A8E0FE5003EC188 /* trends_normal@3x.png */,
+				6D90A8CA1A8E0FE5003EC188 /* trends_normal@2x.png */,
+				6D90A8C11A8E0BFA003EC188 /* trends_selected@2x.png */,
+				6D90A8C21A8E0BFA003EC188 /* trends_selected@3x.png */,
+				6D90A89D1A8DFD5B003EC188 /* study_selected@2x.png */,
+				6D90A89E1A8DFD5B003EC188 /* study_selected@3x.png */,
+				6D90A8971A8DFB23003EC188 /* study_normal@2x.png */,
+				6D90A8A11A8DFE47003EC188 /* study_normal@3x.png */,
+				6D90A8A31A8E0182003EC188 /* life_selected@2x.png */,
+				6D90A8A41A8E0182003EC188 /* life_normal@2x.png */,
+				6D90A8A51A8E0182003EC188 /* life_selected@3x.png */,
+				6D90A8A61A8E0182003EC188 /* life_normal@3x.png */,
+				6D90A8AB1A8E039A003EC188 /* me_normal@2x.png */,
+				6D90A8AC1A8E039A003EC188 /* me_selected@3x.png */,
+				6D90A8AD1A8E039A003EC188 /* me_selected@2x.png */,
+				6D90A8AE1A8E039A003EC188 /* me_normal@3x.png */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
 		};
 		6D42EE221AF25BF7009BAF18 /* DXAlertView */ = {
 			isa = PBXGroup;
@@ -958,30 +1018,6 @@
 			);
 			name = IconOfLife;
 			path = ../../../../CampusOfGLUt/CampusOfGLUt/Classes/Images/IconOfLife;
-			sourceTree = "<group>";
-		};
-		6D7BEF451A8B7F48008B3618 /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				6D90A8B31A8E0A3A003EC188 /* tabbar_background@2x.png */,
-				6D90A8C91A8E0FE5003EC188 /* trends_normal@3x.png */,
-				6D90A8CA1A8E0FE5003EC188 /* trends_normal@2x.png */,
-				6D90A8C11A8E0BFA003EC188 /* trends_selected@2x.png */,
-				6D90A8C21A8E0BFA003EC188 /* trends_selected@3x.png */,
-				6D90A89D1A8DFD5B003EC188 /* study_selected@2x.png */,
-				6D90A89E1A8DFD5B003EC188 /* study_selected@3x.png */,
-				6D90A8971A8DFB23003EC188 /* study_normal@2x.png */,
-				6D90A8A11A8DFE47003EC188 /* study_normal@3x.png */,
-				6D90A8A31A8E0182003EC188 /* life_selected@2x.png */,
-				6D90A8A41A8E0182003EC188 /* life_normal@2x.png */,
-				6D90A8A51A8E0182003EC188 /* life_selected@3x.png */,
-				6D90A8A61A8E0182003EC188 /* life_normal@3x.png */,
-				6D90A8AB1A8E039A003EC188 /* me_normal@2x.png */,
-				6D90A8AC1A8E039A003EC188 /* me_selected@3x.png */,
-				6D90A8AD1A8E039A003EC188 /* me_selected@2x.png */,
-				6D90A8AE1A8E039A003EC188 /* me_normal@3x.png */,
-			);
-			name = TabBar;
 			sourceTree = "<group>";
 		};
 		6D7CD8E61AC457FD00CEF6BB /* KxMenu */ = {
@@ -1127,36 +1163,13 @@
 		6D971CD21A8B76A10016469D /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				6D289C8D1AF26A8E001509AF /* JW */,
+				6D4107A429A0D0100058C27C /* TabBar */,
+				6D4107A329A0CF770058C27C /* JWapp */,
 				6D5B54551AA2545700EF9CEB /* IconOfLife */,
+				6D4107A229A0CF530058C27C /* Timeline */,
 				6D909C111AD05EBA0068FB2D /* LifeIcon */,
+				6DBA62E51A9B3E1A005EF8ED /* ShareIcon */,
 				6D47492A1BCA762D00534BDC /* scroll_to_top@2x.png */,
-				6D21B8BB1AC6F3C30001CCAC /* timeline_card_rightbottom_highlighted@2x.png */,
-				6D21B8B91AC6F39C0001CCAC /* timeline_card_middlebottom_highlighted@2x.png */,
-				6D21B8B71AC6F36B0001CCAC /* timeline_card_leftbottom_highlighted@2x.png */,
-				6D21B8B51AC6E4D00001CCAC /* message_separator_background@3x.png */,
-				6D21B8B31AC6E2BE0001CCAC /* timeline_cell_separator@2x.png */,
-				6D21B8AF1AC6E2A00001CCAC /* timeline_card_top_background_highlighted@2x.png */,
-				6D21B8B01AC6E2A00001CCAC /* timeline_card_top_background@2x.png */,
-				6D8AEBF11AC5C159001C95A6 /* timeline_card_bottom_line_highlighted@2x.png */,
-				6D8AEBF21AC5C159001C95A6 /* timeline_card_bottom_line@2x.png */,
-				6D8AEBEB1AC5C067001C95A6 /* timeline_card_bottom_background_highlighted@2x.png */,
-				6D8AEBEC1AC5C067001C95A6 /* timeline_card_bottom_background_maskdisable@2x.png */,
-				6D8AEBED1AC5C067001C95A6 /* timeline_card_bottom_background@2x.png */,
-				6D8AEBE71AC5C035001C95A6 /* timeline_icon_unlike@2x.png */,
-				6D8AEBE81AC5C035001C95A6 /* timeline_icon_unlike@3x.png */,
-				6D8AEBD71AC5C011001C95A6 /* timeline_icon_comment_disable@2x.png */,
-				6D8AEBD81AC5C011001C95A6 /* timeline_icon_comment_disable@3x.png */,
-				6D8AEBD91AC5C011001C95A6 /* timeline_icon_comment@2x.png */,
-				6D8AEBDA1AC5C011001C95A6 /* timeline_icon_comment@3x.png */,
-				6D8AEBDB1AC5C011001C95A6 /* timeline_icon_like_disable@2x.png */,
-				6D8AEBDC1AC5C011001C95A6 /* timeline_icon_like_disable@3x.png */,
-				6D8AEBDD1AC5C011001C95A6 /* timeline_icon_like@2x.png */,
-				6D8AEBDE1AC5C011001C95A6 /* timeline_icon_like@3x.png */,
-				6D8AEBCF1AC5BFB0001C95A6 /* timeline_icon_retweet_disable@2x.png */,
-				6D8AEBD01AC5BFB0001C95A6 /* timeline_icon_retweet_disable@3x.png */,
-				6D8AEBD11AC5BFB0001C95A6 /* timeline_icon_retweet@2x.png */,
-				6D8AEBD21AC5BFB0001C95A6 /* timeline_icon_retweet@3x.png */,
 				6D7CD8E41AC44F4300CEF6BB /* image_clear@2x.png */,
 				6DB800E41AB5CF4800F4B7A4 /* addPictureBgImage@2x.png */,
 				6D691AAA1AB5C7510084E0D3 /* Navi_add_normol@2x.png */,
@@ -1165,7 +1178,6 @@
 				6D691AAD1AB5C7510084E0D3 /* navi_close_normol@3x.png */,
 				6DC27E421AA47E3A00D5051F /* iconGlutCampuslogo.png */,
 				6DBA63151A9B6E59005EF8ED /* shareThumbImage.png */,
-				6DDDC9F61A947416004DF040 /* iconGlutCampus.png */,
 				6DDDC9F41A94740B004DF040 /* logoAlpha500.png */,
 				6DDDC9E81A9471CD004DF040 /* placeholderImage.png */,
 				6D90A8D91A8E1BFF003EC188 /* navigationbar_back@3x.png */,
@@ -1174,8 +1186,6 @@
 				6D90A8D61A8E1804003EC188 /* navigationbar_setting@3x.png */,
 				6D90A8D11A8E1776003EC188 /* navigationbar_more@2x.png */,
 				6D90A8D21A8E1776003EC188 /* navigationbar_more@3x.png */,
-				6DBA62E51A9B3E1A005EF8ED /* ShareIcon */,
-				6D7BEF451A8B7F48008B3618 /* TabBar */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1442,6 +1452,8 @@
 				6D971CDF1A8B77900016469D /* BaseNavigationController.m */,
 				6D90A88E1A8DCA6C003EC188 /* BaseWebViewController.h */,
 				6D90A88F1A8DCA6C003EC188 /* BaseWebViewController.m */,
+				6D986D0929A11FB900ABC7AB /* BaseSafariViewController.h */,
+				6D986D0A29A11FB900ABC7AB /* BaseSafariViewController.m */,
 			);
 			path = RootControllers;
 			sourceTree = "<group>";
@@ -1732,7 +1744,6 @@
 				6DBA630A1A9B3E1A005EF8ED /* ShareIcon_SinaWeibo@2x.png in Resources */,
 				6DBA63091A9B3E1A005EF8ED /* ShareIcon_safari@3x.png in Resources */,
 				6D42EE2B1AF25BF7009BAF18 /* btn_close_selected.png in Resources */,
-				6D2E28BE1F933CC900C975C4 /* iconGlutCampuslogo.png in Resources */,
 				6D90A8A01A8DFD5B003EC188 /* study_selected@3x.png in Resources */,
 				6D7BEF471A8B8446008B3618 /* studyItem.plist in Resources */,
 				6D90A8B21A8E039A003EC188 /* me_normal@3x.png in Resources */,
@@ -1758,6 +1769,7 @@
 				6DDDC9E91A9471CD004DF040 /* placeholderImage.png in Resources */,
 				6DBA63111A9B3E1A005EF8ED /* ShareIcon_WeixinZone@3x.png in Resources */,
 				6D90A8B41A8E0A3A003EC188 /* tabbar_background@2x.png in Resources */,
+				6D4107A529A0D06E0058C27C /* iconGlutCampuslogo.png in Resources */,
 				6DB800E51AB5CF4800F4B7A4 /* addPictureBgImage@2x.png in Resources */,
 				6DC6F9631A97682000A971AA /* TOWebViewControllerLocalizable.strings in Resources */,
 				6DBA62FF1A9B3E1A005EF8ED /* ShareIcon_link@3x.png in Resources */,
@@ -1783,7 +1795,6 @@
 				6D90A8D81A8E1804003EC188 /* navigationbar_setting@3x.png in Resources */,
 				6DBA63011A9B3E1A005EF8ED /* ShareIcon_Mail@3x.png in Resources */,
 				6DBA63061A9B3E1A005EF8ED /* ShareIcon_refresh@2x.png in Resources */,
-				6DDDC9F71A947416004DF040 /* iconGlutCampus.png in Resources */,
 				6DCFDA0C1A91DBB000106333 /* iPhoneNews_template.html in Resources */,
 				6D90A8C31A8E0BFA003EC188 /* trends_selected@2x.png in Resources */,
 				6DDDC9F51A94740B004DF040 /* logoAlpha500.png in Resources */,
@@ -1860,6 +1871,7 @@
 				6D5B54541AA23DC600EF9CEB /* LifeFrameModel.m in Sources */,
 				6D42EE521AF26305009BAF18 /* JGProgressHUDErrorIndicatorView.m in Sources */,
 				6DC5E7B929991FEA00AB1934 /* TableHeaderView.swift in Sources */,
+				6D986D0B29A11FB900ABC7AB /* BaseSafariViewController.m in Sources */,
 				6D2E0D131A9CA23600218171 /* XHPageControl.m in Sources */,
 				6D8AEBCE1AC5B066001C95A6 /* LifeToolBarView.m in Sources */,
 				6D971CF31A8B78F40016469D /* Life_RootViewController.m in Sources */,
@@ -2078,7 +2090,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2023.02.13;
+				CURRENT_PROJECT_VERSION = 2023.02.19;
 				DEVELOPMENT_TEAM = 28PV6G96R7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2104,7 +2116,7 @@
 					"$(PROJECT_DIR)/CampusOfGLUt/Classes/Vendors/BaiduMTJ_iOS_App_V4.5.0",
 					"$(PROJECT_DIR)/CampusOfGLUT/Classes/Vendors/WeiXinSDK1.8.0_NoPay",
 				);
-				MARKETING_VERSION = 8.0.0;
+				MARKETING_VERSION = 8.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = CampusOfGLUT;
 				PRODUCT_MODULE_NAME = CampusOfGLUT;
 				PRODUCT_NAME = CampusOfGLUT;
@@ -2124,7 +2136,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2023.02.13;
+				CURRENT_PROJECT_VERSION = 2023.02.19;
 				DEVELOPMENT_TEAM = 28PV6G96R7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2150,7 +2162,7 @@
 					"$(PROJECT_DIR)/CampusOfGLUt/Classes/Vendors/BaiduMTJ_iOS_App_V4.5.0",
 					"$(PROJECT_DIR)/CampusOfGLUT/Classes/Vendors/WeiXinSDK1.8.0_NoPay",
 				);
-				MARKETING_VERSION = 8.0.0;
+				MARKETING_VERSION = 8.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = CampusOfGLUT;
 				PRODUCT_MODULE_NAME = CampusOfGLUT;
 				PRODUCT_NAME = CampusOfGLUT;
