@@ -2116,7 +2116,7 @@
 					"$(PROJECT_DIR)/CampusOfGLUt/Classes/Vendors/BaiduMTJ_iOS_App_V4.5.0",
 					"$(PROJECT_DIR)/CampusOfGLUT/Classes/Vendors/WeiXinSDK1.8.0_NoPay",
 				);
-				MARKETING_VERSION = 8.1.0;
+				MARKETING_VERSION = 8.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = CampusOfGLUT;
 				PRODUCT_MODULE_NAME = CampusOfGLUT;
 				PRODUCT_NAME = CampusOfGLUT;
@@ -2162,7 +2162,7 @@
 					"$(PROJECT_DIR)/CampusOfGLUt/Classes/Vendors/BaiduMTJ_iOS_App_V4.5.0",
 					"$(PROJECT_DIR)/CampusOfGLUT/Classes/Vendors/WeiXinSDK1.8.0_NoPay",
 				);
-				MARKETING_VERSION = 8.1.0;
+				MARKETING_VERSION = 8.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = CampusOfGLUT;
 				PRODUCT_MODULE_NAME = CampusOfGLUT;
 				PRODUCT_NAME = CampusOfGLUT;

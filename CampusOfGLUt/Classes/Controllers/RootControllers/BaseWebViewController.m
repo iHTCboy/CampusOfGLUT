@@ -285,9 +285,10 @@ static NSString *const customWebStyle = @"customWebStyle";
     if (imageCounts > 0)
     {
         for (int i = 0; i < self.newsModel.images.count; i += 2) {
-            // 可能全文只有一张回复我
+            // 可能全文只有一张图片
             if (imageCounts == 1) {
                 [imagesHtml appendString:[self getImageHTMLWithImage:self.newsModel.images[i] Title:@"" ImageHight:imageHight]];
+                break;
             }
             
             if (i + 1 == imageCounts) {
@@ -601,8 +602,8 @@ static NSString *const customWebStyle = @"customWebStyle";
     }
     else if([url hasPrefix:@"http"])
     {
-
-        [self openTOWebViewWithURL:url];
+        //[self openTOWebViewWithURL:url];
+        [self.shareInfoTool inSafariOpenWithURL:url];
         return NO;
         
     }

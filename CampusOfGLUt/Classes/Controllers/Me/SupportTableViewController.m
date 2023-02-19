@@ -43,6 +43,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"感谢开源";
+    
+    if (@available(iOS 13.0, *)) {
+        self.view.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+        self.tableView.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+    } else {
+        self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.000];
+    }
 }
 
 
@@ -61,6 +68,9 @@
         
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:studyCellID];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    if (@available(iOS 13.0, *)) {
+        cell.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
     }
     
     cell.textLabel.text = self.supportArray[indexPath.row];

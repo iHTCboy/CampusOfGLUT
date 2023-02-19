@@ -10,6 +10,7 @@
 #import "BaseWebViewController.h"
 #import "TOWebViewController.h"
 #import "JwLoginVCViewController.h"
+#import "InformationHandleTool.h"
 
 @interface ContentTableViewController ()
 
@@ -20,6 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if (@available(iOS 13.0, *)) {
+        self.view.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+        self.tableView.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+    } else {
+        self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.000];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -45,6 +52,10 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
+    if (@available(iOS 13.0, *)) {
+        cell.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+    }
+    
     NSDictionary  * dic = self.contentArray[indexPath.row];
     cell.textLabel.text = [dic objectForKey:@"title"];
     if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPhone) {
@@ -61,7 +72,8 @@
     NSString *url = [dic objectForKey:@"content"];
     if ([url hasPrefix:@"http"])
     {
-        [self openTOWebViewWithURL:url];
+        //[self openTOWebViewWithURL:url];
+        [InformationHandleTool.sharedInfoTool inSafariOpenWithURL:url];
     }
     else if([url hasPrefix:@"jw"]){
         JwLoginVCViewController * jw = [[JwLoginVCViewController alloc]init];

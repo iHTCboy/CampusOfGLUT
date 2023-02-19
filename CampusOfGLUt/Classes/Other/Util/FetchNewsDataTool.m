@@ -250,8 +250,8 @@ static id _instance;
 //                NSArray * numElements = [aElement searchWithXPathQuery:@"//div[@class='con']/h5/font//span"];
 //                NSString * num = numElements.firstObject ? [(TFHppleElement *)numElements.firstObject text] : @"";
                 
-                NSArray * subtitleElements = [aElement searchWithXPathQuery:@"//div[@class='con']/p"];
-                NSString * subtitle = subtitleElements.firstObject ? [(TFHppleElement *)subtitleElements.firstObject text] : @"";
+//                NSArray * subtitleElements = [aElement searchWithXPathQuery:@"//div[@class='con']/p"];
+//                NSString * subtitle = subtitleElements.firstObject ? [(TFHppleElement *)subtitleElements.firstObject text] : @"";
                 
                 NewsModel * news = [[NewsModel alloc]init];
                 news.title = title;
@@ -670,7 +670,7 @@ static id _instance;
                 NSString * imageurl;
                 BOOL isExce = NO;
                 @try {
-                      imageurl = (NSString *) [[[[element.raw componentsSeparatedByString:@"rc=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
+                      imageurl = (NSString *) [[[[element.raw componentsSeparatedByString:@" src=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
                 }@catch (NSException *exception) {
                        isExce = YES;
                 }@finally {

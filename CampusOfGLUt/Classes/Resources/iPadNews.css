@@ -124,6 +124,8 @@ a:active{color:#8f001e;}
 			.content .post_content span.pt_title{text-align:center;clear:both;font-size:48px;}
 .content .post_content h1.post_via{text-align:right;color:#379df9;}
 			/* Custom Setting */
+            .content .fs1 {text-align:center;}
+            .content .fs1 img{display: inline-block;}
 			.content .fs1 p{text-align:center;clear:both;font-size:23px}
 			.content .fs2 p{font-size:16px;line-height:30px;}
 			.content .fs3 p{font-size:18px;line-height:34px;}

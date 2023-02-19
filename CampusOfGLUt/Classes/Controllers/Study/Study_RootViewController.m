@@ -80,6 +80,10 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
+    if (@available(iOS 13.0, *)) {
+        cell.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
+    }
+    
     cell.textLabel.text = self.studyArray[indexPath.row][0];
     
     if (![self.infoTool isDeviceOfiPhone]) {//iPad字体大些
@@ -99,7 +103,7 @@
     ContentTableViewController * contentView = [[ContentTableViewController alloc]init];
     contentView.title = self.studyArray[indexPath.row][0];
     contentView.contentArray = self.studyArray[indexPath.row][1];
-    
+    contentView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:contentView animated:YES];
     
 

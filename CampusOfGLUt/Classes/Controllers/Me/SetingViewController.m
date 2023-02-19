@@ -41,7 +41,7 @@
     [self initTableView];
     
     self.contentArray = @[@"桂林理工大学",@"觉得不错？",@"应用内评分",@"意见反馈",@"作者微博",@"作者博客",@"推荐应用",@"项目源码",@"感谢开源",@"用户条款"];
-    self.subTitleArray = @[@"友情链接",@"AppStore评分",@"马上评分",@"建议问题",@"关注动态",@"技术心得",@"Apps",@"GitHub",@"开源组件",@"隐私协议"];
+    self.subTitleArray = @[@"官网",@"AppStore评分",@"马上评分",@"建议问题",@"关注动态",@"技术心得",@"Apps",@"GitHub",@"开源组件",@"隐私协议"];
     
 }
 
@@ -90,6 +90,10 @@
         
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:setingCellID];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    if (@available(iOS 13.0, *)) {
+        cell.backgroundColor = [UIColor secondarySystemGroupedBackgroundColor];
     }
     
     cell.textLabel.font = [UIFont systemFontOfSize:18.0f];
